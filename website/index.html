@@ -347,9 +347,9 @@
         }
         .room-price-col { text-align: right; flex-shrink: 0; }
         .room-price {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Noto Sans TC', sans-serif;
             font-size: 2rem;
-            font-weight: 400;
+            font-weight: 300;
             color: var(--text);
             line-height: 1;
         }
@@ -1482,7 +1482,7 @@ renderChecklist();
     }
 })();
 
-// ─── Desktop photo strip: wheel scroll + arrows ───
+// ─── Desktop photo strip: drag scroll + arrows ───
 (function() {
   const strip = document.getElementById('photoStrip');
   const btnL  = document.getElementById('stripLeft');
@@ -1494,14 +1494,32 @@ renderChecklist();
     if (btnR) btnR.classList.toggle('hidden', strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 4);
   }
 
-  // Mouse wheel → horizontal scroll (desktop only)
-  strip.addEventListener('wheel', function(e) {
-    if (window.matchMedia('(min-width: 600px)').matches) {
-      e.preventDefault();
-      strip.scrollLeft += e.deltaY * 1.5;
-      updateArrows();
-    }
-  }, { passive: false });
+  // Click-drag scroll (desktop only)
+  let dragging = false, startX = 0, startScroll = 0;
+
+  strip.addEventListener('mousedown', (e) => {
+    if (e.button !== 0) return;
+    dragging = true;
+    startX = e.pageX;
+    startScroll = strip.scrollLeft;
+    strip.style.cursor = 'grabbing';
+    strip.style.userSelect = 'none';
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!dragging) return;
+    const dx = e.pageX - startX;
+    strip.scrollLeft = startScroll - dx;
+    updateArrows();
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    strip.style.cursor = 'grab';
+    strip.style.userSelect = '';
+  });
 
   // Arrow buttons
   const scrollAmt = () => strip.clientWidth * 0.85;
