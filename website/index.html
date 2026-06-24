@@ -1565,4 +1565,12 @@ renderChecklist();
   });
 
   // Arrow buttons
-  const scrollAmt = (
+  const scrollAmt = () => strip.clientWidth * 0.85;
+  if (btnL) btnL.addEventListener('click', () => { strip.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }); setTimeout(updateArrows, 400); });
+  if (btnR) btnR.addEventListener('click', () => { strip.scrollBy({ left:  scrollAmt(), behavior: 'smooth' }); setTimeout(updateArrows, 400); });
+  strip.addEventListener('scroll', updateArrows, { passive: true });
+  updateArrows();
+})();
+</script>
+</body>
+</html>
