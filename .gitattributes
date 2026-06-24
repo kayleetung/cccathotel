@@ -1,0 +1,3 @@
+# Normalize line endings: store text as LF in the repo,
+# regardless of the editor / OS used to make changes.
+* text=auto eol=lf
