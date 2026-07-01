@@ -475,72 +475,6 @@
         }
         .step-text p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
 
-        /* ─── Checklist ─── */
-        .bg-warm { background: var(--bg-warm); }
-        .check-item {
-            display: flex; align-items: flex-start; gap: 14px;
-            padding: 14px 0;
-            border-bottom: 1px solid var(--rule);
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .check-item:first-child { border-top: 1px solid var(--rule); }
-        .check-item:last-child { border-bottom: none; }
-        .check-item.done { opacity: 0.4; }
-        .check-box {
-            flex-shrink: 0;
-            width: 20px; height: 20px;
-            border: 1px solid #C8C0B8;
-            border-radius: 2px;
-            display: flex; align-items: center; justify-content: center;
-            margin-top: 2px;
-            transition: background 0.2s, border-color 0.2s;
-        }
-        .check-item.done .check-box { background: var(--green); border-color: var(--green); }
-        .check-box i { color: white; font-size: 0.7rem; opacity: 0; transition: opacity 0.15s; }
-        .check-item.done .check-box i { opacity: 1; }
-        .check-label { font-size: 0.88rem; line-height: 1.5; }
-        .check-label small { display: block; font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
-        .check-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .btn-outline-green {
-            background: var(--green);
-            color: white;
-            border: none;
-            padding: 9px 20px;
-            font-size: 0.82rem;
-            font-family: 'Noto Sans TC', sans-serif;
-            cursor: pointer;
-            letter-spacing: 0.04em;
-            transition: opacity 0.15s;
-        }
-        .btn-outline-green:hover { opacity: 0.85; }
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--rule);
-            padding: 9px 20px;
-            font-size: 0.82rem;
-            font-family: 'Noto Sans TC', sans-serif;
-            cursor: pointer;
-            letter-spacing: 0.04em;
-        }
-        .checklist-done-msg {
-            text-align: center;
-            padding: 20px 0 8px;
-        }
-        .checklist-done-msg .done-emoji { font-size: 1.8rem; margin-bottom: 8px; }
-        .checklist-done-msg h3 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            color: var(--green);
-            margin-bottom: 4px;
-        }
-        .checklist-done-msg p { font-size: 0.82rem; color: var(--text-muted); }
-
         /* ─── FAQ ─── */
         .faq-item { border-bottom: 1px solid var(--rule); }
         .faq-item:first-child { border-top: 1px solid var(--rule); }
@@ -1169,37 +1103,11 @@
     </div>
 </section>
 
-<!-- Checklist -->
-<section class="section">
-    <div class="section-inner">
-        <div class="section-eyebrow reveal">
-            <span class="section-num">04</span>
-            <div class="section-label-wrap">
-                <span class="section-label-en">Checklist</span>
-                <h2 class="section-title">入住準備清單</h2>
-            </div>
-        </div>
-        <hr class="section-rule">
-        <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:20px;" class="reveal">勾選確認，讓寶貝入住更順利 🐾</p>
-
-        <div id="checklistWrap"></div>
-        <div id="checklistDone" style="display:none;" class="checklist-done-msg">
-            <div class="done-emoji">🎉</div>
-            <h3>準備完成！期待與寶貝的相見</h3>
-            <p>如有任何疑問，歡迎隨時 LINE 我們</p>
-        </div>
-        <div class="check-actions">
-            <button id="checkAllBtn" class="btn-outline-green" onclick="checkAll()">全部勾選</button>
-            <button class="btn-ghost" onclick="resetAll()">重置</button>
-        </div>
-    </div>
-</section>
-
 <!-- FAQ -->
 <section class="section" style="background: var(--bg-warm);">
     <div class="section-inner">
         <div class="section-eyebrow reveal">
-            <span class="section-num">05</span>
+            <span class="section-num">04</span>
             <div class="section-label-wrap">
                 <span class="section-label-en">FAQ</span>
                 <h2 class="section-title">常見問題</h2>
@@ -1307,7 +1215,7 @@
 <section class="section contact-section" id="info">
     <div class="section-inner">
         <div class="section-eyebrow reveal">
-            <span class="section-num">06</span>
+            <span class="section-num">05</span>
             <div class="section-label-wrap">
                 <span class="section-label-en">Contact</span>
                 <h2 class="section-title">聯絡我們</h2>
@@ -1475,43 +1383,6 @@ document.querySelectorAll('.faq-btn').forEach(btn => {
         if (!isOpen) { btn.setAttribute('aria-expanded', 'true'); body.classList.add('open'); }
     });
 });
-
-// ─── Checklist ───
-const checkItems = [
-    { label: '習慣的食物與零食', note: '維持平常飲食，減少腸胃不適' },
-    { label: '一小包用過的舊貓砂', note: '約拳頭大小，熟悉氣味有助於快速適應' },
-    { label: '安全的外出籠', note: '接送時使用，請確認門扣牢固' },
-    { label: '完成體內外驅蟲', note: '入住前 1 個月內完成為佳' },
-    { label: '點好外用除蟲滴劑', note: '如寵愛+、全能貓S，或入住當天請我們協助' },
-    { label: '幫寶貝剪好指甲', note: '減少玩耍時誤傷自己或他人的風險' },
-    { label: '外出籠提前讓貓咪熟悉', note: '出發前幾天放在家中讓貓自由進出' },
-    { label: '準備 1-2 樣有家裡味道的物品', note: '玩具、毯子或主人衣物皆可，讓寶貝更安心' },
-];
-const wrap       = document.getElementById('checklistWrap');
-const doneMsg    = document.getElementById('checklistDone');
-const checkAllBtn= document.getElementById('checkAllBtn');
-let states = new Array(checkItems.length).fill(false);
-
-function renderChecklist() {
-    wrap.innerHTML = '';
-    checkItems.forEach((item, i) => {
-        const el = document.createElement('div');
-        el.className = 'check-item' + (states[i] ? ' done' : '');
-        el.innerHTML = `
-            <div class="check-box"><i class="fa-solid fa-check"></i></div>
-            <div class="check-label">${item.label}<small>${item.note}</small></div>
-        `;
-        el.addEventListener('click', () => { states[i] = !states[i]; renderChecklist(); });
-        wrap.appendChild(el);
-    });
-    const allDone = states.every(Boolean);
-    doneMsg.style.display = allDone ? 'block' : 'none';
-    wrap.style.display    = allDone ? 'none'  : 'block';
-    if (checkAllBtn) checkAllBtn.style.display = allDone ? 'none' : 'inline-block';
-}
-function checkAll()  { states = states.map(() => true);  renderChecklist(); }
-function resetAll()  { states = states.map(() => false); renderChecklist(); }
-renderChecklist();
 
 // ─── Operating status ───
 (function() {
