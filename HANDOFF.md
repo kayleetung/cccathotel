@@ -12,6 +12,8 @@
 - 最近一次網站內容變更（移除入住準備清單）**已上線並驗證**。
 - 本 session（2026-07-03）剛建立完整文件制度（RULES／HISTORY／README／PROJECT_INSTRUCTIONS）＋
   在 index.html 加了版號 meta。**這批文件與版號 meta 尚待 KK 在 GitHub Desktop commit＋push。**
+- ⚠️ **repo root = `cccathotel\`（不是子資料夾 `CCat Website\`，那是空的）。** Cowork 目前連接可能指到空的
+  `CCat Website\` → 會讀不到任何文件。詳見 RULES E5。**待辦：KK 把 Cowork 連接資料夾重指到 `cccathotel\` 根。**
 
 ## 待辦（Roadmap，優先級由高到低）
 

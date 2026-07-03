@@ -79,6 +79,9 @@ RULES／README／HANDOFF **不得複製這些值**，只能指向 index.html。
 - **E2.** 驗語法：把新片段存 `/tmp` 再 `node --check`，不要對 repo 內檔案直接跑破壞性指令。
 - **E3.** sandbox 內 DNS 被擋 → 要查 DNS 用 DoH API（`https://dns.google/resolve?name=...`）。
 - **E4.** 線上部署有 CDN 快取 → 驗證用查詢字串繞過：`https://cccathotel.com/?v=時間戳`。
+- **E5.** repo root 在 `cccathotel\`（含所有 .md 與 `website/`）。`cccathotel\CCat Website\` 是**空的子資料夾**
+  → 若 Cowork 連接的是 `CCat Website`，會看到「資料夾全空」而讀不到任何文件；改用 `request_cowork_directory`
+  授權上一層 `cccathotel\`，或請 KK 在 Cowork 把連接資料夾重指到 `cccathotel\` 根。2026-07-03 踩到並記錄。
 
 ---
 
