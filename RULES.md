@@ -82,6 +82,10 @@ RULES／README／HANDOFF **不得複製這些值**，只能指向 index.html。
 - **E5.** repo root 在 `cccathotel\`（含所有 .md 與 `website/`）。`cccathotel\CCat Website\` 是**空的子資料夾**
   → 若 Cowork 連接的是 `CCat Website`，會看到「資料夾全空」而讀不到任何文件；改用 `request_cowork_directory`
   授權上一層 `cccathotel\`，或請 KK 在 Cowork 把連接資料夾重指到 `cccathotel\` 根。2026-07-03 踩到並記錄。
+- **E6.** 別在這個 repo 用 bash 跑 `git` 指令（連唯讀的 `git status` 都算）。git 會在 `.git/` 建
+  `index.lock`，在 OneDrive 掛載下 bash 清不掉（unlink「Operation not permitted」），殘鎖會擋住 GitHub
+  Desktop commit，最後得 KK 在 Windows 端手動刪 `index.lock` 才能繼續。要看狀態/diff 一律用 GitHub
+  Desktop（它讀 Windows 實檔、也是部署真相）。2026-07-03 踩到並記錄。
 
 ---
 
