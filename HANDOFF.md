@@ -10,10 +10,11 @@
 
 - 網站正常上線於 https://cccathotel.com/（host = Netlify，見 R3）。
 - 最近一次網站內容變更（移除入住準備清單）**已上線並驗證**。
-- 本 session（2026-07-03）剛建立完整文件制度（RULES／HISTORY／README／PROJECT_INSTRUCTIONS）＋
-  在 index.html 加了版號 meta。**這批文件與版號 meta 尚待 KK 在 GitHub Desktop commit＋push。**
-- ⚠️ **repo root = `cccathotel\`（不是子資料夾 `CCat Website\`，那是空的）。** Cowork 目前連接可能指到空的
-  `CCat Website\` → 會讀不到任何文件。詳見 RULES E5。**待辦：KK 把 Cowork 連接資料夾重指到 `cccathotel\` 根。**
+- 文件制度（RULES／HISTORY／README／PROJECT_INSTRUCTIONS）＋ index.html 版號 meta 已於
+  2026-07-03 commit＋push 上線（git log 已確認：commit `c2e49d6`；舊版本檔誤寫「尚待 commit」，已更正）。
+- **2026-07-24：協作工具主力改為 Claude Code**（Windows 原生終端機），Cowork 版本停用。repo root
+  新增 [CLAUDE.md](CLAUDE.md) 作為開工入口（`@import` 本檔＋RULES.md＋PROJECT_INSTRUCTIONS.md）；
+  RULES.md 環境事實區（E1/E3/E5/E6）依新環境更新。**R1–R11 鐵律本身、R2 部署流程皆未變動。**
 
 ## 待辦（Roadmap，優先級由高到低）
 
@@ -38,8 +39,11 @@
 
 ## 最近 2 個 session 摘要
 
+- **2026-07-24 搬遷到 Claude Code（tooling session）**：新增 CLAUDE.md 開工入口；RULES.md 環境事實區
+  改寫給 Windows 原生終端機（退役 Cowork sandbox 限定的 E1/E3/E6 內容，更新 E5 補救方式）；
+  PROJECT_INSTRUCTIONS.md 入口說明改指向 CLAUDE.md；Cowork 版本停用。R1–R11 鐵律與 R2（部署仍走
+  GitHub Desktop）**明確保留、沒有動**——是否讓 Claude Code 直接跑 git push 留給 KK 決定。
 - **2026-07-03 建立文件制度**：拆出 RULES/HISTORY/README/PROJECT_INSTRUCTIONS，HANDOFF 改瘦，
   index.html 加版號 meta；**查證並更正 host = Netlify（非 GitHub Pages）**。
-- **2026-07-01 移除入住準備清單**：刪重複的互動勾選區塊，FAQ/Contact 重編號，保留估價器，已上線。
 
 （更早的見 [HISTORY.md](HISTORY.md)）

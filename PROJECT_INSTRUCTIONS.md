@@ -1,7 +1,9 @@
 # PROJECT INSTRUCTIONS — cccathotel 協作協議
 
-> 這份是「**怎麼一起工作**」的協議。內容也貼進 Cowork Project → Instructions。
-> 文件是真相載體，這份 prompt 只是引路。維護習慣與另一個 repo `cccat-pos` 一致。
+> 這份是「**怎麼一起工作**」的協議。2026-07-24 起主力工具改為 Claude Code：
+> repo root 的 [CLAUDE.md](CLAUDE.md) 會自動 `@import` 這份＋RULES.md＋HANDOFF.md，
+> 不用手動貼進任何介面。Cowork 版本（貼進 Project → Instructions）已停用。
+> 文件是真相載體，CLAUDE.md 只是引路。維護習慣與另一個 repo `cccat-pos` 一致。
 
 ---
 
@@ -14,6 +16,9 @@
 3. **按任務再讀**：要懂系統結構 → README.md（含 § 區塊索引）；查「為什麼 X 長這樣」→ HISTORY.md。
 
 不要一開始就把 index.html 整檔讀進工作記憶（1400+ 行）。用 README 的 § 索引 Ctrl-F 定位需要的段。
+
+> 用 Claude Code 時，1.／2.（HANDOFF.md／RULES.md）已由 CLAUDE.md 的 `@import` 自動載入 context，
+> 不用手動 Read；上面的順序是心智模型，不是操作步驟。
 
 ## ② 文件地圖（每個檔是什麼的家）
 
@@ -56,15 +61,17 @@
 
 ## ⑥ 環境雷（這台 Windows 機器特有）
 
-- **OneDrive 掛載落後**：bash 看到的 repo 可能舊於 Windows 實檔 → **以 Read/Edit 工具為準**；
-  bash 驗證前先確認讀到最新。禁破壞性就地指令（R1）。
-- **驗語法**：新片段存 `/tmp` 再 `node --check`，不要對 repo 檔案跑 `sed`/重導。
-- **線上截圖會卡**：不要靠截圖驗證線上結果 → 用 `javascript_tool` 讀 DOM / computed style，
-  或用 `mcp__workspace__web_fetch` 抓 HTML。
-- **sandbox DNS 被擋**：要查 DNS 用 DoH（`https://dns.google/resolve?name=...&type=A|NS`）。
-- **GitHub Desktop 可由 Claude 用 computer-use 代操作**（經 KK 同意）：先 `open_application` 帶到前景 →
-  commit 訊息用**英文** → 成功判準 = 介面變回「Fetch origin」（代表已 push）→ 若顯示「No local changes」
-  就重啟 GitHub Desktop 讓它重掃檔案。
+> 2026-07-24 起在 Windows 原生終端機（Git Bash/PowerShell/cmd）跑 Claude Code，不再透過 Cowork
+> 的 Linux sandbox。細節與沿革見 [RULES.md](RULES.md) 的「環境事實」區（E1–E6）。
+
+- **repo root 是 `cccathotel\`**，`CCat Website\` 子資料夾是空的 → cd／開 Claude Code 都對根目錄
+  （RULES E5）。
+- **驗語法**：新片段先存暫存檔再檢查，不要對 repo 檔案直接跑破壞性就地指令（R1／RULES E2）。
+- **OneDrive 雲端限定檔案**：檔案總管顯示雲朵圖示的檔案可能還沒同步到本機，讀寫前留意（RULES E1）。
+- **git 現在可以直接在終端機跑**，不再是 Cowork sandbox 那種會殘留 `index.lock` 清不掉的
+  fuse mount（RULES E6）。**但 push／部署仍照 R2：不自動化推送**，流程沒變，
+  除非 KK 明確決定調整。
+- **線上驗證**：抓 `https://cccathotel.com/?v=時間戳` 繞快取確認版號 meta（RULES E4）。
 
 ## ⑦ 文件維護協議 ＋ Session 收尾 ritual
 
@@ -109,4 +116,4 @@
 - 每個任務拆成可獨立 commit 上線的小步，不留半成品。
 - 假資料絕不混進正式產品。
 
-_鐵律全文見 [RULES.md](RULES.md)。最後更新 2026-07-03。_
+_鐵律全文見 [RULES.md](RULES.md)。最後更新 2026-07-24。_

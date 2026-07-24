@@ -6,6 +6,32 @@
 
 ---
 
+## 2026-07-24 — 搬遷到 Claude Code（tooling session）
+
+- KK 決定把主力工具從 Cowork 換成 Claude Code，在 Windows 原生終端機（Git Bash/PowerShell/cmd）跑，
+  不再透過 Cowork 的 Linux sandbox。Cowork 版本停用。
+- **新增 `CLAUDE.md`**（repo root）作為 Claude Code 開工入口，用 `@import` 語法自動載入
+  PROJECT_INSTRUCTIONS.md／RULES.md／HANDOFF.md 進 context，不需要手動 Read；README/HISTORY
+  仍按任務再讀，不自動 import（避免一開工就塞爆 context）。
+- **PROJECT_INSTRUCTIONS.md**：入口說明改成指向 CLAUDE.md（移除「內容也貼進 Cowork Project →
+  Instructions」的舊描述）；① 開工讀檔順序加註「用 Claude Code 時 1/2 已自動載入」；
+  ⑥ 環境雷段落改寫給新環境。
+- **RULES.md 環境事實區**：E1／E3／E6 原本是 Cowork sandbox 限定的雷（bash 掛載落後、sandbox DNS
+  被擋、bash git 殘留 index.lock），Claude Code 在原生終端機直接操作 Windows 實檔，這三個問題都不
+  適用了。**編號保留不動**（避免這篇 HISTORY 舊條目裡的 E1/E5/E6 引用失效），但內容改寫：E1 改記
+  「OneDrive 雲端限定檔案可能未同步」的新提醒、E3 標記已退役、E6 改記「git 現在可以直接跑，但
+  push/部署仍照 R2」。E5（repo root 路徑雷）保留、只把補救方式從「重指 Cowork 連接資料夾」改成
+  「cd 對根目錄」。E2／E4 環境無關，原封不動。
+- **明確保留、這次沒有動的東西**：R1–R11 鐵律本身完全沒改；**R2（部署只透過 GitHub Desktop
+  commit/push，不自動化推送）刻意保留** — Claude Code 現在技術上可以直接在原生終端機跑
+  `git push`，但這是部署控制權的政策決定（🔴 等 KK 點頭），這次只做「讓 Claude Code 讀得到協議」
+  的落地設定，沒有動 R2。留給 KK 之後決定要不要調整。
+- **順手修正一個舊漂移**：HANDOFF.md 原本寫「2026-07-03 的文件制度尚待 KK commit+push」，但
+  `git log` 查證 commit `c2e49d6` 已經 push 上線（`git status` 也是 clean），這是過期未更新的
+  待辦，已在 HANDOFF 更正並移除。
+- **HANDOFF.md**：清掉已作廢的「Cowork 連接資料夾待重指到 cccathotel 根」待辦（Cowork 停用，
+  此項不再適用）。
+
 ## 2026-07-03 — 檢視規則＋修正資料夾路徑雷（review session）
 
 - 交接後檢視剛建立的 RULES/HANDOFF/README/HISTORY，逐條對照 `index.html` 實檔驗證：R5（GA

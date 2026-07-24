@@ -1,0 +1,22 @@
+# CLAUDE.md — cccathotel 開工入口
+
+> 這是 Claude Code 在此 repo 自動載入的入口檔。**不要在這裡塞事實**——內容都在下面 import
+> 的檔案裡（每個事實只有一個家，見 PROJECT_INSTRUCTIONS.md ②）。2026-07-24 起主力工具改為
+> Claude Code（Windows 原生終端機），Cowork 版本停用。
+
+## 開工先讀（下面三份會自動 import 進 context，不用手動 Read）
+
+@PROJECT_INSTRUCTIONS.md
+@RULES.md
+@HANDOFF.md
+
+## 按任務再讀（不自動載入，需要時用 Read 開）
+
+- 系統結構／§ 區塊索引 → README.md
+- 沿革／「為什麼 X 長這樣」→ HISTORY.md
+- 網站本體＋商家事實 → `website/index.html`（用 README 的 § 索引 Ctrl-F 定位，不要整檔讀進 context）
+
+## repo 位置
+
+repo root 就是這個資料夾（含 `.git`、所有 `.md`、`website/`）。**不要在 `CCat Website\` 子資料夾
+裡開工，那是空的**（見 RULES.md E5）。

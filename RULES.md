@@ -74,19 +74,28 @@ RULES／README／HANDOFF **不得複製這些值**，只能指向 index.html。
 
 ## 環境事實（不是禁令，但每次都要記得）
 
-- **E1.** bash 掛載的 OneDrive 視圖常落後於 Windows 實檔 → 以 Read／Edit 工具看到的為準；
-  用 bash 驗證前先確認它讀到最新內容。
-- **E2.** 驗語法：把新片段存 `/tmp` 再 `node --check`，不要對 repo 內檔案直接跑破壞性指令。
-- **E3.** sandbox 內 DNS 被擋 → 要查 DNS 用 DoH API（`https://dns.google/resolve?name=...`）。
+> 2026-07-24 起主力用 Claude Code 在 Windows 原生終端機（Git Bash/PowerShell/cmd）跑，不再透過
+> Cowork 的 Linux sandbox。E1／E3／E6 原本記錄的是 sandbox 限定的雷，內容已更新／退役；
+> 沿革見 [HISTORY.md](HISTORY.md) 2026-07-03 與 2026-07-24。編號保留不變，避免舊文件互引失效。
+
+- **E1.** OneDrive 雲端限定檔案（檔案總管顯示雲朵圖示）可能還沒同步到本機。若讀寫時發現內容是空的、
+  或指令找不到檔案，先確認該檔案已完整同步到本機再動作。
+  （2026-07-24 前此號記錄「Cowork sandbox bash 掛載落後於 Windows 實檔」的雷——Claude Code 在原生
+  終端機直接讀寫 Windows 實檔，不透過另一層 mount，該問題不適用。舊細節見 HISTORY 2026-07-03。）
+- **E2.** 驗語法：把新片段存暫存檔再跑 `node --check`，不要對 repo 內檔案直接跑破壞性指令。
+- **E3.**（已退役）2026-07-24 前此號記錄「Cowork sandbox 內 DNS 被擋，要用 DoH API 查」。Windows
+  原生終端機網路正常，不需要繞過。舊細節見 HISTORY 2026-07-03。
 - **E4.** 線上部署有 CDN 快取 → 驗證用查詢字串繞過：`https://cccathotel.com/?v=時間戳`。
 - **E5.** repo root 在 `cccathotel\`（含所有 .md 與 `website/`）。`cccathotel\CCat Website\` 是**空的子資料夾**
-  → 若 Cowork 連接的是 `CCat Website`，會看到「資料夾全空」而讀不到任何文件；改用 `request_cowork_directory`
-  授權上一層 `cccathotel\`，或請 KK 在 Cowork 把連接資料夾重指到 `cccathotel\` 根。2026-07-03 踩到並記錄。
-- **E6.** 別在這個 repo 用 bash 跑 `git` 指令（連唯讀的 `git status` 都算）。git 會在 `.git/` 建
-  `index.lock`，在 OneDrive 掛載下 bash 清不掉（unlink「Operation not permitted」），殘鎖會擋住 GitHub
-  Desktop commit，最後得 KK 在 Windows 端手動刪 `index.lock` 才能繼續。要看狀態/diff 一律用 GitHub
-  Desktop（它讀 Windows 實檔、也是部署真相）。2026-07-03 踩到並記錄。
+  → cd／開 Claude Code 都要對 `cccathotel\` 根目錄，不要進空的子資料夾。2026-07-03 踩到並記錄；
+  2026-07-24 把補救方式從「重指 Cowork 連接資料夾」改成「cd 對根目錄」（Cowork 已停用）。
+- **E6.** git 現在可以直接在原生終端機跑（`status`／`diff`／`log`／`add`／`commit` 等都可以）。**但
+  push／部署仍照 R2：不自動化推送**，流程沒變，除非 KK 明確決定調整。
+  （2026-07-24 前此號記錄「別在此 repo 用 bash 跑 git，會在 OneDrive 掛載下留殘留 `index.lock`
+  清不掉」——那是 Cowork sandbox 的 fuse mount 權限問題，Claude Code 在原生終端機直接對 Windows
+  實檔操作 git，沒有這層問題。舊細節見 HISTORY 2026-07-03。）
 
 ---
 
-_最後更新：2026-07-03。詳細沿革見 [HISTORY.md](HISTORY.md)。協作方式見 [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)。_
+_最後更新：2026-07-24（環境事實區更新給 Claude Code；R1–R11 鐵律本身未變）。詳細沿革見
+[HISTORY.md](HISTORY.md)。協作方式見 [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)。_
