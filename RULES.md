@@ -10,9 +10,9 @@
 
 ### R1. 改檔只用 Read／Write／Edit，禁止破壞性就地 shell 指令
 永不使用 `sed -i`、`>` 覆寫重導、`truncate`、`tee` 等就地改這個 repo 的檔案。
-**Why：** 這資料夾是 OneDrive 同步的。2026-06 曾用 `sed -i` 修換行符，在同步競爭下把
-`index.html` 檔尾**截斷**（掉了 photo-strip JS 和 `</script></body></html>`，整頁互動全掛）。
-檔案編輯工具走 Windows 正規寫入、逐段替換，不會整檔重寫。
+**Why：** 2026-06 曾用 `sed -i` 修換行符，在 OneDrive 同步競爭下把 `index.html` 檔尾**截斷**
+（掉了 photo-strip JS 和 `</script></body></html>`，整頁互動全掛）。repo 已搬離 OneDrive（2026-07-24），
+但此規則作為安全慣例保留。檔案編輯工具走 Windows 正規寫入、逐段替換，不會整檔重寫。
 
 ### R2. 部署只透過 GitHub Desktop commit／push
 不用任何 API token、`git push` CLI 自動化、或第三方推送。改完檔 → KK（或經 KK 同意用
@@ -78,24 +78,23 @@ RULES／README／HANDOFF **不得複製這些值**，只能指向 index.html。
 > Cowork 的 Linux sandbox。E1／E3／E6 原本記錄的是 sandbox 限定的雷，內容已更新／退役；
 > 沿革見 [HISTORY.md](HISTORY.md) 2026-07-03 與 2026-07-24。編號保留不變，避免舊文件互引失效。
 
-- **E1.** OneDrive 雲端限定檔案（檔案總管顯示雲朵圖示）可能還沒同步到本機。若讀寫時發現內容是空的、
-  或指令找不到檔案，先確認該檔案已完整同步到本機再動作。
-  （2026-07-24 前此號記錄「Cowork sandbox bash 掛載落後於 Windows 實檔」的雷——Claude Code 在原生
-  終端機直接讀寫 Windows 實檔，不透過另一層 mount，該問題不適用。舊細節見 HISTORY 2026-07-03。）
+- **E1.**（已退役）repo 已從 OneDrive 搬到 `C:\dev\cccathotel`（2026-07-24），不再有雲端同步問題。
+  歷史：原本記錄 OneDrive 雲端限定檔案可能未同步到本機的風險；更早記錄 Cowork sandbox bash
+  掛載落後的雷。兩者皆不再適用。舊細節見 HISTORY。
 - **E2.** 驗語法：把新片段存暫存檔再跑 `node --check`，不要對 repo 內檔案直接跑破壞性指令。
 - **E3.**（已退役）2026-07-24 前此號記錄「Cowork sandbox 內 DNS 被擋，要用 DoH API 查」。Windows
   原生終端機網路正常，不需要繞過。舊細節見 HISTORY 2026-07-03。
 - **E4.** 線上部署有 CDN 快取 → 驗證用查詢字串繞過：`https://cccathotel.com/?v=時間戳`。
-- **E5.** repo root 在 `cccathotel\`（含所有 .md 與 `website/`）。`cccathotel\CCat Website\` 是**空的子資料夾**
-  → cd／開 Claude Code 都要對 `cccathotel\` 根目錄，不要進空的子資料夾。2026-07-03 踩到並記錄；
-  2026-07-24 把補救方式從「重指 Cowork 連接資料夾」改成「cd 對根目錄」（Cowork 已停用）。
+- **E5.** repo root 在 `C:\dev\cccathotel`（含所有 .md 與 `website/`）。`CCat Website\` 是**空的子資料夾**
+  → cd／開 Claude Code 都要對根目錄，不要進空的子資料夾。2026-07-03 踩到並記錄；
+  2026-07-24 搬離 OneDrive 到 `C:\dev\`。
 - **E6.** git 現在可以直接在原生終端機跑（`status`／`diff`／`log`／`add`／`commit` 等都可以）。**但
   push／部署仍照 R2：不自動化推送**，流程沒變，除非 KK 明確決定調整。
-  （2026-07-24 前此號記錄「別在此 repo 用 bash 跑 git，會在 OneDrive 掛載下留殘留 `index.lock`
-  清不掉」——那是 Cowork sandbox 的 fuse mount 權限問題，Claude Code 在原生終端機直接對 Windows
-  實檔操作 git，沒有這層問題。舊細節見 HISTORY 2026-07-03。）
+  （早期記錄「別在此 repo 用 bash 跑 git，會在 OneDrive 掛載下留殘留 `index.lock`」——那是 Cowork
+  sandbox + OneDrive 的問題。repo 已搬離 OneDrive（2026-07-24），git 操作無此風險。
+  舊細節見 HISTORY 2026-07-03。）
 
 ---
 
-_最後更新：2026-07-24（環境事實區更新給 Claude Code；R1–R11 鐵律本身未變）。詳細沿革見
-[HISTORY.md](HISTORY.md)。協作方式見 [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)。_
+_最後更新：2026-07-24（repo 從 OneDrive 搬到 `C:\dev\cccathotel`；E1 退役、E5/E6/R1 why 更新）。
+詳細沿革見 [HISTORY.md](HISTORY.md)。協作方式見 [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)。_

@@ -62,14 +62,13 @@
 ## ⑥ 環境雷（這台 Windows 機器特有）
 
 > 2026-07-24 起在 Windows 原生終端機（Git Bash/PowerShell/cmd）跑 Claude Code，不再透過 Cowork
-> 的 Linux sandbox。細節與沿革見 [RULES.md](RULES.md) 的「環境事實」區（E1–E6）。
+> 的 Linux sandbox。repo 已從 OneDrive 搬到 `C:\dev\cccathotel`，不再有雲端同步問題。
+> 細節與沿革見 [RULES.md](RULES.md) 的「環境事實」區（E1–E6）。
 
-- **repo root 是 `cccathotel\`**，`CCat Website\` 子資料夾是空的 → cd／開 Claude Code 都對根目錄
+- **repo root 是 `C:\dev\cccathotel`**，`CCat Website\` 子資料夾是空的 → cd／開 Claude Code 都對根目錄
   （RULES E5）。
 - **驗語法**：新片段先存暫存檔再檢查，不要對 repo 檔案直接跑破壞性就地指令（R1／RULES E2）。
-- **OneDrive 雲端限定檔案**：檔案總管顯示雲朵圖示的檔案可能還沒同步到本機，讀寫前留意（RULES E1）。
-- **git 現在可以直接在終端機跑**，不再是 Cowork sandbox 那種會殘留 `index.lock` 清不掉的
-  fuse mount（RULES E6）。**但 push／部署仍照 R2：不自動化推送**，流程沒變，
+- **git 現在可以直接在終端機跑**（RULES E6）。**但 push／部署仍照 R2：不自動化推送**，流程沒變，
   除非 KK 明確決定調整。
 - **線上驗證**：抓 `https://cccathotel.com/?v=時間戳` 繞快取確認版號 meta（RULES E4）。
 

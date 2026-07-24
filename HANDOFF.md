@@ -15,6 +15,8 @@
 - **2026-07-24：協作工具主力改為 Claude Code**（Windows 原生終端機），Cowork 版本停用。repo root
   新增 [CLAUDE.md](CLAUDE.md) 作為開工入口（`@import` 本檔＋RULES.md＋PROJECT_INSTRUCTIONS.md）；
   RULES.md 環境事實區（E1/E3/E5/E6）依新環境更新。**R1–R11 鐵律本身、R2 部署流程皆未變動。**
+- **2026-07-24：repo 從 OneDrive 搬到 `C:\dev\cccathotel`**，消除雲端同步與 git 打架的風險。
+  GitHub Desktop 已重新指向新位置。RULES E1 退役、E5/E6/R1 why 更新。OneDrive 舊副本待 KK 確認後刪除。
 
 ## 待辦（Roadmap，優先級由高到低）
 
@@ -39,11 +41,12 @@
 
 ## 最近 2 個 session 摘要
 
+- **2026-07-24 repo 搬遷到 `C:\dev\`**：把 repo 從 OneDrive（`~\OneDrive\Desktop\cccathotel`）搬到
+  `C:\dev\cccathotel`，消除雲端同步風險。更新 RULES（E1 退役、E5 路徑、E6/R1 why 加註搬離 OneDrive）、
+  PROJECT_INSTRUCTIONS（⑥ 移除 OneDrive 提醒、更新路徑）。GitHub Desktop 重新指向新位置。
 - **2026-07-24 搬遷到 Claude Code（tooling session）**：新增 CLAUDE.md 開工入口；RULES.md 環境事實區
   改寫給 Windows 原生終端機（退役 Cowork sandbox 限定的 E1/E3/E6 內容，更新 E5 補救方式）；
   PROJECT_INSTRUCTIONS.md 入口說明改指向 CLAUDE.md；Cowork 版本停用。R1–R11 鐵律與 R2（部署仍走
   GitHub Desktop）**明確保留、沒有動**——是否讓 Claude Code 直接跑 git push 留給 KK 決定。
-- **2026-07-03 建立文件制度**：拆出 RULES/HISTORY/README/PROJECT_INSTRUCTIONS，HANDOFF 改瘦，
-  index.html 加版號 meta；**查證並更正 host = Netlify（非 GitHub Pages）**。
 
 （更早的見 [HISTORY.md](HISTORY.md)）

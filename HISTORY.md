@@ -6,6 +6,20 @@
 
 ---
 
+## 2026-07-24 — repo 從 OneDrive 搬到 `C:\dev\cccathotel`
+
+- KK 決定把 repo 從 OneDrive 同步資料夾（`~\OneDrive\Desktop\cccathotel`）搬到本機
+  `C:\dev\cccathotel`，與其他 project 放在一起，消除 OneDrive 雲端同步跟 git/檔案寫入打架的風險。
+- 使用 robocopy 複製整個資料夾（含 `.git`），驗證新位置 `git status` clean、`git log` 完整、
+  remote 指向 `https://github.com/kayleetung/cccathotel.git`。
+- GitHub Desktop 重新指向 `C:\dev\cccathotel`。
+- **文件更新**：
+  - RULES.md：E1 退役（不再有 OneDrive 同步問題）；E5 路徑改為 `C:\dev\cccathotel`；
+    E6 歷史描述加註「repo 已搬離 OneDrive」；R1 why 加註搬離 OneDrive 但規則作為安全慣例保留。
+  - PROJECT_INSTRUCTIONS.md ⑥：移除 OneDrive 提醒（E1 已退役）、repo root 路徑更新。
+  - HANDOFF.md：更新目前狀態、加本次 session 摘要。
+- OneDrive 上的舊副本保留，待 KK 確認無誤後自行刪除。
+
 ## 2026-07-24 — 搬遷到 Claude Code（tooling session）
 
 - KK 決定把主力工具從 Cowork 換成 Claude Code，在 Windows 原生終端機（Git Bash/PowerShell/cmd）跑，
