@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SITE VERSION: 2026.07.03-01 | 格式 YYYY.MM.DD-nn，每次改動內容/行為就遞增（見 RULES R10） -->
-    <meta name="version" content="2026.07.03-01">
+    <!-- SITE VERSION: 2026.07.24-01 | 格式 YYYY.MM.DD-nn，每次改動內容/行為就遞增（見 RULES R10） -->
+    <meta name="version" content="2026.07.24-01">
     <title>希希貓旅 CC Cat Boarding | 高雄鳳山小班制純貓住宿</title>
     <meta name="description" content="希希貓旅位於高雄鳳山（近前鎮・大寮・五甲），提供小班制純貓住宿，服務高雄全區。合法立案（特寵業），每日回報照片影片，讓您出遊也能安心。">
     <!-- Open Graph -->
@@ -1374,28 +1374,55 @@ catCountEl.addEventListener('change', updateCalc);
 refreshCatOptions(); updateCalc();
 
 // ─── FAQ ───
-document.querySelectorAll('.faq-btn').forEach(btn => {
+document.querySelectorAll('.faq-btn').forEach((btn, i) => {
+    // 建立 button ↔ 答案的 id 配對，螢幕閱讀器才知道展開的是哪一塊
+    const bodyId = 'faqBody' + (i + 1);
+    const bodyEl = btn.nextElementSibling;
+    bodyEl.id = bodyId;
+    btn.setAttribute('aria-controls', bodyId);
+    // 收合的答案視覺上看不到，但預設仍會被螢幕閱讀器念出來 → 移出無障礙樹
+    bodyEl.setAttribute('aria-hidden', 'true');
+
     btn.addEventListener('click', () => {
         const body   = btn.nextElementSibling;
         const isOpen = btn.getAttribute('aria-expanded') === 'true';
         document.querySelectorAll('.faq-btn').forEach(b => {
             b.setAttribute('aria-expanded', 'false');
             b.nextElementSibling.classList.remove('open');
+            b.nextElementSibling.setAttribute('aria-hidden', 'true');
         });
-        if (!isOpen) { btn.setAttribute('aria-expanded', 'true'); body.classList.add('open'); }
+        if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            body.classList.add('open');
+            body.setAttribute('aria-hidden', 'false');
+        }
     });
 });
 
 // ─── Operating status ───
 (function() {
-    const now   = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Taipei' }));
-    const h     = now.getHours();
     const dot   = document.querySelector('.pulse-dot');
     const label = dot && dot.nextElementSibling;
-    if (h < 11 || h >= 20) {
-        if (dot)   { dot.style.background = '#bbb'; }
-        if (label) { label.style.color = '#aaa'; label.textContent = '目前休息中'; }
+    if (!dot || !label) return;
+
+    function taipeiHour() {
+        // 用 Intl 直接取台北時區的小時，不靠解析 locale 字串（各瀏覽器格式不一致）
+        const parts = new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Asia/Taipei', hour: 'numeric', hour12: false
+        }).formatToParts(new Date());
+        return parseInt(parts.find(p => p.type === 'hour').value, 10) % 24;  // 部分實作午夜回傳 24
     }
+
+    function render() {
+        const h      = taipeiHour();
+        const closed = (h < 11 || h >= 20);
+        dot.style.background = closed ? '#bbb' : '#4CAF50';
+        label.style.color    = closed ? '#aaa' : '';
+        label.textContent    = closed ? '目前休息中' : '目前營業中';
+    }
+
+    render();
+    setInterval(render, 60000);   // 每分鐘重算，分頁開著跨過開/關店時間也會跟著更新
 })();
 
 // ─── Desktop photo strip: drag scroll + arrows ───

@@ -16,7 +16,11 @@
   新增 [CLAUDE.md](CLAUDE.md) 作為開工入口（`@import` 本檔＋RULES.md＋PROJECT_INSTRUCTIONS.md）；
   RULES.md 環境事實區（E1/E3/E5/E6）依新環境更新。**R1–R11 鐵律本身、R2 部署流程皆未變動。**
 - **2026-07-24：repo 從 OneDrive 搬到 `C:\dev\cccathotel`**，消除雲端同步與 git 打架的風險。
-  GitHub Desktop 已重新指向新位置。RULES E1 退役、E5/E6/R1 why 更新。OneDrive 舊副本待 KK 確認後刪除。
+  GitHub Desktop 已重新指向新位置。RULES E1 退役、E5/E6/R1 why 更新。OneDrive 舊副本待 KK 確認後刪除
+  （**注意：舊副本內容已過時，以 `C:\dev\cccathotel` 為準**）。
+- **2026-07-24：健檢通過＋無障礙/行為修正已完成，版號 `2026.07.24-01`**。健檢無 bug；
+  修了 sitemap `lastmod`、FAQ 無障礙（`aria-controls` ＋ 收合內容 `aria-hidden`）、
+  營業狀態每分鐘重算。本機 27 PASS / 0 FAIL。詳見 [HISTORY.md](HISTORY.md)。
 
 ## 待辦（Roadmap，優先級由高到低）
 
@@ -41,12 +45,14 @@
 
 ## 最近 2 個 session 摘要
 
+- **2026-07-24 健檢＋無障礙/行為修正**（版號 `2026.07.24-01`）：健檢全數通過、無 bug。修了
+  ② sitemap `lastmod`（06-24 → 07-24）、③ FAQ `aria-controls` 配對＋**收合答案 `aria-hidden`**
+  （查證時發現的更嚴重問題：收合內容仍留在無障礙樹，9 題答案會被全部念出來）、
+  ④ 營業狀態改 `setInterval` 每分鐘重算＋換用 `Intl` API。**原列①「圖片加 width/height」實測
+  CLS=0 後推翻，刻意不做。** 過程中自己第一版的 CSS `visibility` 方案被測試抓包（打開過就卡在
+  visible），已還原改用 `aria-hidden`。本機 27 PASS / 0 FAIL。
 - **2026-07-24 repo 搬遷到 `C:\dev\`**：把 repo 從 OneDrive（`~\OneDrive\Desktop\cccathotel`）搬到
   `C:\dev\cccathotel`，消除雲端同步風險。更新 RULES（E1 退役、E5 路徑、E6/R1 why 加註搬離 OneDrive）、
   PROJECT_INSTRUCTIONS（⑥ 移除 OneDrive 提醒、更新路徑）。GitHub Desktop 重新指向新位置。
-- **2026-07-24 搬遷到 Claude Code（tooling session）**：新增 CLAUDE.md 開工入口；RULES.md 環境事實區
-  改寫給 Windows 原生終端機（退役 Cowork sandbox 限定的 E1/E3/E6 內容，更新 E5 補救方式）；
-  PROJECT_INSTRUCTIONS.md 入口說明改指向 CLAUDE.md；Cowork 版本停用。R1–R11 鐵律與 R2（部署仍走
-  GitHub Desktop）**明確保留、沒有動**——是否讓 Claude Code 直接跑 git push 留給 KK 決定。
 
 （更早的見 [HISTORY.md](HISTORY.md)）

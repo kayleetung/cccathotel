@@ -6,6 +6,47 @@
 
 ---
 
+## 2026-07-24 — 健檢 ＋ 無障礙/行為修正（版號 2026.07.24-01）
+
+**健檢結論：網站健康，無 bug。** 線上與本機當時位元組完全一致（60,575 bytes）、HTTP 200、
+FCP 816ms、無 console 錯誤、估價器 5 個 case 全過、FAQ schema 9 題＝頁面 9 題、9 張圖 alt 齊全、
+手機 375px 無水平溢出。
+
+**做了什麼：**
+- **② sitemap.xml**：`lastmod` 從 `2026-06-24` 更新為 `2026-07-24`（07-01 改過內容卻沒更新，
+  等於跟 Google 說「我沒更新」）。順手修正原本錯亂的縮排（XML 語意不變）。
+- **③ FAQ 無障礙**：JS 動態建立 `aria-controls` ↔ `faqBody{n}` id 配對；並把收合中的答案
+  設 `aria-hidden="true"`。**後者是查證時發現的、比原本 aria-controls 更嚴重的問題**——
+  `.faq-body` 是 `max-height:0; overflow:hidden`，視覺上看不到但仍留在無障礙樹，
+  螢幕閱讀器會把 9 題答案全部念出來。
+- **④ 營業狀態**：改為 `setInterval(render, 60000)` 每分鐘重算（原本只在載入時算一次，
+  分頁開著跨過 20:00 不會變）；且原本只有「設為休息中」單向路徑，現在雙向都會正確切換。
+  同時把脆弱的 `new Date(new Date().toLocaleString('en-US',{timeZone}))` 換成
+  `Intl.DateTimeFormat(...).formatToParts()`（解析 locale 字串各瀏覽器格式不一致），
+  並對「部分實作午夜回傳 24」加 `% 24` 防護。
+
+**刻意沒做（原本列為①、查證後推翻）：** 給 9 張 `<img>` 加 `width`/`height` 屬性。
+理由是**實測 CLS = 0**：CSS 已把每張圖的寬高都釘死（`.photo-strip-item img` 是
+`width:100%;height:100%` 且容器固定 260px、`.room-photo` 是 `width:100%;height:210px`），
+而且這些 CSS 內嵌在同一個 HTML 檔的 `<style>`，不存在「CSS 還沒載入」的情境。
+加上去對 CLS 效益是 0，只是在正式檔製造 9 行無意義改動。**先前「①最值得做」是未實測的推論，已收回。**
+
+**過程中踩到並修掉的自己的 bug：** ③ 第一版用 CSS `visibility: hidden` ＋
+`transition: visibility 0s linear 0.4s` 來隱藏收合內容。實測發現**答案一旦打開過就永遠停在
+`visibility: visible`**（0s duration ＋ delay 的轉場在此瀏覽器不會回復），反而讓 3 題卡在可讀狀態。
+已完全還原該 CSS，改用 JS 切換 `aria-hidden` —— 零視覺變動、動畫完整保留、無轉場時序風險。
+（收合區塊內 0 個可聚焦元素，只有 `<br>`/`<strong>`，故 `aria-hidden` 不會造成鍵盤陷阱。）
+
+**測試：** 本機起臨時 HTTP server（不進 repo）在 375px 手機視角實測，最終 **27 PASS / 0 FAIL**，
+含 FAQ 快速切換 8 次的狀態一致性、估價器回歸、CLS、R5/R6/R7/R10 護欄。
+④ 另做端對端驗證：攔截 `Intl` 偽造 21:00 → 等真實 60s 計時器 → 確認自動翻成「休息中」
+（圓點 `#bbb`、文字 `#aaa`）；還原真實時間後再等一輪 → 確認自動翻回「營業中」。
+
+**環境備註：** 這個 session 的 working directory 仍是搬家前的 OneDrive 路徑（session 早於搬遷），
+編輯全程使用 `C:\dev\cccathotel` 絕對路徑，檔案正確。**下個 session 請直接在 `C:\dev\cccathotel`
+開 Claude Code。** 另：Browser pane 截圖在此環境有裁切問題（563px 擷取 375 CSS px @ DPR2），
+視覺截圖不可靠，版面以 DOM 量測為準。
+
 ## 2026-07-24 — repo 從 OneDrive 搬到 `C:\dev\cccathotel`
 
 - KK 決定把 repo 從 OneDrive 同步資料夾（`~\OneDrive\Desktop\cccathotel`）搬到本機
