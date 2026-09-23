@@ -34,19 +34,26 @@
 
 ### Push 1 — 網站與發布交接
 
-- 狀態：準備中，尚未 commit / push。
+- 狀態：已完成 commit / push，公開網站驗證通過。
+- Commit：5824099f24a853d9ca3af5c0ba7bed5fdd3f30ca。
+- 推送操作：2026-09-23 23:59:56 Asia/Taipei；GitHub Desktop 隨後顯示 push complete，HEAD 與 origin/main 相同。
+- 提交前曾因自動審核服務額度不足中止填寫說明，當時沒有執行操作；使用者說「繼續」後由同一審核流程正常完成，未繞過審核。
 - 預定 commit summary：`Release approved redesign with preserved SEO (v2026.09.23-01)`。
 - 預定範圍：網站 HTML/CSS/JS、sitemap、README/HANDOFF/HISTORY、本紀錄、驗證腳本。
 - 發布前已完成：node 語法檢查、git diff --check、verify-release（原 SEO/GA/robots、六張圖片、9 FAQ、36 試算案例與房型上限切換）。
 - 瀏覽器實測：桌機視覺；320px 導覽開合、4 貓 7 晚試算、詢問視窗與複製；390px 相簿開關與換頁、FAQ 展開；430px 無水平溢出，無已載入壞圖、無 console error/warn。真實手機限制仍保留。
 - GitHub Desktop 顯示此次預定 9 個檔案，.claude/ 未列入。介面初始未刷新，互動後顯示正確變更；未改儲存庫設定。
-- 發布後需記錄：commit SHA、push 時間與 UI 結果、公開頁面版號、資源 HTTP 狀態及舊網址一致性。
+- 2026-09-24 00:01:20 Asia/Taipei：公開首頁、CSS、JS、robots、sitemap、六張 JPG 共 11 個資源皆 HTTP 200、Content-Type 正確，内容與本機一致（文字只正規化換行，圖片逐位元組相同），無 X-Robots-Tag noindex。
+- 公開頁面版號 2026.09.23-01；Server=Netlify；canonical 仍是原首頁。完整比對結果與 SHA-256 存在備份目錄 live-verification.json。
+- 正式站瀏覽器：桌機首頁至 footer 正常；390px 手機選單、2 晚試算、詢問視窗及 LINE URL 正常；無橫向溢出、已載入壞圖或 console error/warn。未操作 LINE 發送，也未宣稱真實手機 App 實測。
 
 ### Push 2 — 實際發布結果
 
-- 狀態：尚未開始。僅在 Push 1 完成且取得公開驗證後記錄結果。
-- 預定為文件更新，commit 使用 `[skip netlify]`，避免文件更新再次觸發網站部署。
-- 此文件無法在自己的 commit 內包含其自身 SHA；最終 HEAD 與遠端同步狀態以 Git 紀錄核對。
+- 2026-09-24：Push 1 與公開驗證完成後，更新 DEPLOYMENT_LOG / HANDOFF / HISTORY，僅三份文件，website/ 不再修改。
+- Commit summary：`Record verified production release and handoff [skip netlify]`。
+- 流程：審查三份文件差異 → GitHub Desktop commit → Push origin → 確認 UI push complete、HEAD = origin/main，再確認公開站仍是 2026.09.23-01。
+- 本段是隨第二次提交送出的流程紀錄，不能預先宣稱自身推送完成；實際完成時間、SHA 與核對結果會寫入備份目錄 release-receipt.json。遠端此提交的存在與 Git 同步狀態也可獨立驗證。
+- [Netlify 官方文件](https://docs.netlify.com/deploy/manage-deploys/manage-deploys-overview/#skip-a-deploy) 已確認 `[skip netlify]` 可跳過此文件提交的部署；沒有登入後台查 deploy ID，因此不聲稱已從管理介面證明跳過。
 
 ### 回復程序
 

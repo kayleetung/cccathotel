@@ -6,6 +6,15 @@
 
 ---
 
+## 2026-09-24 — 新版正式上線驗證完成
+
+- 2026-09-23 23:59:56 透過 GitHub Desktop 推送網站 commit 5824099f24a853d9ca3af5c0ba7bed5fdd3f30ca，UI 顯示 push complete。
+- 公開 Netlify 網站已是 2026.09.23-01；00:01:20 核對 11 個資源全部 HTTP 200、內容一致、無 noindex 標頭。正式桌機与 390px 手機主要操作正常，無 console error/warn。
+- 第二次提交只記錄實際部署結果、更新交接，使用 [skip netlify]；每次推送流程、原站回復基準與完整驗證證據位置見 DEPLOYMENT_LOG.md。
+- 自動審核曾因服務額度中斷，使用者要求繼續後正常恢復；無繞過審核。未更改 DNS、Netlify 設定、GA 原碼或原圖片 URL。
+- 無真實手機、Search Console / GA 後台與 Netlify deploy ID 的驗證，不保證搜尋排名不波動。
+
+
 ## 2026-09-23 — 使用者授權新版部署準備（2026.09.23-01）
 
 - 新設計於獨立離線資料夾完成並經使用者接受；後續依使用者要求調整稱呼、房型說明、LINE 聯絡資訊、手機排版及 SEO。
