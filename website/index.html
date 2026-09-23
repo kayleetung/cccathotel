@@ -1,1476 +1,231 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<!-- SITE VERSION: 2026.09.23-01 -->
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SITE VERSION: 2026.07.24-01 | 格式 YYYY.MM.DD-nn，每次改動內容/行為就遞增（見 RULES R10） -->
-    <meta name="version" content="2026.07.24-01">
-    <title>希希貓旅 CC Cat Boarding | 高雄鳳山小班制純貓住宿</title>
-    <meta name="description" content="希希貓旅位於高雄鳳山（近前鎮・大寮・五甲），提供小班制純貓住宿，服務高雄全區。合法立案（特寵業），每日回報照片影片，讓您出遊也能安心。">
-    <!-- Open Graph -->
-    <meta property="og:title" content="希希貓旅 CC Cat Boarding | 高雄鳳山純貓住宿">
-    <meta property="og:description" content="小班制純貓住宿，您安心出遊，我們用心守護。高雄鳳山合法立案貓旅館。">
-    <meta property="og:image" content="https://cccathotel.com/cat-peek.jpg">
-    <meta property="og:url" content="https://cccathotel.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="zh_TW">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="希希貓旅 CC Cat Boarding | 高雄鳳山純貓住宿">
-    <meta name="twitter:description" content="小班制純貓住宿，您安心出遊，我們用心守護。高雄鳳山合法立案貓旅館。">
-    <meta name="twitter:image" content="https://cccathotel.com/cat-peek.jpg">
-    <link rel="canonical" href="https://cccathotel.com/">
-    <link rel="icon" type="image/jpeg" href="./logo.jpg">
-    <link rel="apple-touch-icon" href="./logo.jpg">
-    <meta name="theme-color" content="#2D5045">
-    <script type="application/ld+json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="希希貓旅位於高雄鳳山（近前鎮・大寮・五甲），提供小班制純貓住宿，服務高雄全區。合法立案（特寵業），每日回報照片影片，讓您出遊也能安心。">
+  <meta name="theme-color" content="#193b32">
+  <title>希希貓旅 CC Cat Boarding | 高雄鳳山小班制純貓住宿</title>
+  <link rel="icon" href="logo.jpg">
+  <link rel="stylesheet" href="style.css?v=20260923-01">
+  <script src="script.js?v=20260923-01" defer></script>
+
+  <meta name="version" content="2026.09.23-01">
+  <link rel="canonical" href="https://cccathotel.com/">
+  <link rel="apple-touch-icon" href="logo.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:site_name" content="希希貓旅 CC Cat Boarding">
+  <meta property="og:title" content="希希貓旅 CC Cat Boarding | 高雄鳳山純貓住宿">
+  <meta property="og:description" content="小班制純貓住宿，您安心出遊，我們用心守護。高雄鳳山合法立案貓旅館。">
+  <meta property="og:url" content="https://cccathotel.com/">
+  <meta property="og:image" content="https://cccathotel.com/cat-peek.jpg">
+  <meta property="og:image:alt" content="希希貓旅的小房客從木質房間圓形洞口探出頭">
+  <meta property="og:image:width" content="900">
+  <meta property="og:image:height" content="601">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="希希貓旅 CC Cat Boarding | 高雄鳳山純貓住宿">
+  <meta name="twitter:description" content="小班制純貓住宿，您安心出遊，我們用心守護。高雄鳳山合法立案貓旅館。">
+  <meta name="twitter:image" content="https://cccathotel.com/cat-peek.jpg">
+  <meta name="twitter:image:alt" content="希希貓旅的小房客從木質房間圓形洞口探出頭">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "希希貓旅 CC Cat Boarding",
+  "description": "高雄鳳山小班制純貓住宿，合法立案特寵業，每日回報照片影片。",
+  "telephone": "0909-005-031",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "鳳甲路 329 號 1 樓",
+    "addressLocality": "鳳山區",
+    "addressRegion": "高雄市",
+    "postalCode": "83094",
+    "addressCountry": "TW"
+  },
+  "openingHoursSpecification": [
     {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "希希貓旅 CC Cat Boarding",
-      "description": "高雄鳳山小班制純貓住宿，合法立案特寵業，每日回報照片影片。",
-      "telephone": "0909-005-031",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "鳳甲路 329 號 1 樓",
-        "addressLocality": "鳳山區",
-        "addressRegion": "高雄市",
-        "postalCode": "83094",
-        "addressCountry": "TW"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 22.6183,
-        "longitude": 120.3536
-      },
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-          "opens": "11:00",
-          "closes": "20:00"
-        }
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
       ],
-      "image": "https://cccathotel.com/cat-peek.jpg",
-      "areaServed": ["高雄市鳳山區","高雄市前鎮區","高雄市大寮區","高雄市苓雅區"],
-      "priceRange": "$$",
-      "sameAs": [
-        "https://www.instagram.com/ryo18.19/",
-        "https://www.facebook.com/profile.php?id=61578060331659"
-      ]
+      "opens": "11:00",
+      "closes": "20:00"
     }
-    </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --green:       #2D5045;
-            --green-mid:   #3D6B5C;
-            --green-light: #E6EDEA;
-            --accent:      #B8865A;
-            --accent-light:#F5EDE3;
-            --bg:          #F8F5F0;
-            --bg-warm:     #F2EDE6;
-            --card-bg:     #ffffff;
-            --text:        #1A1A1A;
-            --text-muted:  #6B655F;
-            --rule:        #E2DDD8;
-            --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Noto Sans TC', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.75;
-            padding-bottom: 88px;
-            overflow-x: hidden;
-        }
-
-        /* ─── Scroll reveal ─── */
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.75s var(--ease-out), transform 0.75s var(--ease-out);
-        }
-        .reveal.visible { opacity: 1; transform: none; }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-
-        /* ─── Navbar ─── */
-        .navbar {
-            background: rgba(248, 245, 240, 0.96);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--rule);
-            padding: 0;
-            height: 60px;
-        }
-        .navbar-brand img { height: 38px; }
-
-        /* ─── Notice bar ─── */
-        .notice-bar {
-            margin-top: 60px;
-            background: var(--green);
-            color: rgba(255,255,255,0.9);
-            padding: 9px 20px;
-            font-size: 0.82rem;
-            text-align: center;
-            letter-spacing: 0.03em;
-        }
-        .notice-bar a { color: rgba(255,255,255,0.75); text-decoration: underline; }
-
-        /* ─── Hero ─── */
-        .hero {
-            position: relative;
-            min-height: 520px;
-            display: flex;
-            align-items: flex-end;
-            overflow: hidden;
-            background: var(--green);
-        }
-        .hero-bg {
-            position: absolute; inset: 0;
-            background: url('./cat-peek.jpg') center/cover;
-            opacity: 0.48;
-            transform: scale(1.04);
-            animation: heroZoom 14s ease-in-out infinite alternate;
-        }
-        @keyframes heroZoom {
-            from { transform: scale(1.04); }
-            to   { transform: scale(1.10); }
-        }
-        .hero-content {
-            position: relative; z-index: 1;
-            color: white;
-            padding: 56px 28px 52px;
-            width: 100%;
-        }
-        .hero-label {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            opacity: 0.7;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .hero-content h1 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: clamp(2.4rem, 9vw, 3.4rem);
-            font-weight: 600;
-            letter-spacing: 6px;
-            line-height: 1.15;
-            margin-bottom: 14px;
-            text-shadow: 0 2px 30px rgba(0,0,0,0.35);
-        }
-        .hero-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.05rem;
-            font-style: italic;
-            opacity: 0.82;
-            letter-spacing: 0.04em;
-            margin-bottom: 20px;
-        }
-        .hero-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.25);
-            color: rgba(255,255,255,0.88);
-            padding: 5px 14px;
-            border-radius: 2px;
-            font-size: 0.78rem;
-            letter-spacing: 0.04em;
-            backdrop-filter: blur(4px);
-            text-decoration: none;
-        }
-        .hero-badge i { color: var(--accent); font-size: 0.75rem; }
-
-        /* ─── Section scaffold ─── */
-        .section { padding: 56px 24px; }
-        .section-inner { max-width: 560px; margin: 0 auto; }
-        @media (min-width: 600px) {
-            .section { padding: 64px 40px; }
-        }
-
-        .section-eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 28px;
-        }
-        .section-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            font-weight: 300;
-            color: #B8CEC8;
-            line-height: 1;
-            letter-spacing: -1px;
-        }
-        .section-label-wrap {}
-        .section-label-en {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 0.72rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 2px;
-        }
-        .section-title {
-            margin: 0;
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--green);
-            letter-spacing: 2px;
-        }
-
-        hr.section-rule {
-            border: none;
-            border-top: 1px solid var(--rule);
-            margin: 0 0 28px;
-        }
-
-        /* ─── About section ─── */
-        .about-section {
-            background: var(--green);
-            color: white;
-        }
-        .about-section .section-num { color: rgba(255,255,255,0.18); }
-        .about-section .section-label-en { color: rgba(255,255,255,0.5); }
-        .about-section .section-title { color: white; }
-        .about-section hr.section-rule { border-top-color: rgba(255,255,255,0.15); }
-        .about-lead {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
-            font-style: italic;
-            line-height: 1.6;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 22px;
-            letter-spacing: 0.02em;
-        }
-        .about-body {
-            font-size: 0.9rem;
-            color: rgba(255,255,255,0.72);
-            line-height: 1.85;
-        }
-        .about-body p { margin-bottom: 12px; }
-        .about-license {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 20px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.18);
-            color: rgba(255,255,255,0.65);
-            font-size: 0.76rem;
-            padding: 5px 14px;
-            border-radius: 2px;
-            letter-spacing: 0.03em;
-        }
-
-        /* ─── Highlight strip ─── */
-        .highlight-strip {
-            background: var(--accent-light);
-            border-top: 1px solid #E8D5BE;
-            border-bottom: 1px solid #E8D5BE;
-            padding: 20px 24px;
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-        .highlight-item {
-            text-align: center;
-        }
-        .highlight-item .hi-val {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: var(--green);
-            line-height: 1;
-            display: block;
-        }
-        .highlight-item .hi-label {
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            letter-spacing: 0.08em;
-            margin-top: 4px;
-            display: block;
-        }
-
-        /* ─── Room cards ─── */
-        .room-card {
-            border-top: 1px solid var(--rule);
-            padding: 22px 0;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 16px;
-        }
-        .room-card:last-of-type { border-bottom: 1px solid var(--rule); }
-        .room-tag {
-            display: inline-block;
-            background: var(--green-light);
-            color: var(--green);
-            font-size: 0.72rem;
-            padding: 2px 10px;
-            border-radius: 2px;
-            margin-bottom: 6px;
-            letter-spacing: 0.04em;
-        }
-        .room-name {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--green);
-            margin-bottom: 3px;
-        }
-        .room-size {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .room-price-col { text-align: right; flex-shrink: 0; }
-        .room-price {
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 2rem;
-            font-weight: 300;
-            color: var(--text);
-            line-height: 1;
-        }
-        .room-price-unit {
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            display: block;
-            text-align: right;
-            margin-top: 3px;
-        }
-        .room-extra {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-align: right;
-            margin-top: 4px;
-        }
-
-        /* ─── Night counter / calculator ─── */
-        .night-calc {
-            background: var(--bg-warm);
-            border: 1px solid var(--rule);
-            padding: 22px 20px;
-            margin-top: 24px;
-        }
-        .calc-label {
-            font-size: 0.78rem;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-        .calc-selects {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 16px;
-        }
-        .calc-select-wrap label {
-            font-size: 0.74rem;
-            color: var(--text-muted);
-            display: block;
-            margin-bottom: 5px;
-            letter-spacing: 0.05em;
-        }
-        .calc-select-wrap select {
-            border: 1px solid var(--rule);
-            background: white;
-            border-radius: 2px;
-            padding: 7px 12px;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 0.85rem;
-            color: var(--text);
-            cursor: pointer;
-            outline: none;
-        }
-        .counter-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 14px;
-        }
-        .counter-btn {
-            width: 34px; height: 34px;
-            border: 1px solid var(--accent);
-            background: transparent;
-            color: var(--accent);
-            border-radius: 50%;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: background 0.15s, color 0.15s;
-        }
-        .counter-btn:hover { background: var(--accent); color: white; }
-        .counter-wrap { text-align: center; }
-        .counter-sublabel { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 2px; letter-spacing: 0.05em; }
-        .counter-num { font-family: 'Noto Sans TC', sans-serif; font-size: 2rem; font-weight: 300; color: var(--text); line-height: 1; }
-        .calc-result {
-            text-align: center;
-            font-family: 'Noto Serif TC', serif;
-            font-size: 1rem;
-            color: var(--green);
-            font-weight: 600;
-            min-height: 24px;
-        }
-        .calc-note {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-align: center;
-            margin-top: 12px;
-        }
-
-        /* ─── Steps ─── */
-        .step-list { list-style: none; padding: 0; }
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            padding: 18px 0;
-            border-bottom: 1px solid var(--rule);
-        }
-        .step-item:first-child { border-top: 1px solid var(--rule); }
-        .step-num {
-            flex-shrink: 0;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 300;
-            color: #B8CEC8;
-            line-height: 1;
-            width: 28px;
-            text-align: center;
-            padding-top: 2px;
-        }
-        .step-text h3 {
-            font-family: 'Noto Serif TC', serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--green);
-            margin-bottom: 3px;
-        }
-        .step-text p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
-
-        /* ─── FAQ ─── */
-        .faq-item { border-bottom: 1px solid var(--rule); }
-        .faq-item:first-child { border-top: 1px solid var(--rule); }
-        .faq-btn {
-            width: 100%;
-            background: none;
-            border: none;
-            text-align: left;
-            padding: 16px 0;
-            font-family: 'Noto Sans TC', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text);
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: space-between; gap: 12px;
-        }
-        .faq-icon {
-            flex-shrink: 0;
-            width: 20px; height: 20px;
-            border: 1px solid var(--rule);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted);
-            transition: transform 0.3s var(--ease-out), background 0.2s, border-color 0.2s;
-        }
-        .faq-icon i { font-size: 0.65rem; transition: transform 0.3s var(--ease-out); }
-        .faq-btn[aria-expanded="true"] .faq-icon {
-            background: var(--green);
-            border-color: var(--green);
-            color: white;
-        }
-        .faq-btn[aria-expanded="true"] .faq-icon i { transform: rotate(180deg); }
-        .faq-body {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.4s var(--ease-out), padding 0.3s;
-            font-size: 0.875rem;
-            color: #555;
-            line-height: 1.8;
-        }
-        .faq-body.open { max-height: 1500px; padding-bottom: 18px; }
-
-        /* ─── Contact ─── */
-        .contact-section { background: var(--bg-warm); }
-        .info-grid { display: grid; gap: 0; }
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--rule);
-        }
-        .info-row:first-child { border-top: 1px solid var(--rule); }
-        .info-icon-wrap {
-            flex-shrink: 0;
-            width: 36px; height: 36px;
-            background: white;
-            border: 1px solid var(--rule);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--green);
-            font-size: 0.9rem;
-        }
-        .info-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 2px; }
-        .info-val { font-size: 0.88rem; color: var(--text); line-height: 1.6; }
-        .info-val small { color: var(--text-muted); font-size: 0.78rem; }
-        .info-val a { color: var(--green); text-decoration: none; font-weight: 500; }
-
-        .operating-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        .pulse-dot {
-            display: inline-block;
-            width: 8px; height: 8px;
-            background: #4CAF50;
-            border-radius: 50%;
-            position: relative;
-            flex-shrink: 0;
-        }
-        .pulse-dot::after {
-            content: '';
-            position: absolute; inset: -4px;
-            border-radius: 50%;
-            border: 2px solid #4CAF50;
-            animation: pulse 1.8s ease-out infinite;
-            opacity: 0;
-        }
-        @keyframes pulse {
-            0% { transform: scale(0.8); opacity: 0.8; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
-        .operating-text { font-size: 0.82rem; color: #4CAF50; font-weight: 500; letter-spacing: 0.04em; }
-
-        .map-link {
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            margin-top: 20px;
-            padding: 12px;
-            background: white;
-            border: 1px solid var(--rule);
-            color: var(--green);
-            font-size: 0.84rem;
-            font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.03em;
-            transition: background 0.2s;
-        }
-        .map-link:hover { background: var(--green-light); color: var(--green); }
-
-        /* ─── Social section ─── */
-        .social-section {
-            background: white;
-            border-top: 1px solid var(--rule);
-            padding: 36px 24px;
-            text-align: center;
-        }
-        .social-label {
-            font-size: 0.72rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            font-family: 'Cormorant Garamond', serif;
-            margin-bottom: 18px;
-        }
-        .social-btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            max-width: 260px; margin: 10px auto;
-            padding: 11px 20px;
-            font-size: 0.84rem;
-            font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.06em;
-            border: 1px solid var(--rule);
-            background: transparent;
-            transition: background 0.2s, border-color 0.2s, transform 0.18s var(--ease-out);
-        }
-        .social-btn:active { transform: scale(0.97); }
-        .btn-ig {
-            color: #cc2366;
-            border-color: #cc2366;
-        }
-        .btn-ig:hover { background: #cc2366; color: white; }
-        .btn-fb { color: #1877F2; border-color: #1877F2; }
-        .btn-fb:hover { background: #1877F2; color: white; }
-        .social-btn i { font-size: 1rem; }
-
-        /* ─── Footer ─── */
-        .site-footer {
-            background: var(--green);
-            color: rgba(255,255,255,0.55);
-            text-align: center;
-            padding: 28px 24px 32px;
-            font-size: 0.76rem;
-            letter-spacing: 0.04em;
-            line-height: 1.9;
-        }
-        .site-footer .footer-tagline {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1rem;
-            font-style: italic;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 10px;
-        }
-
-        /* ─── Photo gallery strip ─── */
-        .photo-strip {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            background: var(--bg-warm);
-            padding: 0;
-        }
-        .photo-strip::-webkit-scrollbar { display: none; }
-        .photo-strip-inner {
-            display: flex;
-            gap: 3px;
-        }
-        .photo-strip-item {
-            flex-shrink: 0;
-            scroll-snap-align: start;
-            width: 78vw;
-            max-width: 320px;
-            height: 260px;
-            overflow: hidden;
-            position: relative;
-        }
-        .photo-strip-item:first-child { margin-left: 24px; }
-        .photo-strip-item:last-child  { margin-right: 24px; }
-        /* 桌機：加寬每張讓畫面只顯示約 2 張，保留滾動發現感 */
-        @media (min-width: 600px) {
-            .photo-strip-item {
-                width: 46vw;
-                max-width: 46vw;
-                height: 380px;
-            }
-            .photo-strip { cursor: grab; }
-            .photo-strip:active { cursor: grabbing; }
-            .photo-strip-hint { display: none; }
-        }
-        .photo-strip-item img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.6s var(--ease-out);
-        }
-        .photo-strip-item:hover img { transform: scale(1.04); }
-        .photo-strip-caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 20px 14px 14px;
-            background: linear-gradient(to top, rgba(0,0,0,0.45), transparent);
-            color: rgba(255,255,255,0.88);
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-family: 'Cormorant Garamond', serif;
-        }
-        .photo-strip-hint {
-            text-align: center;
-            font-size: 0.7rem;
-            color: var(--text-muted);
-            letter-spacing: 0.1em;
-            padding: 10px 0 18px;
-            background: var(--bg-warm);
-        }
-
-        /* ─── Room photo ─── */
-        .room-photo {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            object-position: center center;
-            display: block;
-            margin-bottom: 14px;
-            border: 1px solid var(--rule);
-        }
-        .room-photo.interior { object-position: center 30%; }
-        .room-photo.hall     { object-position: center 40%; }
-
-        /* ─── Floating CTA ─── */
-        .floating-cta {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            padding: 10px 16px 14px;
-            background: rgba(248, 245, 240, 0.97);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-top: 1px solid var(--rule);
-            z-index: 1000;
-        }
-        .cta-hint {
-            text-align: center;
-            font-size: 0.72rem;
-            color: var(--text-muted);
-            margin-bottom: 7px;
-            letter-spacing: 0.02em;
-        }
-        .cta-hint strong { color: var(--text); }
-        .cta-buttons { display: flex; gap: 10px; }
-        .cta-btn {
-            flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-            padding: 13px 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-decoration: none;
-            letter-spacing: 0.03em;
-            font-family: 'Noto Sans TC', sans-serif;
-            transition: opacity 0.15s, transform 0.15s;
-        }
-        .cta-btn:active { transform: scale(0.97); opacity: 0.88; }
-        .btn-line-cta { background: #06C755; color: white; }
-        .btn-line-cta:hover { color: white; }
-        .btn-tel-cta {
-            background: white;
-            color: var(--green);
-            border: 1px solid var(--rule);
-        }
-        .btn-tel-cta:hover { color: var(--green); }
-
-        /* ─── Accessibility: reduced motion ─── */
-        @media (prefers-reduced-motion: reduce) {
-            .reveal { transition: none; opacity: 1; transform: none; }
-            .hero-bg { animation: none; }
-            .pulse-dot::after { animation: none; }
-            .photo-strip-item img { transition: none; }
-        }
-
-        /* ─── Desktop photo strip arrows ─── */
-        .photo-strip-wrap { position: relative; }
-        .strip-arrow {
-            display: none;
-        }
-        @media (min-width: 600px) {
-            .strip-arrow {
-                display: flex;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                z-index: 10;
-                width: 40px; height: 40px;
-                background: rgba(255,255,255,0.88);
-                border: 1px solid var(--rule);
-                border-radius: 50%;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                color: var(--green);
-                font-size: 0.9rem;
-                transition: background 0.2s, opacity 0.2s;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-            }
-            .strip-arrow:hover { background: white; }
-            .strip-arrow.hidden { opacity: 0; pointer-events: none; }
-            .strip-arrow-left  { left: 12px; }
-            .strip-arrow-right { right: 12px; }
-        }
-
-        /* ── Photo strip: centred desktop nav bar ── */
-        .strip-nav-bar { display: none; }
-        @media (min-width: 600px) {
-            .strip-nav-bar {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 20px;
-                padding: 10px 0 6px;
-            }
-            .strip-nav-btn {
-                background: var(--green);
-                color: #fff;
-                border: none;
-                border-radius: 50%;
-                width: 40px; height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                cursor: pointer;
-                font-size: 0.95rem;
-                transition: opacity 0.2s;
-                flex-shrink: 0;
-            }
-            .strip-nav-btn:hover { opacity: 0.78; }
-            .strip-nav-btn.hidden { opacity: 0.22; pointer-events: none; }
-            .strip-nav-label {
-                font-family: 'Noto Sans TC', sans-serif;
-                font-size: 0.8rem;
-                color: #999;
-                letter-spacing: 0.04em;
-            }
-        }
-        @media (min-width: 600px) {
-            .room-photo { height: 380px; }
-        }
-        @media (min-width: 600px) {
-            .photo-strip { scroll-snap-type: none; }
-        }
-    </style>
-<!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-2KLHF5VMVZ"></script>
+  ],
+  "image": "https://cccathotel.com/cat-peek.jpg",
+  "areaServed": [
+    "高雄市鳳山區",
+    "高雄市前鎮區",
+    "高雄市大寮區",
+    "高雄市苓雅區"
+  ],
+  "priceRange": "$$",
+  "sameAs": [
+    "https://www.instagram.com/ryo18.19/",
+    "https://www.facebook.com/profile.php?id=61578060331659"
+  ],
+  "@id": "https://cccathotel.com/#business",
+  "url": "https://cccathotel.com/",
+  "logo": "https://cccathotel.com/logo.jpg"
+}
+</script>
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "會讓貓咪出來放風玩耍嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "我們每日會視每隻貓咪的狀態，安排輪流出房放風。部分貓咪需要更長時間適應；若不願出房，或出來後難以引導回房，我們會以貓咪的舒適度為優先，彈性調整安排。 我們尊重貓咪意願、不強迫，因此無法保證每天一定出房放風。讓每隻貓咪自在度過住宿時光，是我們最重視的事。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "會每天通知貓咪的狀況嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "會的！每天透過 LINE 回報影片、照片與文字，讓你知道寶貝吃飯、上廁所的狀況。想念寶貝時，也隨時歡迎 LINE 我們。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "需要幫寶貝準備哪些行李？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "習慣的食物與零食。 一小包用過的舊貓砂，約拳頭大小，用熟悉的氣味，幫助寶貝慢慢適應。 接送時使用的安全外出籠。 也歡迎帶 1–2 樣有家裡味道的玩具、毯子或主人的衣物。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "入住前，可以先做什麼準備？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "請先在家點好台灣合法合規販售的外用除蟲滴劑（如寵愛+、全能貓S），我們也可以在入住當天協助使用。 出發前幾天，可以將外出籠放在貓咪常出沒的地方，讓貓咪自由進出、降低出門壓力；也建議先剪指甲與梳毛。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "貓砂、餵食與自動餵食器如何安排？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "提供礦砂、豆腐砂選擇，每次入住都換全新砂、不重複使用。每天進行 2 次人工餵食，兩餐之間可視需求放置乾糧。 若需要多次定量餵食，也有自動餵食器租用服務，可設定多個出糧時間，請在預約時詢問。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "需要餵藥或特殊照護，也能入住嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "我們可以協助。請在預約時透過 LINE 詳細說明寶貝的需求，一起諮詢評估。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "可以先參觀環境嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "可以！參觀與接送皆採預約制，請提前透過 LINE 或電話約定時間，時段為 12:00–19:00。 為維持住宿貓咪的安靜與舒適，參觀、接送人數請控制在 2 人以內。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "如果身體不舒服或發生緊急狀況呢？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "我們會第一時間聯繫家長或緊急聯絡人，並視貓咪狀況，安排送往你指定的動物醫院或就近的獸醫診所。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "短期、長期住宿都可以嗎？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "住宿天數沒有限制。無論週末出遊、出差、裝潢期間的過渡安排，或一個月以上的外派與旅行，都歡迎詢問。週住、月住皆有優惠，詳情請透過 LINE 洽詢。"
+      }
+    }
+  ]
+}</script>
+  <!-- Google tag (gtag.js) --><script async src="https://www.googletagmanager.com/gtag/js?id=G-2KLHF5VMVZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-2KLHF5VMVZ');
 </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {"@type":"Question","name":"會讓貓咪出來放風玩耍嗎？","acceptedAnswer":{"@type":"Answer","text":"我們每日視每隻貓咪的狀態安排輪流出房放風。若寶貝不願出房或難以引導回房，以貓咪舒適度為優先，彈性調整。我們秉持尊重貓咪意願的原則，絕不強迫，無法保證每日一定放風，請家長見諒。"}},
-        {"@type":"Question","name":"會每天通知貓咪的狀況嗎？","acceptedAnswer":{"@type":"Answer","text":"當然！每天透過 LINE 回報影片、照片與文字，讓您知道寶貝吃飯、上廁所的狀況。隨時歡迎 LINE 詢問。"}},
-        {"@type":"Question","name":"家長需要幫貓咪準備什麼？","acceptedAnswer":{"@type":"Answer","text":"1. 習慣的食物與零食。2. 一小包用過的舊貓砂（約拳頭大小），熟悉氣味有助適應新環境。3. 安全的外出籠。也歡迎帶 1-2 樣有家裡味道的玩具或毯子。"}},
-        {"@type":"Question","name":"入住前家長可以先做什麼準備？","acceptedAnswer":{"@type":"Answer","text":"請先點好外用除蟲滴劑（如寵愛+、全能貓S）。建議出發前幾天把外出籠放在貓咪常出沒的地方讓其熟悉，降低出門壓力。也建議先幫貓咪剪指甲與梳毛。"}},
-        {"@type":"Question","name":"住宿有提供貓砂或可以使用自動餵食器嗎？","acceptedAnswer":{"@type":"Answer","text":"貓砂提供礦砂與豆腐砂，每次入住換全新砂。每天進行 2 次人工餵食。若需多次定量餵食，提供自動餵食器租用服務，歡迎預約時詢問。"}},
-        {"@type":"Question","name":"貓咪需要餵藥或特殊照護怎麼辦？","acceptedAnswer":{"@type":"Answer","text":"我們可以協助，請在預約時透過 LINE 詳細諮詢評估。"}},
-        {"@type":"Question","name":"可以先參觀環境再考慮是否預訂嗎？","acceptedAnswer":{"@type":"Answer","text":"可以！參觀與接送採預約制，請提前透過 LINE 或電話約定時間。參觀人數請控制在 2 人以內。"}},
-        {"@type":"Question","name":"住宿期間貓咪身體不舒服或發生緊急狀況，會怎麼處理？","acceptedAnswer":{"@type":"Answer","text":"第一時間聯繫家長或緊急聯絡人，視狀況安排送往您指定的動物醫院或就近獸醫診所。"}},
-        {"@type":"Question","name":"住宿天數有限制嗎？短期或長期都可以嗎？","acceptedAnswer":{"@type":"Answer","text":"完全沒有限制，短至週末出遊、長至一個月以上的外派旅遊皆可配合。有任何特殊狀況歡迎 LINE 詢問。"}}
-      ]
-    }
-    </script>
 </head>
 <body>
-
-<!-- Navbar -->
-<nav class="navbar fixed-top">
-    <div class="container justify-content-center">
-        <a class="navbar-brand" href="#">
-            <img src="./logo.jpg" alt="希希貓旅 CC Cat Boarding">
-        </a>
-    </div>
-</nav>
-
-<!-- Notice Bar -->
-<div class="notice-bar">
-    長住優惠｜週住、月住皆享折扣，歡迎加 <a href="https://line.me/ti/p/~cc-cat-home" target="_blank">LINE</a> 詢問
-</div>
-
-<!-- Hero -->
-<header class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content reveal">
-        <span class="hero-label">Kaohsiung · Fengshan</span>
-        <h1>希希貓旅</h1>
-        <p class="hero-tagline">Every cat deserves a home away from home.</p>
-        <div class="hero-badges">
-            <span class="hero-badge">
-                <i class="fa-solid fa-shield-halved"></i>
-                特寵業合法立案
-            </span>
-            <span class="hero-badge">
-                <i class="fa-solid fa-cat"></i>
-                純貓住宿・小班制
-            </span>
-        </div>
-    </div>
+<a class="skip" href="#main">跳至主要內容</a>
+<div class="announcement"><span>STAY A LITTLE LONGER</span><p>住久一點，安心多一點。週住・月住皆享優惠。</p><a href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener">洽詢長住方案 <span aria-hidden="true">↗</span></a></div>
+<header class="header">
+  <a class="brand" href="#" aria-label="希希貓旅首頁"><img src="logo.jpg" alt="希希貓旅 Logo" width="54" height="54"><span><b>希希貓旅</b><small>CC CAT BOARDING</small></span></a>
+  <nav class="desktop-nav" aria-label="主要導覽"><a href="#about">關於希希</a><a href="#space">旅館風景</a><a href="#rooms">房型與價格</a><a href="#faq">入住須知</a></nav>
+  <a class="button small header-book" href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener"><span class="header-label">LINE 詢問<span class="header-full">空房</span></span><span aria-hidden="true">↗</span></a>
+  <button class="menu-button" aria-label="開啟選單" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
+  <nav id="mobile-nav" class="mobile-nav" aria-label="手機導覽" hidden><a href="#about">關於希希</a><a href="#space">旅館風景</a><a href="#rooms">房型與價格</a><a href="#estimate">住宿費用試算</a><a href="#faq">入住須知</a><a href="#contact">聯絡與交通</a></nav>
 </header>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy"><p class="eyebrow"><span class="dot"></span> 高雄・鳳山　小班制純貓旅館</p><h1 id="hero-title"><span class="hero-line">你去看世界，</span><span class="hero-line">寶貝在這裡，</span><span class="hero-line">好好過日子。</span></h1><p class="hero-description">有地方躲懶，也有空間好奇。<br>給寶貝一段安心的假期，讓你放心出發。</p><div class="hero-actions"><a class="button" href="#rooms">為寶貝挑一間房 <span aria-hidden="true">↗</span></a><a class="text-link" href="#space">先逛逛希希 <span aria-hidden="true">↓</span></a></div><div class="hero-meta"><span>純貓空間</span><i></i><span>每日影像回報</span><i></i><span>合法立案</span></div></div>
+    <div class="hero-visual"><img class="hero-photo" src="cat-peek.jpg" alt="橘貓從希希貓旅木質房間的圓形洞口探出頭" width="900" height="601" fetchpriority="high"><div class="photo-topline"><span>A HOME AWAY FROM HOME</span><span>01 — CC</span></div><div class="hero-photo-bottom"><p>A little holiday,<br><em>just for cats.</em></p><a href="#about" class="round-link" aria-label="了解希希貓旅">↓</a></div><div class="photo-caption"><span>小小房客，大大的安心。</span><span>FENGSHAN, KAOHSIUNG</span></div></div>
+  </section>
+  <div class="promise-strip"><div><span class="promise-num">01</span><p>只接待貓咪<small>安靜，是我們的日常。</small></p></div><div><span class="promise-num">02</span><p>每天都有寶貝的消息<small>照片、影片，透過 LINE 傳給你。</small></p></div><div><span class="promise-num">03</span><p>小班制的陪伴<small>讓每隻貓，都有自己的步調。</small></p></div></div>
 
-<!-- Highlight strip -->
-<div class="highlight-strip reveal">
-    <div class="highlight-item">
-        <span class="hi-val">純貓</span>
-        <span class="hi-label">專屬於貓的空間</span>
+  <section id="about" class="about section wrap">
+    <div class="section-label"><span>01 / OUR PHILOSOPHY</span><span>關於希希</span></div>
+    <div class="about-grid"><div><h2>把日子放慢，<br>把安心<span class="serif-italic">留下。</span></h2><p class="english-note">Their pace. Their space.</p></div><div class="about-text"><p class="lead">我們相信，每隻貓都值得<br class="desktop-only">一個真正安心的地方。</p><p>氣味、聲音、生活的節奏，都影響著貓咪是否能放鬆。希希是一間小班制的純貓空間，沒有其他動物的氣味與干擾，只有專屬於貓的安靜。</p><p>無論是週末出遊、長期外派，或家中裝潢期間的過渡安排，我們都陪寶貝慢慢適應。每天透過 LINE 分享照片與影片，讓你在外，也能知道寶貝今天過得如何。</p><span class="license"><span aria-hidden="true">✓</span> 特寵業字第 W1141091-00 號</span></div></div>
+  </section>
+
+  <section id="space" class="space-section section">
+    <div class="wrap"><div class="section-label"><span>02 / AROUND THE HOUSE</span><span>旅館風景</span></div><div class="section-heading"><h2>每個角落，<br>都能自在做自己。</h2><p>跳上喜歡的高度，找個角落窩好。<br>在這裡，照著自己的步調就好。</p></div>
+      <div class="gallery-grid" id="photoStrip"><button class="gallery-main photo-button" data-photo="room-hall.jpg" data-caption="木質格柵走廊・希希的日常風景" aria-label="放大木質格柵走廊照片"><img src="room-hall.jpg" alt="希希貓旅木質格柵房間與走廊全景" loading="lazy" width="900" height="601"><span class="image-label">THE SPACE <span>木質格柵・安靜日常</span><b aria-hidden="true">↗</b></span></button><button class="gallery-side photo-button" data-photo="cat-room.jpg" data-caption="跳台上的小小探索家" aria-label="放大貓咪在跳台活動的照片"><img src="cat-room.jpg" alt="橘貓在房間內的木質跳台自在活動" loading="lazy" width="900" height="601"><span class="image-label">LITTLE EXPLORER <span>今天，也有新的發現。</span><b aria-hidden="true">↗</b></span></button></div>
+      <div class="gallery-bottom"><p>實景照片，記錄希希裡的每一天。</p><button class="text-link light" id="gallery-all">瀏覽全部 5 張照片 <span aria-hidden="true">↗</span></button></div>
     </div>
-    <div class="highlight-item">
-        <span class="hi-val">每日</span>
-        <span class="hi-label">照片＋影片回報</span>
+  </section>
+
+  <section id="rooms" class="rooms-section section wrap">
+    <div class="section-label"><span>03 / FIND THEIR LITTLE ROOM</span><span>房型與價格</span></div><div class="section-heading"><h2><span class="sr-only">房型與價格：</span>給寶貝，<br><span class="serif-italic">剛剛好的小天地。</span></h2><div><p>兩種房型，一樣用心。<br>以下為平日定價，每房含 1 貓。</p><a href="#estimate" class="text-link">試算這趟住宿 <span aria-hidden="true">↓</span></a></div></div>
+    <div class="room-grid">
+      <article class="room-card"><div class="room-image"><button class="photo-button" data-photo="room-interior.jpg" data-caption="經典房・120 × 120 × 120 cm" aria-label="放大經典房實景照片"><img src="room-interior.jpg" alt="經典房內的貓屋、貓砂盆與木質跳台" loading="lazy" width="900" height="601"><span class="zoom-mark" aria-hidden="true">↗</span></button><span class="room-badge">FOR 1–2 CATS</span></div><div class="room-content"><div class="room-title"><div><p class="eyebrow">THE CLASSIC</p><h3>經典房</h3></div><p class="price"><span>NT$</span> 600<small>／晚，含 1 貓</small></p></div><p class="room-description">一個可以安心窩著，也能自在探索的小天地。</p><dl class="room-spec"><div><dt>房間尺寸</dt><dd>120 × 120 × 120 <span>cm</span></dd></div><div><dt>入住貓數</dt><dd>1–2 貓</dd></div><div><dt>加貓費用</dt><dd>每多 1 貓 +NT$200／晚</dd></div></dl><button class="room-choose" data-room="classic">選擇經典房，試算費用 <span aria-hidden="true">↗</span></button></div></article>
+      <article class="room-card"><div class="room-image"><button class="photo-button" data-photo="room-hall2.jpg" data-caption="店內實景" aria-label="放大店內實景照片"><img src="room-hall2.jpg" alt="希希貓旅店內實景，木質房間沿著走廊排列" loading="lazy" width="900" height="782"><span class="zoom-mark" aria-hidden="true">↗</span></button><span class="room-badge">MORE ROOM TO EXPLORE</span><span class="image-footnote">店內實景</span></div><div class="room-content"><div class="room-title"><div><p class="eyebrow">THE DUPLEX</p><h3>加高房</h3></div><p class="price"><span>NT$</span> 900<small>／晚，含 1 貓</small></p></div><p class="room-description">將上下兩間經典房連通，讓寶貝自在探索不同高度。</p><dl class="room-spec"><div><dt>房間尺寸</dt><dd>120 × 120 × 240 <span>cm</span></dd></div><div><dt>入住貓數</dt><dd>1–4 貓</dd></div><div><dt>加貓費用</dt><dd>每多 1 貓 +NT$200／晚</dd></div></dl><button class="room-choose" data-room="duplex">選擇加高房，試算費用 <span aria-hidden="true">↗</span></button></div></article>
     </div>
-    <div class="highlight-item">
-        <span class="hi-val">合法</span>
-        <span class="hi-label">特寵業立案</span>
-    </div>
-</div>
+    <p class="room-note">農曆春節與特殊連假價格另行公告。另提供到府安親服務，依距離與服務內容報價，歡迎 <a href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener">LINE 洽詢 ↗</a>。</p>
+  </section>
 
-<!-- About -->
-<section class="section about-section">
-    <div class="section-inner">
-        <div class="section-eyebrow reveal">
-            <span class="section-num">01</span>
-            <div class="section-label-wrap">
-                <span class="section-label-en">About</span>
-                <h2 class="section-title">關於希希貓旅</h2>
-            </div>
-        </div>
-        <hr class="section-rule">
-        <p class="about-lead reveal">我們相信，每隻貓都值得一個真正安心的地方。</p>
-        <div class="about-body reveal">
-            <p>貓咪對環境極為敏感——氣味、聲音、節奏，都影響著牠是否能真正放鬆。希希貓旅是一間小班制的純貓空間，沒有其他動物的氣味與干擾，只有貓懂得的安靜。</p>
-            <p>住宿期間每天透過 LINE 回報照片與影片，讓家長在外也能放心。無論是週末出遊、長期外派，或家中裝潢施工需要一個安心的過渡安排，都歡迎與我們聯繫。</p>
-        </div>
-        <span class="about-license reveal">
-            <i class="fa-solid fa-file-shield"></i>
-            特寵業字第 W1141091-00 號
-        </span>
-    </div>
-    <!-- About photo - full bleed below text -->
-    <div style="margin-top: 36px; height: 220px; overflow: hidden;" class="reveal">
-        <img src="./cat-room.jpg" alt="貓咪在希希貓旅房間內" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; opacity:0.75;">
-    </div>
-</section>
+  <section id="estimate" class="estimate-section wrap">
+    <div class="estimate-intro"><p class="eyebrow">PLAN A LITTLE GETAWAY</p><h2>這次，<br>想住幾晚？</h2><p>先算算預算，再一起確認空房。<br>週住、月住另有優惠，歡迎詢問。</p></div>
+    <div class="calculator"><div class="calc-fields"><label>01　選擇房型<select id="calc-room"><option value="classic">經典房 · NT$600／晚</option><option value="duplex">加高房 · NT$900／晚</option></select></label><label>02　入住貓數<select id="calc-cats"><option value="1">1 隻貓</option><option value="2">2 隻貓</option></select></label><div class="night-field"><label for="calc-nights">03　住宿晚數</label><div class="stepper"><button id="minus" aria-label="減少一晚">−</button><input id="calc-nights" type="number" value="1" min="1" max="365" inputmode="numeric" aria-describedby="night-help"><span>晚</span><button id="plus" aria-label="增加一晚">＋</button></div></div></div><span id="night-help" class="sr-only">可試算 1 到 365 晚，更長住宿請直接洽詢。</span><p class="calc-breakdown" id="calc-breakdown">經典房 NT$600 × 1 晚</p><div class="calc-total"><span>平日住宿估算</span><output id="calc-total" aria-live="polite">NT$ <strong>600</strong></output></div><p class="calc-disclaimer">未含長住折扣或特殊假期調整；實際費用及空房以 LINE 確認為準。</p><button class="button calc-cta" id="inquiry-open">整理我的需求，詢問空房 <span aria-hidden="true">↗</span></button></div>
+  </section>
 
-<!-- Photo Gallery Strip -->
-<div class="photo-strip-wrap">
-<div class="photo-strip reveal" id="photoStrip">
-    <div class="photo-strip-inner">
-        <div class="photo-strip-item">
-            <img src="./room-hall.jpg" alt="希希貓旅高雄鳳山貓旅館走廊全景，木質格柵設計" loading="lazy" decoding="async">
-            <div class="photo-strip-caption">The Space</div>
-        </div>
-        <div class="photo-strip-item">
-            <img src="./room-interior.jpg" alt="希希貓旅經典房內部，含貓砂盆、貓屋與跳台" loading="lazy" decoding="async">
-            <div class="photo-strip-caption">Classic Room</div>
-        </div>
-        <div class="photo-strip-item">
-            <img src="./cat-room.jpg" alt="橘貓在希希貓旅房間內自在活動" loading="lazy" decoding="async">
-            <div class="photo-strip-caption">At Home</div>
-        </div>
-        <div class="photo-strip-item">
-            <img src="./room-hall2.jpg" alt="希希貓旅館內環境，自然採光走廊" loading="lazy" decoding="async">
-            <div class="photo-strip-caption">Our Environment</div>
-        </div>
-        <div class="photo-strip-item">
-            <img src="./cat-peek.jpg" alt="橘貓從圓形洞口探頭，在希希貓旅加高房內" loading="lazy" decoding="async">
-            <div class="photo-strip-caption">Curious & Comfortable</div>
-        </div>
-    </div>
-</div>
-</div><!-- /.photo-strip-wrap -->
-<div class="strip-nav-bar">
-  <button class="strip-nav-btn hidden" id="stripLeft" aria-label="上一張"><i class="fa-solid fa-chevron-left"></i></button>
-  <span class="strip-nav-label">← 點擊箭頭瀏覽，或左右拖動照片 →</span>
-  <button class="strip-nav-btn" id="stripRight" aria-label="下一張"><i class="fa-solid fa-chevron-right"></i></button>
-</div>
-<div class="photo-strip-hint">← 左右滑動查看更多 →</div>
+  <section class="booking-section section wrap" id="booking"><div class="section-label"><span>04 / BEFORE THEIR STAY</span><span>預訂流程</span></div><div class="section-heading"><h2>安心的假期，<br>從一聲招呼開始。</h2><a class="text-link" href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener">跟希希聊聊 <span aria-hidden="true">↗</span></a></div><ol class="booking-steps"><li><span>01</span><h3>聯繫詢問</h3><p>透過 LINE 或電話，告訴我們日期與需求。</p></li><li><span>02</span><h3>確認房況</h3><p>確認有空房後，為寶貝保留名額。</p></li><li><span>03</span><h3>支付訂金</h3><p>預付訂金，完成預訂。</p></li><li><span>04</span><h3>簽署合約</h3><p>透過手機，完成專屬電子合約。</p></li><li><span>05</span><h3>開心入住</h3><p>準備好寶貝的行李，尾款最晚入住當天付清。</p></li></ol></section>
 
-<!-- Rooms -->
-<section class="section" id="rooms">
-    <div class="section-inner">
-        <div class="section-eyebrow reveal">
-            <span class="section-num">02</span>
-            <div class="section-label-wrap">
-                <span class="section-label-en">Rooms &amp; Rates</span>
-                <h2 class="section-title">房型與收費</h2>
-            </div>
-        </div>
-        <hr class="section-rule">
+  <section id="faq" class="faq-section section"><div class="wrap faq-grid"><div class="faq-heading"><p class="eyebrow">05 / GOOD TO KNOW</p><h2><span class="sr-only">入住須知與常見問題：</span>你在意的，<br>我們都放在心上。</h2><p>第一次住宿，有疑問很正常。<br>先看看這些，也歡迎直接問我們。</p><a class="text-link" href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener">還有問題？LINE 聊聊 <span aria-hidden="true">↗</span></a></div><div class="faq-list" id="faqList">
+      <details><summary>會讓貓咪出來放風玩耍嗎？</summary><div><p>我們每日會視每隻貓咪的狀態，安排輪流出房放風。部分貓咪需要更長時間適應；若不願出房，或出來後難以引導回房，我們會以貓咪的舒適度為優先，彈性調整安排。</p><p>我們尊重貓咪意願、不強迫，因此無法保證每天一定出房放風。讓每隻貓咪自在度過住宿時光，是我們最重視的事。</p></div></details>
+      <details><summary>會每天通知貓咪的狀況嗎？</summary><div><p>會的！每天透過 LINE 回報影片、照片與文字，讓你知道寶貝吃飯、上廁所的狀況。想念寶貝時，也隨時歡迎 LINE 我們。</p></div></details>
+      <details><summary>需要幫寶貝準備哪些行李？</summary><div><ul><li>習慣的食物與零食。</li><li>一小包用過的舊貓砂，約拳頭大小，用熟悉的氣味，幫助寶貝慢慢適應。</li><li>接送時使用的安全外出籠。</li></ul><p>也歡迎帶 1–2 樣有家裡味道的玩具、毯子或主人的衣物。</p></div></details>
+      <details><summary>入住前，可以先做什麼準備？</summary><div><p>請先在家點好台灣合法合規販售的外用除蟲滴劑（如寵愛+、全能貓S），我們也可以在入住當天協助使用。</p><p>出發前幾天，可以將外出籠放在貓咪常出沒的地方，讓貓咪自由進出、降低出門壓力；也建議先剪指甲與梳毛。</p></div></details>
+      <details><summary>貓砂、餵食與自動餵食器如何安排？</summary><div><p>提供礦砂、豆腐砂選擇，每次入住都換全新砂、不重複使用。每天進行 2 次人工餵食，兩餐之間可視需求放置乾糧。</p><p>若需要多次定量餵食，也有自動餵食器租用服務，可設定多個出糧時間，請在預約時詢問。</p></div></details>
+      <details><summary>需要餵藥或特殊照護，也能入住嗎？</summary><div><p>我們可以協助。請在預約時透過 LINE 詳細說明寶貝的需求，一起諮詢評估。</p></div></details>
+      <details><summary>可以先參觀環境嗎？</summary><div><p>可以！參觀與接送皆採預約制，請提前透過 LINE 或電話約定時間，時段為 12:00–19:00。</p><p>為維持住宿貓咪的安靜與舒適，參觀、接送人數請控制在 2 人以內。</p></div></details>
+      <details><summary>如果身體不舒服或發生緊急狀況呢？</summary><div><p>我們會第一時間聯繫家長或緊急聯絡人，並視貓咪狀況，安排送往你指定的動物醫院或就近的獸醫診所。</p></div></details>
+      <details><summary>短期、長期住宿都可以嗎？</summary><div><p>住宿天數沒有限制。無論週末出遊、出差、裝潢期間的過渡安排，或一個月以上的外派與旅行，都歡迎詢問。週住、月住皆有優惠，詳情請透過 LINE 洽詢。</p></div></details>
+    </div></div></section>
 
-        <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:24px;" class="reveal">
-            以下為平日住宿定價，價格皆含 1 貓。<br>
-            <span style="font-size:0.78rem;">另提供到府安親服務，報價依距離與服務內容而定，歡迎 <a href="https://line.me/ti/p/~cc-cat-home" target="_blank" style="color:var(--green); text-decoration:none; font-weight:500;">LINE 洽詢</a></span>
-        </p>
+  <section id="contact" class="contact-section section wrap"><span id="info" class="anchor-alias" aria-hidden="true"></span><div class="section-label"><span>06 / COME SAY HELLO</span><span>聯絡與交通</span></div><div class="contact-grid"><div class="contact-heading"><h2>下一次出發，<br>寶貝交給希希。</h2><p class="english-note">See you, little one.</p><a class="button" href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener">LINE 詢問空房 <span aria-hidden="true">↗</span></a><a class="contact-phone" href="tel:0909005031">或撥打 0909-005-031 ↗</a></div><div class="contact-info"><div><p class="eyebrow">FIND US</p><h3>高雄市鳳山區<br>鳳甲路 329 號 1 樓</h3><a href="https://maps.google.com/?q=高雄市鳳山區鳳甲路329號" target="_blank" rel="noopener" class="text-link">開啟 Google 地圖導航 <span aria-hidden="true">↗</span></a></div><div class="contact-hours"><div><p class="eyebrow">OPENING HOURS</p><p>每日營業　11:00–20:00</p><p>接送／參觀　12:00–19:00</p><small>完全預約制，請提前約定時間。</small></div><div><p class="eyebrow">LINE / TEL</p><p class="contact-methods"><a href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener"><strong>cc-cat-home</strong></a><span>／</span><a href="tel:0909005031">0909-005-031</a></p><p class="contact-search">可用 LINE ID 搜尋加入，或以手機號碼搜尋。</p><div class="socials"><a href="https://instagram.com/ryo18.19/" target="_blank" rel="noopener">Instagram ↗</a><a href="https://facebook.com/profile.php?id=61578060331659" target="_blank" rel="noopener">Facebook ↗</a></div></div></div><p class="service-area">鳳山・前鎮・大寮・五甲・苓雅及高雄全區皆可服務</p></div></div></section>
+</main>
+<footer><div class="wrap footer-top"><a class="brand" href="#"><img src="logo.jpg" alt="" width="52" height="52"><span><b>希希貓旅</b><small>CC CAT BOARDING</small></span></a><p>Every cat deserves a home away from home.</p><a href="#" class="back-top">回到頂端 ↑</a></div><div class="wrap footer-bottom"><span>© <span id="year">2026</span> 希希貓旅 CC Cat Boarding</span><span>特寵業字第 W1141091-00 號</span></div></footer>
+<div class="mobile-dock"><a href="#estimate">住宿試算</a><a href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener">LINE 詢問空房 ↗</a></div>
 
-        <div class="reveal reveal-delay-1" style="border-top: 1px solid var(--rule); padding-top: 22px; margin-bottom: 0;">
-            <img src="./room-interior.jpg" alt="希希貓旅經典房內部空間，120×120×120cm木質設計" class="room-photo interior" loading="lazy" decoding="async">
-            <div class="room-card" style="border-top: none; padding-top: 0;">
-                <div>
-                    <span class="room-tag">適合 1–2 貓</span>
-                    <div class="room-name">經典房 Classic Room</div>
-                    <div class="room-size">120 × 120 × 120 cm</div>
-                </div>
-                <div class="room-price-col">
-                    <div class="room-price">600</div>
-                    <span class="room-price-unit">NT$ / 晚</span>
-                    <div class="room-extra">多一貓 +$200</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="reveal reveal-delay-2" style="margin-bottom: 0;">
-            <img src="./room-hall2.jpg" alt="希希貓旅加高房走廊，120×120×240cm適合多貓" class="room-photo hall" loading="lazy" decoding="async">
-            <div class="room-card" style="border-top: none; padding-top: 0;">
-                <div>
-                    <span class="room-tag">適合多貓・愛跳躍</span>
-                    <div class="room-name">加高房 Duplex Room</div>
-                    <div class="room-size">120 × 120 × 240 cm</div>
-                </div>
-                <div class="room-price-col">
-                    <div class="room-price">900</div>
-                    <span class="room-price-unit">NT$ / 晚</span>
-                    <div class="room-extra">最多可住 4 貓</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Calculator -->
-        <div class="night-calc reveal">
-            <div class="calc-label">費用試算</div>
-            <div class="calc-selects">
-                <div class="calc-select-wrap">
-                    <label>房型</label>
-                    <select id="roomType">
-                        <option value="600">經典房 $600</option>
-                        <option value="900">加高房 $900</option>
-                    </select>
-                </div>
-                <div class="calc-select-wrap">
-                    <label>貓咪數量</label>
-                    <select id="catCount">
-                        <option value="0">1 貓</option>
-                        <option value="200">2 貓</option>
-                    </select>
-                </div>
-            </div>
-            <div class="counter-row">
-                <button class="counter-btn" id="minusBtn" aria-label="減少天數">−</button>
-                <div class="counter-wrap">
-                    <div class="counter-sublabel">住宿天數</div>
-                    <div class="counter-num" id="nightCount">1</div>
-                </div>
-                <button class="counter-btn" id="plusBtn" aria-label="增加天數">+</button>
-            </div>
-            <div class="calc-result" id="calcResult">估算費用：$600</div>
-            <div class="calc-note">＊農曆春節或特殊連假價格另行公告</div>
-        </div>
-    </div>
-</section>
-
-<!-- Booking Steps -->
-<section class="section" style="background: var(--bg-warm);">
-    <div class="section-inner">
-        <div class="section-eyebrow reveal">
-            <span class="section-num">03</span>
-            <div class="section-label-wrap">
-                <span class="section-label-en">How to Book</span>
-                <h2 class="section-title">預訂流程</h2>
-            </div>
-        </div>
-        <hr class="section-rule">
-        <ul class="step-list">
-            <li class="step-item reveal">
-                <div class="step-num">1</div>
-                <div class="step-text">
-                    <h3>聯繫詢問</h3>
-                    <p>透過電話或 LINE 告訴我們您的日期與需求。</p>
-                </div>
-            </li>
-            <li class="step-item reveal reveal-delay-1">
-                <div class="step-num">2</div>
-                <div class="step-text">
-                    <h3>確認房況</h3>
-                    <p>確認有空房後，我們將為您保留名額。</p>
-                </div>
-            </li>
-            <li class="step-item reveal reveal-delay-2">
-                <div class="step-num">3</div>
-                <div class="step-text">
-                    <h3>支付訂金</h3>
-                    <p>預付訂金完成預訂。</p>
-                </div>
-            </li>
-            <li class="step-item reveal reveal-delay-1">
-                <div class="step-num">4</div>
-                <div class="step-text">
-                    <h3>簽署合約</h3>
-                    <p>透過手機輕鬆完成專屬的電子合約簽署。</p>
-                </div>
-            </li>
-            <li class="step-item reveal reveal-delay-2">
-                <div class="step-num">5</div>
-                <div class="step-text">
-                    <h3>開心入住</h3>
-                    <p>預訂成功！尾款最晚於入住當天付清即可。</p>
-                </div>
-            </li>
-        </ul>
-    </div>
-</section>
-
-<!-- FAQ -->
-<section class="section" style="background: var(--bg-warm);">
-    <div class="section-inner">
-        <div class="section-eyebrow reveal">
-            <span class="section-num">04</span>
-            <div class="section-label-wrap">
-                <span class="section-label-en">FAQ</span>
-                <h2 class="section-title">常見問題</h2>
-            </div>
-        </div>
-        <hr class="section-rule">
-
-        <div id="faqList">
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>會讓貓咪出來放風玩耍嗎？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    我們每日都會視每隻貓咪的狀態，安排輪流出房放風的時間。但由於部分貓咪可能需要更長時間適應環境，若寶貝不願出房、或出來後難以引導回房，我們會以貓咪的舒適度為優先考量，彈性調整安排。<br><br>
-                    我們秉持「尊重貓咪意願」的原則，絕不強迫，因此<strong>無法保證每日一定會出來放風</strong>，還請家長們見諒。讓每隻貓咪都能在最自在的狀態下度過住宿時光，是我們最重視的事。
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>會每天通知貓咪的狀況嗎？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    當然會喔！我們每天都會透過 LINE 回報影片、照片與文字，讓您知道寶貝吃飯、上廁所的狀況。家長如果想念寶貝，也隨時歡迎 LINE 我們！
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>家長需要幫貓咪準備什麼？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    1. 習慣的食物與零食。<br>
-                    2. <strong>一小包用過的舊貓砂</strong>（約拳頭大小即可）——熟悉的氣味能幫助寶貝更快適應新環境，也有助於緩解入住初期的緊張與焦慮。<br>
-                    3. 安全的外出籠（接送時使用）。<br>
-                    ＊ 也很歡迎帶 1-2 樣有家裡味道的玩具、毯子或主人的衣物陪伴寶貝喔！
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>入住前家長可以先做什麼準備？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    請先在家點好台灣合法合規販賣的「外用除蟲滴劑」（如寵愛+、全能貓S），我們也可以在入住當天協助使用。<br>
-                    建議出發前幾天，把外出籠放在貓咪常出沒的地方讓貓咪自由進出，降低出門壓力。如果可以，也建議先幫貓咪剪指甲與梳毛，能減少玩耍時受傷的風險喔！
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>住宿有提供貓砂或可以使用自動餵食器嗎？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    <strong>貓砂：</strong>我們提供礦砂與豆腐砂供您選擇。每次入住一律換全新砂，絕不重複使用，嚴防交叉感染。<br><br>
-                    <strong>餵食：</strong>我們每天會進行 2 次人工餵食，在兩餐之間也可視寶貝需求放置乾糧，讓貓咪隨時都能吃到東西，不用擔心挨餓。<br><br>
-                    若寶貝需要多次定量餵食（例如處方飼料或體重控制），我們也提供<strong>自動餵食器租用服務</strong>，每天可自由設定多個出糧時間，歡迎預約時一併詢問！
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>貓咪需要餵藥或特殊照護怎麼辦？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    我們可以協助！若寶貝有特別的需求，請在預約時透過 LINE 與我們詳細諮詢評估。
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>可以先參觀環境再考慮是否預訂嗎？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    當然可以！為了給每一位住宿中的毛孩維持安靜舒適的環境，參觀與接送皆採<strong>預約制</strong>，請提前透過 LINE 或電話與我們約定時間。<br><br>
-                    另外，為了避免過多陌生的氣味與聲音讓貓咪感到緊張不安，<strong>參觀與接送人數請控制在 2 人以內</strong>，感謝您的配合與體諒 🐱
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>住宿期間如果貓咪身體不舒服或發生緊急狀況，會怎麼處理？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    我們會在第一時間聯繫家長或緊急聯絡人，並視貓咪當下的狀況，安排送往您指定的動物醫院或就近的獸醫診所。<br><br>
-                    寶貝的健康與安全是我們最重視的事，請放心交給我們照顧。
-                </div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-btn" aria-expanded="false">
-                    <span>住宿天數有限制嗎？短期或長期都可以嗎？</span>
-                    <div class="faq-icon"><i class="fa-solid fa-chevron-down"></i></div>
-                </button>
-                <div class="faq-body">
-                    完全沒有限制！無論是短暫的週末出遊、出差幾天，還是家裡臨時裝修需要過渡幾週，甚至是一個月以上的長期外派或旅遊，我們都能配合您的需求提供服務。<br><br>
-                    有任何特殊狀況歡迎直接透過 LINE 詢問，我們會盡力協助安排。
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact -->
-<section class="section contact-section" id="info">
-    <div class="section-inner">
-        <div class="section-eyebrow reveal">
-            <span class="section-num">05</span>
-            <div class="section-label-wrap">
-                <span class="section-label-en">Contact</span>
-                <h2 class="section-title">聯絡我們</h2>
-            </div>
-        </div>
-        <hr class="section-rule">
-
-        <div class="operating-status reveal">
-            <span class="pulse-dot"></span>
-            <span class="operating-text">目前營業中</span>
-        </div>
-
-        <div class="info-grid reveal">
-            <div class="info-row">
-                <div class="info-icon-wrap"><i class="fa-solid fa-location-dot"></i></div>
-                <div>
-                    <div class="info-label">ADDRESS</div>
-                    <div class="info-val">高雄市鳳山區鳳甲路 329 號 1 樓<br><small>鳳山・前鎮・大寮・五甲・苓雅及高雄全區皆可服務</small></div>
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-icon-wrap"><i class="fa-solid fa-clock"></i></div>
-                <div>
-                    <div class="info-label">HOURS</div>
-                    <div class="info-val">11:00 AM – 08:00 PM<br><small>接送 / 參觀：12:00 PM – 07:00 PM（需提前預約）</small></div>
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-icon-wrap"><i class="fa-solid fa-calendar-check"></i></div>
-                <div>
-                    <div class="info-label">VISIT POLICY</div>
-                    <div class="info-val">完全預約制，給貓咪最安靜的空間。</div>
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-icon-wrap"><i class="fa-brands fa-line"></i></div>
-                <div>
-                    <div class="info-label">LINE / TEL</div>
-                    <div class="info-val">
-                        <a href="https://line.me/ti/p/~cc-cat-home" target="_blank">cc-cat-home</a>　／　0909-005-031<br>
-                        <small>可用 LINE ID 搜尋加入，或以手機號碼搜尋</small>
-                    </div>
-                </div>
-            </div>
-            <div class="info-row">
-                <div class="info-icon-wrap"><i class="fa-solid fa-file-shield"></i></div>
-                <div>
-                    <div class="info-label">LICENSE</div>
-                    <div class="info-val">特寵業字第 W1141091-00 號</div>
-                </div>
-            </div>
-        </div>
-
-        <a href="https://maps.google.com/?q=高雄市鳳山區鳳甲路329號" target="_blank" class="map-link reveal">
-            <i class="fa-solid fa-map-location-dot"></i> 開啟 Google 地圖導航
-        </a>
-    </div>
-</section>
-
-<!-- Social -->
-<div class="social-section reveal">
-    <p class="social-label">Follow Us</p>
-    <a href="https://www.instagram.com/ryo18.19/" target="_blank" class="social-btn btn-ig">
-        <i class="fa-brands fa-instagram"></i> Instagram
-    </a>
-    <a href="https://www.facebook.com/profile.php?id=61578060331659" target="_blank" class="social-btn btn-fb">
-        <i class="fa-brands fa-facebook"></i> Facebook
-    </a>
-</div>
-
-<!-- Footer -->
-<footer class="site-footer">
-    <p class="footer-tagline">Every cat deserves a home away from home.</p>
-    希希貓旅 CC Cat Boarding<br>
-    高雄市鳳山區鳳甲路 329 號 1 樓　|　特寵業字第 W1141091-00 號
-</footer>
-
-<!-- Floating CTA -->
-<div class="floating-cta">
-    <div class="cta-hint">
-        <i class="fa-brands fa-line" style="color:#06C755;"></i> LINE：<strong>cc-cat-home</strong>　|　電話：<strong>0909-005-031</strong>
-    </div>
-    <div class="cta-buttons">
-        <a href="https://line.me/ti/p/~cc-cat-home" target="_blank" class="cta-btn btn-line-cta">
-            <i class="fa-brands fa-line fa-lg"></i> LINE 預約
-        </a>
-        <a href="tel:0909005031" class="cta-btn btn-tel-cta">
-            <i class="fa-solid fa-phone"></i> 撥打電話
-        </a>
-    </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-// ─── Scroll reveal ───
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
-}, { threshold: 0.01, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => observer.observe(el));
-
-// ─── Calculator ───
-let nights = 1;
-const nightCountEl = document.getElementById('nightCount');
-const calcResultEl = document.getElementById('calcResult');
-const roomTypeEl   = document.getElementById('roomType');
-const catCountEl   = document.getElementById('catCount');
-
-const catOptions = {
-    '600': [
-        { value: '0', label: '1 貓' },
-        { value: '200', label: '2 貓（上限）' }
-    ],
-    '900': [
-        { value: '0', label: '1 貓' },
-        { value: '200', label: '2 貓' },
-        { value: '400', label: '3 貓' },
-        { value: '600', label: '4 貓（上限）' }
-    ]
-};
-
-function refreshCatOptions() {
-    const currentVal = catCountEl.value;
-    const opts = catOptions[roomTypeEl.value];
-    catCountEl.innerHTML = '';
-    opts.forEach(o => {
-        const el = document.createElement('option');
-        el.value = o.value; el.textContent = o.label;
-        catCountEl.appendChild(el);
-    });
-    const vals = opts.map(o => o.value);
-    catCountEl.value = vals.includes(currentVal) ? currentVal : '0';
-}
-
-function updateCalc() {
-    const base  = parseInt(roomTypeEl.value);
-    const extra = parseInt(catCountEl.value);
-    const total = (base + extra) * nights;
-    calcResultEl.textContent = `估算費用：NT$ ${total.toLocaleString()}（${nights} 晚）`;
-}
-
-document.getElementById('plusBtn').addEventListener('click', () => {
-    nights = Math.min(nights + 1, 90);
-    nightCountEl.textContent = nights; updateCalc();
-});
-document.getElementById('minusBtn').addEventListener('click', () => {
-    nights = Math.max(nights - 1, 1);
-    nightCountEl.textContent = nights; updateCalc();
-});
-roomTypeEl.addEventListener('change', () => { refreshCatOptions(); updateCalc(); });
-catCountEl.addEventListener('change', updateCalc);
-refreshCatOptions(); updateCalc();
-
-// ─── FAQ ───
-document.querySelectorAll('.faq-btn').forEach((btn, i) => {
-    // 建立 button ↔ 答案的 id 配對，螢幕閱讀器才知道展開的是哪一塊
-    const bodyId = 'faqBody' + (i + 1);
-    const bodyEl = btn.nextElementSibling;
-    bodyEl.id = bodyId;
-    btn.setAttribute('aria-controls', bodyId);
-    // 收合的答案視覺上看不到，但預設仍會被螢幕閱讀器念出來 → 移出無障礙樹
-    bodyEl.setAttribute('aria-hidden', 'true');
-
-    btn.addEventListener('click', () => {
-        const body   = btn.nextElementSibling;
-        const isOpen = btn.getAttribute('aria-expanded') === 'true';
-        document.querySelectorAll('.faq-btn').forEach(b => {
-            b.setAttribute('aria-expanded', 'false');
-            b.nextElementSibling.classList.remove('open');
-            b.nextElementSibling.setAttribute('aria-hidden', 'true');
-        });
-        if (!isOpen) {
-            btn.setAttribute('aria-expanded', 'true');
-            body.classList.add('open');
-            body.setAttribute('aria-hidden', 'false');
-        }
-    });
-});
-
-// ─── Operating status ───
-(function() {
-    const dot   = document.querySelector('.pulse-dot');
-    const label = dot && dot.nextElementSibling;
-    if (!dot || !label) return;
-
-    function taipeiHour() {
-        // 用 Intl 直接取台北時區的小時，不靠解析 locale 字串（各瀏覽器格式不一致）
-        const parts = new Intl.DateTimeFormat('en-US', {
-            timeZone: 'Asia/Taipei', hour: 'numeric', hour12: false
-        }).formatToParts(new Date());
-        return parseInt(parts.find(p => p.type === 'hour').value, 10) % 24;  // 部分實作午夜回傳 24
-    }
-
-    function render() {
-        const h      = taipeiHour();
-        const closed = (h < 11 || h >= 20);
-        dot.style.background = closed ? '#bbb' : '#4CAF50';
-        label.style.color    = closed ? '#aaa' : '';
-        label.textContent    = closed ? '目前休息中' : '目前營業中';
-    }
-
-    render();
-    setInterval(render, 60000);   // 每分鐘重算，分頁開著跨過開/關店時間也會跟著更新
-})();
-
-// ─── Desktop photo strip: drag scroll + arrows ───
-(function() {
-  const strip = document.getElementById('photoStrip');
-  const btnL  = document.getElementById('stripLeft');
-  const btnR  = document.getElementById('stripRight');
-  if (!strip) return;
-
-  function updateArrows() {
-    if (btnL) btnL.classList.toggle('hidden', strip.scrollLeft <= 0);
-    if (btnR) btnR.classList.toggle('hidden', strip.scrollLeft >= strip.scrollWidth - strip.clientWidth - 4);
-  }
-
-  // Click-drag scroll (desktop only)
-  let dragging = false, startX = 0, startScroll = 0;
-
-  strip.addEventListener('mousedown', (e) => {
-    if (e.button !== 0) return;
-    dragging = true;
-    startX = e.pageX;
-    startScroll = strip.scrollLeft;
-    strip.style.cursor = 'grabbing';
-    strip.style.userSelect = 'none';
-    e.preventDefault();
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!dragging) return;
-    const dx = e.pageX - startX;
-    strip.scrollLeft = startScroll - dx;
-    updateArrows();
-  });
-
-  window.addEventListener('mouseup', () => {
-    if (!dragging) return;
-    dragging = false;
-    strip.style.cursor = 'grab';
-    strip.style.userSelect = '';
-  });
-
-  // Arrow buttons
-  const scrollAmt = () => strip.clientWidth * 0.85;
-  if (btnL) btnL.addEventListener('click', () => { strip.scrollBy({ left: -scrollAmt(), behavior: 'smooth' }); setTimeout(updateArrows, 400); });
-  if (btnR) btnR.addEventListener('click', () => { strip.scrollBy({ left:  scrollAmt(), behavior: 'smooth' }); setTimeout(updateArrows, 400); });
-  strip.addEventListener('scroll', updateArrows, { passive: true });
-  updateArrows();
-})();
-</script>
+<dialog id="gallery-dialog" class="gallery-dialog" aria-label="希希貓旅照片集"><div class="dialog-top"><span id="photo-counter">01 / 05</span><button class="close-button" data-close="gallery-dialog" aria-label="關閉照片集">×</button></div><img id="gallery-image" src="room-hall.jpg" alt="木質格柵走廊"><div class="gallery-controls"><button id="photo-prev" aria-label="上一張照片">←</button><p id="gallery-caption">木質格柵走廊</p><button id="photo-next" aria-label="下一張照片">→</button></div></dialog>
+<dialog id="inquiry-dialog" class="inquiry-dialog" aria-labelledby="inquiry-title"><button class="close-button" data-close="inquiry-dialog" aria-label="關閉詢問視窗">×</button><p class="eyebrow">YOUR LITTLE GETAWAY</p><h2 id="inquiry-title">把需求帶給希希</h2><p>複製下方內容，開啟 LINE 後貼上，<br>再補上入住日期，我們就能幫你確認空房。</p><label for="inquiry-text">住宿詢問內容</label><textarea id="inquiry-text" rows="7"></textarea><button class="button" id="copy-inquiry">複製詢問內容 <span aria-hidden="true">⧉</span></button><a class="button outline" href="https://line.me/ti/p/~cc-cat-home" target="_blank" rel="noopener">開啟 LINE 詢問 <span aria-hidden="true">↗</span></a><p id="copy-status" class="copy-status" role="status">此步驟僅整理需求，尚未預訂或送出訊息。</p></dialog>
 </body>
 </html>

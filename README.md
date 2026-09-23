@@ -1,86 +1,40 @@
 # README — 系統現況參考書
 
-> 這份描述系統「**現在的樣子**」。行為變了 → **直接改這裡對應章節**，不要在這裡寫 changelog
-> （沿革在 [HISTORY.md](HISTORY.md)）。鐵律看 [RULES.md](RULES.md)、協作方式看
-> [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)、目前待辦看 [HANDOFF.md](HANDOFF.md)。
+規則看 [RULES.md](RULES.md)，目前狀態看 [HANDOFF.md](HANDOFF.md)，沿革看 [HISTORY.md](HISTORY.md)，每次推送看 [DEPLOYMENT_LOG.md](DEPLOYMENT_LOG.md)。
 
----
+## 技術與部署
 
-## 這是什麼
+希希貓旅的靜態單頁網站，主要動作為 LINE 詢問與預約。無框架、無 npm、無 build 步驟。正式來源為本 repo 的 website/；離線設計資料夾不是部署來源。
 
-希希貓旅 CC Cat Boarding 的官方網站 — 高雄鳳山純貓住宿。單頁式（single-page）行銷網站，
-給訪客看服務、房價、預訂流程、FAQ、聯絡方式，主要轉換動作是加 LINE 詢問/預約。
+GitHub Desktop commit / push → kayleetung/cccathotel 的 main → Netlify 發布 website/ → https://cccathotel.com/。設定維持既有 Netlify UI，不更動 DNS，也不建立 netlify.toml。公開 HTML 的版號才是部署完成證據。
 
-## 技術棧
+## 檔案與區塊索引
 
-- **單一檔案**：`website/index.html`（約 1400+ 行，HTML + 內嵌 `<style>` + 內嵌 `<script>`）。
-  無 build 步驟、無框架、無 npm。改完直接就是成品。
-- **外部依賴（皆走 CDN）**：
-  - Bootstrap 5.3.0（jsDelivr）— 只用少量 layout/nav
-  - FontAwesome — icon（`fa-solid` / `fa-brands` class）
-  - Google Fonts — `Noto Serif TC`（標題）＋`Noto Sans TC`（內文）
-  - Google Analytics gtag `G-2KLHF5VMVZ`（流量分析，**受 R5 保護，勿刪改**）
-- **結構化資料**：`LocalBusiness` + `FAQPage` JSON-LD（在 `<head>`）。**無** `aggregateRating`（見 R6）。
+| 檔案 | 用途 |
+|---|---|
+| website/index.html | 所有可見文案、商家事實、SEO meta、GA 與 LocalBusiness / FAQPage |
+| website/style.css | 桌機/手機版面、照片視窗、動畫及 reduced-motion 支援 |
+| website/script.js | 試算、導覽、照片視窗、詢問文字、頁尾年份 |
+| website/*.jpg | 原六張照片與 LOGO；維持根目錄 URL |
+| website/robots.txt | 原爬蟲設定與 sitemap 位置 |
+| website/sitemap.xml | 唯一首頁 URL；內容更新時更新 lastmod |
+| scripts/verify-release.cjs | 此次發布相對原站基準的 SEO/資源/試算回歸檢查 |
+| DEPLOYMENT_LOG.md | 推送計畫、結果、回復基準與程序 |
 
-## 部署架構
+index.html 用 id 查找：main、about、space、rooms、estimate、booking、faq、contact。照片區找 gallery-grid。原錨點 rooms、photoStrip、faqList、info 維持可用。實際 id 以 HTML 為準。
 
-```
-本機編輯 (Read/Write/Edit)
-   ↓
-GitHub Desktop commit + push  →  GitHub repo: kayleetung/cccathotel (branch: main)
-   ↓ (Netlify 偵測 push，自動 build)
-Netlify  →  publish 目錄 = website/  →  https://cccathotel.com/
-                                          （網域走 Netlify DNS / NS1 nameservers）
-```
+地址、電話、LINE、字號、房價與時間只在 index.html 維護（R9）。改價格時同步核對 script.js 的試算邏輯及驗證案例；改 FAQ 時同步 JSON-LD，不讓畫面與機器資料不同。
 
-- **Host：Netlify**（非 GitHub Pages — 見 R3 的查證）。build 設定在 Netlify UI，repo 內無 netlify.toml。
-- push 後約 1 分鐘上線。線上有 CDN 快取，驗證用 `https://cccathotel.com/?v=時間戳` 繞過。
-- 無 API token、無自動化推送（見 R2）。
+## SEO 與外部依賴
 
-## 檔案佈局
+保留原 title、description、OG/Twitter、canonical、GA head 原碼、robots 與 JPG URL。LocalBusiness 保留原商家欄位，僅省略尚未核實的 geo；不加入自評星等。FAQPage 與九題可見內容一致。不要為了 SEO 捏造座標或評論。
 
-| 路徑 | 是什麼 |
-|------|--------|
-| `website/index.html` | 整個網站（唯一實質程式檔） |
-| `website/*.jpg` | 6 張圖：logo、cat-peek、cat-room、room-hall、room-hall2、room-interior |
-| `website/robots.txt` | 允許全部爬蟲 + 指向 sitemap |
-| `website/sitemap.xml` | 單一 URL，`lastmod` 手動更新 |
-| `.gitattributes` | `* text=auto eol=lf`（統一換行符，避免整檔 diff 雜訊） |
-| `RULES.md` / `HANDOFF.md` / `HISTORY.md` / `README.md` / `PROJECT_INSTRUCTIONS.md` | 文件制度 |
+唯一外部載入腳本為原 Google Analytics；字體使用系統字體，不依賴 Bootstrap、FontAwesome 或 Google Fonts。LINE、電話、地圖與社群是外連。LINE URL 使用既有個人 ID 連結，手機能否成功喚起 App 仍依裝置與安裝狀態。
 
-## 版本機制
+## 版本與驗證
 
-`website/index.html` 的 `<head>` 有 `<meta name="version" content="YYYY.MM.DD-nn">`（並在檔首 HTML
-註解放一份）。每次改動 index.html 的內容/行為就遞增（同日第 n 次改遞增 `nn`）。純 .md 變更不動版號。
-驗證線上版本：抓 `https://cccathotel.com/?v=x` 後 Ctrl-F `name="version"`。
+每次實質修改更新 HTML 檔首與 version meta（YYYY.MM.DD-nn），CSS/JS 的查詢版本同步。純文件更新不動網站版號。查公開 HTML 時加查詢字串排除快取。
 
-## § 區塊索引（Ctrl-F 用，刻意不記行號）
+發布前執行 node --check website/script.js、node scripts/verify-release.cjs、git diff --check，並在瀏覽器檢查桌機與手機寬度、導覽、估價、照片視窗及聯絡入口。此次基準檢查為特定發布設計；日後合法改商家內容時應同步調整對應斷言，不可只為通過而改回過期資訊。
 
-`index.html` 用 `/* ─── 名稱 ─── */`（CSS）和 `<!-- 名稱 -->`（HTML）分區。要定位就 Ctrl-F 這些字串：
-
-**`<style>` 內（CSS，依序）：** `Scroll reveal` · `Navbar` · `Notice bar` · `Hero` ·
-`Section scaffold` · `About section` · `Highlight strip` · `Room cards` ·
-`Night counter / calculator` · `Steps` · `FAQ` · `Contact` · `Social section` · `Footer` ·
-`Photo gallery strip` · `Room photo` · `Floating CTA` · `Accessibility: reduced motion` ·
-`Desktop photo strip arrows` · `Photo strip: centred desktop nav bar`
-
-**`<body>` 內（HTML section，依序）：** `Navbar` · `Notice Bar` · `Hero` · `Highlight strip` ·
-`About`（`about-section`）· `Photo Gallery Strip`（`id="photoStrip"`）· `Rooms`（`id="rooms"`，含
-`Calculator`）· `Booking Steps` · `FAQ`（`id="faqList"`）· `Contact`（`id="info"`）· `Social` ·
-`Footer` · `Floating CTA`
-
-**`<script>` 內（JS 區塊，依序）：** `Scroll reveal` · `Calculator`（估價器，含 `catOptions` 房型上限
-邏輯）· `FAQ`（手風琴）· `Operating status`（依台北時間切「營業中/休息中」）· `Desktop photo strip`
-（拖曳＋箭頭）
-
-## 商家事實在哪
-
-地址、電話、LINE ID、特寵業字號、房價、營業時間的**真相全在 `index.html`**（見 R9，別處不複製）：
-- 房價/房型上限 → Ctrl-F `Rooms` 區＋JS 的 `catOptions`
-- 地址/電話/LINE/字號/時間 → Ctrl-F `Contact`（`id="info"`）區
-- 服務區域 / SEO 描述 → `<head>` 的 meta 與 JSON-LD
-
-## 頁面區塊順序（給訪客看到的）
-
-Hero →（01）About →（—）Photo Strip →（02）Rooms & Rates + 估價器 →（03）How to Book →
-（04）FAQ →（05）Contact → Footer → Floating CTA（手機版底部常駐 LINE + 電話）
+瀏覽器模擬不能代替真實手機、Google Search Console、GA 後台或 Netlify 部署紀錄。未驗證項目應如實記錄。
