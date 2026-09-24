@@ -115,3 +115,23 @@
 - 發布前既有 SEO/資源/FAQ 與 44 試算案例通過，git diff --check 通過。
 - Push 1 預定標題：Refine homepage introduction (v2026.09.24-05)。範圍為 index.html、驗證腳本、HANDOFF、HISTORY、DEPLOYMENT_LOG 五檔，排除 .claude/。
 - 流程：GitHub Desktop commit → Push origin → 公開首頁版號、文案與檔案比對。Push 2 僅回寫結果，標題使用 [skip netlify]。最終 SHA 與時間回執保存 C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-05/release-receipt.json。此段為推送前計畫，實際結果另補。
+
+### Push 1 — 實際結果（2026-09-24 晚由 Claude Code 補記）
+
+- d098b597cff996d2d5a193b3bd513613ba384049 已推到 origin/main（ls-remote 確認），但 Netlify 21:20 的自動部署**失敗**：`Failed during stage 'Install dependencies': Command did not finish within the time limit`（18 分鐘）。
+- Codex 21:22 的上線檢查（同上備份目錄 live-verification.json）已顯示 index.html `same: false`，但未補記、未產生 release-receipt.json。22:01 抓正式站仍為 2026.09.24-04（`Cache-Status: fwd=miss`，非 CDN 快取）。
+- Netlify log 關鍵行：node v22.23.3 下載完成且 `Checksums matched`，但 `mv: cannot overwrite '/opt/buildhome/.nvm/versions/node/v22.23.3/bin': Directory not empty` → 改走原始碼編譯直到超時。判定為建置快取殘留，不是版本相容性問題；repo 內無 .nvmrc / package.json / netlify.toml，網站本身不需 Node。Netlify AI 建議鎖 Node 20，未採用（Node 20 已於 2026-04 EOL，且不是根因）。
+- 修復：KK 明確要求後，由 Claude 在 KK 已登入的 Chrome 操作 Netlify → Deploys → Trigger deploy →「Deploy project without cache」（即舊稱 Clear cache and deploy）。未改任何設定、未鎖定發布、未登入。
+- 結果：deploy 6ab52e94147e0799e4e6e49f，22:07:18 開始（`Building without cache`），22:07:26 `Site is live`，約 8 秒。
+- 22:08 驗證：公開首頁 SITE VERSION 2026.09.24-05、新副標存在、頁尾 `</html>` 完整；11 個資源全部 HTTP 200 且與本機一致（文字正規化換行、圖片逐位元組），無 X-Robots-Tag。
+- 此補記與 HANDOFF / HISTORY / RULES E7 為文件變更，提交標題需含 [skip netlify]。
+
+### Push 2 — 文件提交（計畫，推送前寫入）
+
+- KK 於本次對話明確要求「幫我 commit push，並且要留下紀錄」。
+- 基準：HEAD = origin/main = d098b597cff996d2d5a193b3bd513613ba384049。
+- 範圍：僅 DEPLOYMENT_LOG / HANDOFF / HISTORY / RULES 四份文件；website/ 不動，.claude/ 不提交。
+- Commit 在終端機以 git commit 建立（RULES E6 允許）；push 由 Claude 經 KK 同意以 computer-use 操作 GitHub Desktop「Push origin」（R2），不使用 CLI push 或 token。
+- 標題：`Record -05 deploy failure and cache-clear fix [skip netlify]`。
+- 推送後驗證：ls-remote 的 main 等於本機 HEAD；Netlify Deploys 列表該 commit 應為略過（skipped）而非新部署；正式站仍為 2026.09.24-05。
+- 本段寫在提交之前，不能記錄自己的 SHA；實際 SHA、推送時間與驗證結果存放在 C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-05/docs-push-receipt.json，並在下一次提交時補進本紀錄。

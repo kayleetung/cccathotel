@@ -93,6 +93,11 @@ RULES／README／HANDOFF **不得複製這些值**，只能指向 index.html。
   （早期記錄「別在此 repo 用 bash 跑 git，會在 OneDrive 掛載下留殘留 `index.lock`」——那是 Cowork
   sandbox + OneDrive 的問題。repo 已搬離 OneDrive（2026-07-24），git 操作無此風險。
   舊細節見 HISTORY 2026-07-03。）
+- **E7.** Netlify 建置快取可能損壞：症狀是 log 出現 `mv: cannot overwrite ... Directory not empty` 後
+  開始 `make`／`g++` 編譯 Node，最後 `Install dependencies` 超時，正式站停在上一版。處理方式是 Deploys →
+  Trigger deploy →「Deploy project without cache」（不改設定）。**不要照 Netlify AI 建議去鎖舊版 Node**；
+  網站不需要 Node，要鎖版本屬於改部署設定（🔴，見 R3）。推送後一定要抓公開網站確認版號（E4），
+  GitHub 已同步不等於已上線。2026-09-24 踩到並記錄（見 HISTORY）。
 
 ---
 
