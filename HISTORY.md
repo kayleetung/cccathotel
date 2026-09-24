@@ -6,6 +6,15 @@
 
 ---
 
+## 2026-09-24 深夜 — 防止其他 agent 再踩雷：AGENTS.md、R12、verify-live
+
+KK 要求把「避免 Netlify 推送失敗沒人發現」的防護加進來，讓其他 agent 也會遵守。檢查後發現真正的漏洞：Codex 讀的是 AGENTS.md，這個 repo 原本沒有，所以 CLAUDE.md、RULES、E7 對 Codex 都不存在。-05 事件的根源之一就在這裡。
+
+- 新增 AGENTS.md：給 Codex 等其他 agent 的入口。只指路和列固定流程，不複製事實（R9）。
+- 新增 RULES R12：推送 website/ 之後必須跑 `node scripts/verify-live.cjs`，PASS 之前不得說已上線；失敗當下回報，不准寫「另補」。E7 也改成指向它。
+- 新增 scripts/verify-live.cjs：最多等 Netlify 3 分鐘，比對正式站版號和 website/ 每個檔案（自動列出，不用手動維護清單）。測過兩種情況：正式站一致時 PASS；故意把版號改錯時 FAIL，並提示照 E7 處理。
+- 同一次也在 GA 把 Search Console 網域資源連結到網站資料串流（KK 同意）。line_click／phone_click 要等出現在 GA「近期事件」清單才能標為重要事件，KK 已同意，下次處理。
+
 ## 2026-09-24 晚 — 全面檢視 Codex 成果＋修正（2026.09.24-08）
 
 KK 要求用專業角度全面檢視 Codex 做的一切。結論：工程品質扎實，SEO 保留、試算邏輯、各寬度版面、互動都驗證通過，沒有影響客人的 bug。問題集中在流程習慣和一個沒被發現的設計退化。

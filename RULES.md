@@ -70,6 +70,13 @@ RULES／README／HANDOFF **不得複製這些值**，只能指向 index.html。
 舊 session 紀錄搬 HISTORY.md（append-only），不壓縮、不刪。HANDOFF 只留最近 2 個 session。
 **Why：** 「為什麼 X 長這樣」的考古價值；弱模型別重蹈覆轍。
 
+### R12. 推送不等於上線：推完一定要跑 `node scripts/verify-live.cjs`
+會改到 `website/` 的推送，推送後必須執行 `node scripts/verify-live.cjs`（最多等 3 分鐘，比對正式站版號和
+website/ 每個檔案）。**這支腳本 PASS 之前，不得回報「已上線」**。FAIL 就當下告訴 KK，照 E7 處理；不准寫
+「結果另補」、「稍後確認」就收工。純文件的 [skip netlify] 提交不需要跑。
+**Why：** 2026-09-24 Codex 推送 -05 後，自己的上線檢查已經失敗，卻寫「實際結果另補」就結束。Netlify 其實是
+建置失敗，正式站停在舊版 47 分鐘沒人知道。GitHub 已同步 ≠ Netlify 已部署 ≠ 客人看得到。2026-09-24 立。
+
 ---
 
 ## 環境事實（不是禁令，但每次都要記得）
@@ -96,10 +103,11 @@ RULES／README／HANDOFF **不得複製這些值**，只能指向 index.html。
 - **E7.** Netlify 建置快取可能損壞：症狀是 log 出現 `mv: cannot overwrite ... Directory not empty` 後
   開始 `make`／`g++` 編譯 Node，最後 `Install dependencies` 超時，正式站停在上一版。處理方式是 Deploys →
   Trigger deploy →「Deploy project without cache」（不改設定）。**不要照 Netlify AI 建議去鎖舊版 Node**；
-  網站不需要 Node，要鎖版本屬於改部署設定（🔴，見 R3）。推送後一定要抓公開網站確認版號（E4），
-  GitHub 已同步不等於已上線。2026-09-24 踩到並記錄（見 HISTORY）。
+  網站不需要 Node，要鎖版本屬於改部署設定（🔴，見 R3）。推送後照 R12 跑 `node scripts/verify-live.cjs`，
+  GitHub 已同步不等於已上線。清快取重新部署後要再跑一次，PASS 才算修好。2026-09-24 踩到並記錄（見 HISTORY）。
 
 ---
 
-_最後更新：2026-07-24（repo 從 OneDrive 搬到 `C:\dev\cccathotel`；E1 退役、E5/E6/R1 why 更新）。
+_最後更新：2026-09-24（新增 R12 推送後驗證、E7 Netlify 快取；給其他 agent 的入口見 AGENTS.md）。
+前次：2026-07-24（repo 從 OneDrive 搬到 `C:\dev\cccathotel`；E1 退役、E5/E6/R1 why 更新）。
 詳細沿革見 [HISTORY.md](HISTORY.md)。協作方式見 [PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)。_

@@ -16,6 +16,8 @@
 - 沿革／「為什麼 X 長這樣」→ HISTORY.md
 - 網站本體＋商家事實 → `website/index.html`（約 240 行）＋ `style.css` ＋ `script.js`（檔案用途與 id 索引見 README）
 - 每次推送的計畫與結果 → DEPLOYMENT_LOG.md
+- Codex／其他 agent 的入口是 AGENTS.md（和本檔指向同一套規則；改流程時兩邊都要同步）
+- 推送後一定要跑 `node scripts/verify-live.cjs`（RULES R12）
 
 ## repo 位置
 

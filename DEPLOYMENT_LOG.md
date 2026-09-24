@@ -193,4 +193,4 @@
 
 | 日期 | 版號 | 內容 | 授權 | Commit | 驗證 |
 |---|---|---|---|---|---|
-| 2026-09-24 | 2026.09.24-08 | 標題字型改為自己託管的 Noto Serif TC 子集（修 iPhone 字型不同）；GA 事件 line_click／phone_click／map_click／inquiry_*；LocalBusiness 補正確 geo 和 hasMap；地圖連結改到商家頁；加「Google 評論」連結；刪除沒在用的 CSS；verify-release 改成從頁面讀版號，並檢查 schema 和畫面一致、字型是否涵蓋所有標題字 | KK：「做完直接推」 | 待補 | 待補 |
+| 2026-09-24 | 2026.09.24-08 | 標題字型改為自己託管的 Noto Serif TC 子集（修 iPhone 字型不同）；GA 事件 line_click／phone_click／map_click／inquiry_*；LocalBusiness 補正確 geo 和 hasMap；地圖連結改到商家頁；加「Google 評論」連結；刪除沒在用的 CSS；verify-release 改成從頁面讀版號，並檢查 schema 和畫面一致、字型是否涵蓋所有標題字 | KK：「做完直接推」 | c41307c | 22:51 GitHub Desktop 推送；Netlify deploy 6ab538e87f18ca0008784709 published；22:52 正式站 -08、12 個資源（含字型）200 且和本機一致；正式站字型已載入，line_click 有進 dataLayer，console 無錯誤。這次測試在 GA 留下 1 筆 line_click 和幾筆 localhost／測試瀏覽 |

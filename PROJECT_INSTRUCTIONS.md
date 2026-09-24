@@ -25,6 +25,7 @@
 
 | 檔案 | 是什麼的家 | 什麼時候寫它 |
 |------|-----------|-------------|
+| **AGENTS.md** | 給 Codex 等其他 agent 的入口（Claude Code 讀 CLAUDE.md）。只指路、列固定流程 | 流程或入口檔案變動時 |
 | **RULES.md** | 鐵律＋地雷。每條獨立＋why＋日期 | 新增/放寬鐵律（放寬=🔴） |
 | **HANDOFF.md** | 目前狀態＋待辦＋不做＋最近 2 session | 每個 session 收尾 |
 | **HISTORY.md** | 逐 session 考古，append-only 新的在上 | 每個 session 收尾（搬舊的過來） |

@@ -20,6 +20,7 @@ GitHub Desktop commit / push → kayleetung/cccathotel 的 main → Netlify 發�
 | website/robots.txt | 原爬蟲設定與 sitemap 位置 |
 | website/sitemap.xml | 唯一首頁 URL；內容更新時更新 lastmod |
 | scripts/verify-release.cjs | 發布前檢查：SEO/GA/圖片不變、版號一致、商家 schema 與畫面一致、FAQ 配對、標題字都在字型裡、44 個試算案例 |
+| scripts/verify-live.cjs | 推送後驗證（R12）：等 Netlify 最多 3 分鐘，比對正式站版號和 website/ 每個檔案 |
 | scripts/serif-chars.cjs / build-font.cjs | 找出標題用到的字／重建字型子集（需 Python＋fonttools、brotli） |
 | scripts/serif-subset-chars.txt | 目前字型子集收錄的字，由 build-font.cjs 寫入 |
 | DEPLOYMENT_LOG.md | 推送計畫、結果、回復基準與程序 |
@@ -55,7 +56,7 @@ index.html 用 id 查找：main、about、space、rooms、estimate、booking、f
 
 每次實質修改更新 HTML 檔首與 version meta（YYYY.MM.DD-nn），CSS/JS 的查詢版本同步。純文件更新不動網站版號。查公開 HTML 時加查詢字串排除快取。
 
-發布前執行 node --check website/script.js、node scripts/verify-release.cjs、git diff --check，並在瀏覽器檢查桌機與手機寬度、導覽、估價、照片視窗及聯絡入口。verify-release 從頁面讀版號，不用每次改腳本。title/description/OG/canonical/GA 仍和 772c285 基準比對，這些要改必須是刻意決定，改了再同步更新基準。
+發布前執行 node --check website/script.js、node scripts/verify-release.cjs、git diff --check，並在瀏覽器檢查桌機與手機寬度、導覽、估價、照片視窗及聯絡入口。推送後執行 `node scripts/verify-live.cjs`（R12），PASS 才算上線。verify-release 從頁面讀版號，不用每次改腳本。title/description/OG/canonical/GA 仍和 772c285 基準比對，這些要改必須是刻意決定，改了再同步更新基準。
 
 改版時刻意移除的舊功能：「目前營業中／休息中」狀態（2026-09 改版移除）。完全預約制下顯示「營業中」會引來沒預約的客人，不要加回來。
 
