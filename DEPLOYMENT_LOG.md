@@ -172,3 +172,15 @@
 - 同一個提交也會送出上一節 -06 的實際結果補記，以及 HANDOFF / HISTORY 更新。不帶 [skip netlify]。
 - 流程和 -06 一樣：git commit（E6）→ GitHub Desktop「Push origin」（R2）→ 監看 Netlify → 抓正式站驗證（E4/E7）。
 - 實際結果記在 release-20260924-07/release-receipt.json，並在下一次提交時補進本紀錄。
+
+### 實際結果（推送後補記，隨下一次提交送出）
+
+- Commit b3eea8622d4fe87b3493601f25152ab47d6f73e4，約 22:23 Asia/Taipei 經 GitHub Desktop「Push origin」推送；22:23:38 ls-remote main = b3eea86。
+- Netlify deploy 6ab53263c4a24f00089d56df：Published。
+- 22:24:01 正式站驗證：版號 2026.09.24-07；「看看環境」3 處、「店內環境」0 處、「旅館風景」0 處；頁尾 `</html>` 完整；11 個資源全部 HTTP 200，和本機一致，沒有 X-Robots-Tag。桌機導覽列顯示正常。手機寬度沒有重測（4 個字換 4 個字）。
+- 回執：release-20260924-07/release-receipt.json。
+
+### 補記提交（純文件，[skip netlify]）
+
+- KK 指示「Log 推上去」。這次只提交上面這段 -07 實際結果，website/ 不動。
+- 約定：純文件的 [skip netlify] 提交，推送結果**不再寫回本檔**（否則每次補記都會產生下一筆要補記的推送，沒完沒了），只記在 git 歷史和 release-20260924-07/docs-push-receipt.json。
