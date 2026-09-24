@@ -6,6 +6,14 @@
 
 ---
 
+## 2026-09-24 — 2026.09.24-04 正式上線完成
+
+- 網站 commit 58b79be56bf59a7aad619480ca799d2861054522 於 2026-09-24 21:04:32 Asia/Taipei 透過 GitHub Desktop 推送；UI 顯示 push complete，HEAD/origin/main 一致。
+- 2026-09-24 21:05:47 Asia/Taipei 確認公開版號 2026.09.24-04，11 個資源全部 HTTP 200 且與本機一致，無 noindex 標頭。
+- 正式站桌機與 390px 模擬確認日期試算、詢問文字及完整但書、錯誤日期防護；無橫向溢出及 console error/warn。SEO/GA 保留檢查與 44 案例先前通過。
+- 推送曾被自動審核服務使用額度中斷；使用者要求繼續後，以相同 Desktop 流程成功重試，沒有繞過審核。
+- 第二次提交只更新 README / HANDOFF / HISTORY / DEPLOYMENT_LOG，使用 [skip netlify]；SHA 與最終回執位置見部署紀錄。
+
 ## 2026-09-24 — 使用者授權發布 2026.09.24-04
 
 已完成日期試算、但書、敬稱及 FAQ 修訂，使用者說「好了可以 publish」。發布前語法、44 日期／價格案例、SEO/GA/圖片/FAQ 回歸通過。回復基準與每次推送流程見 DEPLOYMENT_LOG。以下完整歸檔發布前 HANDOFF，保留歷史狀態，不代表目前仍未獲授權。

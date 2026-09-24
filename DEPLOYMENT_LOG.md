@@ -92,3 +92,18 @@
 - 範圍：website/index.html、script.js、style.css、sitemap.xml、scripts/verify-release.cjs、README、HANDOFF、HISTORY、DEPLOYMENT_LOG。
 - 流程：核對差異 → GitHub Desktop commit → Push origin → 核對 HEAD/origin 與公開網站版號及資源 → 補記實際 SHA、時間與結果。此段於提交前寫入，不預先宣稱成功。
 - Push 2 計畫：僅記錄上線驗證結果與交接，使用 [skip netlify]；最終完成回執另存在上述備份目錄 release-receipt.json，避免為了記錄自己的 SHA 產生無限提交。
+
+### Push 1 — 實際結果
+
+- 網站 commit：58b79be56bf59a7aad619480ca799d2861054522；提交時間 2026-09-24 13:40:46 +08:00。
+- 推送操作時間：2026-09-24 21:04:32 Asia/Taipei；GitHub Desktop 顯示 push complete，HEAD = origin/main。
+- 第一次推送因自動核准審查服務使用額度不足未執行；使用者說「繼續」後，正常重試成功，未绕過審核。
+- 2026-09-24 21:05:47 Asia/Taipei，正式網站為 2026.09.24-04；11 個公開資源均 HTTP 200、Content-Type 正確、內容與本機一致（文字正規化換行），无 noindex 標頭。逐檔 SHA-256 與結果存在備份目錄 live-verification.json。
+- 正式站桌機詢問：日期、晚數、金額與完整但書符合預期；390px 顯示正常，同日入住退房會提示錯誤並停用詢問。無水平溢出、console error/warn；未發送 LINE 訊息，未冒稱真實手機實測。
+
+### Push 2 — 發布結果與交接文件
+
+- Summary：Record date calculator release verification [skip netlify]。
+- 僅 README / HANDOFF / HISTORY / DEPLOYMENT_LOG 四份文件，website/ 不再更動。
+- 流程：審閱文件 → GitHub Desktop commit → Push origin → 核對 UI 與 HEAD/origin，將最終 SHA/時間/同步結果記入 C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-04/release-receipt.json。
+- 本段在第二次提交前寫入；完成證據以該回執及遠端 Git 實際狀態為準，避免預先宣稱自身推送完成。
