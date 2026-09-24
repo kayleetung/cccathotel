@@ -135,3 +135,21 @@
 - 標題：`Record -05 deploy failure and cache-clear fix [skip netlify]`。
 - 推送後驗證：ls-remote 的 main 等於本機 HEAD；Netlify Deploys 列表該 commit 應為略過（skipped）而非新部署；正式站仍為 2026.09.24-05。
 - 本段寫在提交之前，不能記錄自己的 SHA；實際 SHA、推送時間與驗證結果存放在 C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-05/docs-push-receipt.json，並在下一次提交時補進本紀錄。
+
+### Push 2 — 實際結果（推送後補記，隨下一次提交送出）
+
+- Commit fb579c3bc6bd0edf5b73097a205edcb310223be9，約 22:10 Asia/Taipei 經 GitHub Desktop「Push origin」推送。
+- 22:10:58 驗證：ls-remote main = fb579c3，本機與 origin 同步；正式站仍為 2026.09.24-05；Netlify Deploys 列表沒有為 fb579c3 建立部署，published 仍是 main@d098b59，[skip netlify] 生效。
+- 回執：release-20260924-05/docs-push-receipt.json（路徑同上）。
+
+## 2026-09-24 — 導覽文案「店內環境」發布 2026.09.24-06
+
+### 授權與範圍（推送前寫入）
+
+- KK 覺得「旅館風景」不符合店的規模（小班制），討論後選定「店內環境」，並指示「改完直接推上去」。
+- 網站變更：index.html 內「旅館風景」3 處（桌機導覽、手機導覽、#space 區塊小標籤）改為「店內環境」；版號與 CSS/JS 查詢字串改成 -06；verify-release.cjs 的版號斷言同步更新。大標題、英文 AROUND THE HOUSE、SEO meta、GA、#space 錨點、sitemap 都沒動。
+- 基準：HEAD = origin/main = fb579c3bc6bd0edf5b73097a205edcb310223be9（回復時從此提交建立還原 commit，不 force push）。
+- 推送前檢查：node --check、verify-release PASS（SEO/GA/robots/六圖、9 FAQ、44 試算案例）、git diff --check 通過。
+- 同一個提交也會送出上一節「Push 2 實際結果」補記，以及 HANDOFF / HISTORY 更新。不帶 [skip netlify]，要觸發部署。
+- 流程：git commit（E6）→ GitHub Desktop「Push origin」（R2，computer-use 代操作）→ 監看 Netlify 部署 → 抓正式站驗證版號、文案與 11 個資源（E4/E7）。部署失敗就先用「Deploy project without cache」。
+- 本段寫在推送前；實際 SHA、時間與驗證結果記在 release-20260924-05 同層的 release-20260924-06/release-receipt.json，並在下一次提交時補進本紀錄。

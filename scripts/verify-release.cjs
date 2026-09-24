@@ -17,7 +17,7 @@ const ga=match(old,/<!-- Google tag \(gtag.js\) -->[\s\S]*?<\/script>\s*<script>
 assert(html.includes(ga),'Original GA block must remain verbatim');
 assert(!/noindex|analytics\.js|assets\/|aggregateRating/.test(html));
 assert(!html.includes('牠'));
-assert(html.includes('2026.09.24-05'));
+assert(html.includes('2026.09.24-06'));
 assert(html.trimEnd().endsWith('</html>'));
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
