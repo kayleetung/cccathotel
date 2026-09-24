@@ -153,3 +153,22 @@
 - 同一個提交也會送出上一節「Push 2 實際結果」補記，以及 HANDOFF / HISTORY 更新。不帶 [skip netlify]，要觸發部署。
 - 流程：git commit（E6）→ GitHub Desktop「Push origin」（R2，computer-use 代操作）→ 監看 Netlify 部署 → 抓正式站驗證版號、文案與 11 個資源（E4/E7）。部署失敗就先用「Deploy project without cache」。
 - 本段寫在推送前；實際 SHA、時間與驗證結果記在 release-20260924-05 同層的 release-20260924-06/release-receipt.json，並在下一次提交時補進本紀錄。
+
+### 實際結果（推送後補記，隨下一次提交送出）
+
+- Commit 358403fd126223898f4e877d13cae68b7375ac94，約 22:18 Asia/Taipei 經 GitHub Desktop「Push origin」推送；22:18:51 ls-remote main = 358403f。
+- Netlify deploy 6ab53144b51ce100082814ed：22:18:54–22:18:59 建置 5 秒，Published，1 個新檔案。清快取後第一次自動部署正常，沒有再發生 E7 的問題。
+- 22:19:53 正式站驗證：版號 2026.09.24-06；「旅館風景」0 處、「店內環境」3 處；頁尾 `</html>` 完整；11 個資源全部 HTTP 200，和本機一致，沒有 X-Robots-Tag。桌機導覽列顯示正常。手機寬度沒有重測（4 個字換 4 個字）。
+- 回執：release-20260924-06/release-receipt.json。
+
+## 2026-09-24 — 導覽文案改為「看看環境」發布 2026.09.24-07
+
+### 授權與範圍（推送前寫入）
+
+- KK 改變心意，認為「看看環境」比「店內環境」更符合網站整體語氣，並在確認後指示「好, 推上去」。
+- 網站變更：index.html 內「店內環境」3 處（桌機導覽、手機導覽、#space 區塊小標籤）改為「看看環境」；版號與 CSS/JS 查詢字串改成 -07；verify-release.cjs 的版號斷言同步更新。其他內容都沒動。
+- 基準：HEAD = origin/main = 358403fd126223898f4e877d13cae68b7375ac94（回復時從此提交建立還原 commit，不 force push）。
+- 推送前檢查：node --check、verify-release PASS、git diff --check 通過。
+- 同一個提交也會送出上一節 -06 的實際結果補記，以及 HANDOFF / HISTORY 更新。不帶 [skip netlify]。
+- 流程和 -06 一樣：git commit（E6）→ GitHub Desktop「Push origin」（R2）→ 監看 Netlify → 抓正式站驗證（E4/E7）。
+- 實際結果記在 release-20260924-07/release-receipt.json，並在下一次提交時補進本紀錄。
