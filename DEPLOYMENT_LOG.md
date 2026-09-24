@@ -61,3 +61,34 @@
 2. 不假設 Netlify 回復會還原 GitHub。Git 端應建立回復 commit，恢復基準 `website/` 完整內容並移除此次新增的 CSS/JS；保留文件歷史。
 3. 透過 GitHub Desktop 提交與推送回復，記錄原因、SHA、時間，再檢查公開網站版號及資源。
 4. 不 reset 遠端、不 force push、不修改 DNS；已產生的訪問、分析與 LINE 訊息無法倒帶。
+
+## 2026-09-24 — 日期試算候選版（尚未推送）
+
+- 本機版本 2026.09.24-01：改用入住／退房月曆，自動晚數估價與詢問日期。網站四檔、驗證腳本及交接文件已更新。
+- 已通過語法、44 個日期／價格案例與原 SEO/GA/資源回歸，完成桌機及 320px 瀏覽器檢查；先交付本機預覽。
+- 此次沒有 commit 或 push，不產生新部署；正式發布仍是上一節記錄的 2026.09.23-01。未改 DNS、Netlify 設定或登入任何管理後台。
+- 後續若部署：檢查本次差異 → GitHub Desktop 提交與推送 → 記錄 SHA/時間/結果 → 核對公開版號與資源。不可預先填寫「已上線」。
+
+- 2026-09-24 後續本機修訂 2026.09.24-02：依使用者要求補充估價但書，畫面與詢問文字同步；未 commit / push，未部署。
+
+- 2026-09-24 後續本機修訂 2026.09.24-03：網站全站敬稱改為「您」，FAQ 結構化資料同步；未 commit / push，未部署。
+
+- 2026-09-24 後續本機修訂 2026.09.24-04：依 7 則註記補充 FAQ，畫面與 JSON-LD 同步；未 commit / push，未部署。
+
+## 2026-09-24 — 授權發布 2026.09.24-04
+
+使用者確認「好了可以 publish」。此次包含已預覽的日期試算、完整估價但書、全站敬稱及 FAQ 七項補充；動畫仍暫停。
+
+### 發布基準與驗證
+
+- GitHub Desktop 已顯示 cccathotel / main；HEAD 與 origin/main 均為 9269feb5b96e402f7a254d61e6cd417bc8c64c97。
+- 回復備份：C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-04/pre-release-9269feb.zip；candidate-website 保存待發布網站。需要回復時，從此 Git 基準建立恢復 website/ 的新 commit，透過 Desktop 推送，保留文件歷史，不 force push。
+- 語法、git diff --check、原 SEO/GA/robots/六圖、9 FAQ 配對與 44 日期／價格案例通過。既有本機桌機及 320px 互動檢查完成。
+- 僅 9 個已追蹤檔案有變更，.claude/ 排除；未改 DNS、Netlify 設定、GA 或網站照片。
+
+### Push 1 — 網站與修訂紀錄（準備）
+
+- 預定 summary：Publish date calculator and FAQ updates (v2026.09.24-04)。
+- 範圍：website/index.html、script.js、style.css、sitemap.xml、scripts/verify-release.cjs、README、HANDOFF、HISTORY、DEPLOYMENT_LOG。
+- 流程：核對差異 → GitHub Desktop commit → Push origin → 核對 HEAD/origin 與公開網站版號及資源 → 補記實際 SHA、時間與結果。此段於提交前寫入，不預先宣稱成功。
+- Push 2 計畫：僅記錄上線驗證結果與交接，使用 [skip netlify]；最終完成回執另存在上述備份目錄 release-receipt.json，避免為了記錄自己的 SHA 產生無限提交。

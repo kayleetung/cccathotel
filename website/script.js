@@ -4,25 +4,58 @@ const roomData = { classic: {name:'經典房',base:600,max:2}, duplex:{name:'加
 const money = (value) => value.toLocaleString('zh-TW');
 const roomSelect = $('#calc-room');
 const catsSelect = $('#calc-cats');
-const nightsInput = $('#calc-nights');
-function normalizeNights() {
-  const raw = Number(nightsInput.value);
-  return Math.max(1, Math.min(365, Number.isFinite(raw) ? Math.trunc(raw) : 1));
+const checkInInput = $('#calc-checkin');
+const checkOutInput = $('#calc-checkout');
+const DAY_MS = 86400000;
+// Calendar dates, not elapsed local hours: DST and the visitor's timezone must not change the night count.
+function dateDay(value) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+  const stamp = Date.parse(`${value}T00:00:00Z`);
+  return Number.isFinite(stamp) && new Date(stamp).toISOString().slice(0,10) === value ? stamp / DAY_MS : null;
+}
+function dateAfter(value,days) { return new Date((dateDay(value)+days)*DAY_MS).toISOString().slice(0,10); }
+function taipeiToday(now=new Date()) {
+  const parts=new Intl.DateTimeFormat('en-US',{timeZone:'Asia/Taipei',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(now);
+  const part=type=>parts.find(p=>p.type===type).value;
+  return `${part('year')}-${part('month')}-${part('day')}`;
+}
+function stayDates(today=taipeiToday()) {
+  const checkin=checkInInput.value,checkout=checkOutInput.value;
+  const start=dateDay(checkin),end=dateDay(checkout);
+  if(start===null||end===null) return {valid:false,error:'請選擇入住與退房日期，為您計算住宿晚數。'};
+  if(start<dateDay(today)) return {valid:false,error:'入住日期不能早於今天，請重新選擇。',field:checkInInput};
+  const nights=end-start;
+  if(nights<1) return {valid:false,error:'退房日期須晚於入住日期，至少住宿 1 晚。',field:checkOutInput};
+  if(nights>365) return {valid:false,error:'此處可試算最多 365 晚，更長住宿請直接透過 LINE 洽詢。',field:checkOutInput};
+  return {valid:true,checkin,checkout,nights};
 }
 function estimate() {
+  const stay=stayDates();
+  if(!stay.valid) return null;
   const room = roomData[roomSelect.value];
   const cats = Number(catsSelect.value);
-  const nights = normalizeNights();
+  const {nights,checkin,checkout} = stay;
   const extra = (cats - 1) * 200;
   const total = (room.base + extra) * nights;
-  return {room,cats,nights,extra,total};
+  return {room,cats,nights,extra,total,checkin,checkout};
 }
 function renderEstimate() {
+  const today=taipeiToday();
+  checkInInput.min=today;
+  const selected=dateDay(checkInInput.value);
+  const earliest=selected!==null&&checkInInput.value>=today ? checkInInput.value : today;
+  checkOutInput.min=dateAfter(earliest,1);
+  checkOutInput.max=dateAfter(earliest,365);
+  const stay=stayDates(today);
+  [checkInInput,checkOutInput].forEach(input=>input.removeAttribute('aria-invalid'));
+  $('#date-help').classList.toggle('date-error',Boolean(stay.field));
+  if(stay.field) stay.field.setAttribute('aria-invalid','true');
+  $('#inquiry-open').disabled=!stay.valid;
+  $('#date-help').textContent=stay.valid?`共 ${stay.nights} 晚 · 以入住至退房的日期差計算。`:stay.error;
+  if(!stay.valid){$('#calc-breakdown').textContent='選好日期後，即可查看平日住宿估算。';$('#calc-total').textContent='—';return;}
   const {room,cats,nights,extra,total} = estimate();
   $('#calc-breakdown').textContent = extra ? `${room.name}（NT$${money(room.base)} + 加 ${cats - 1} 貓 NT$${money(extra)}）× ${nights} 晚` : `${room.name} NT$${money(room.base)} × ${nights} 晚`;
   $('#calc-total').innerHTML = `NT$ <strong>${money(total)}</strong>`;
-  $('#minus').disabled = nights <= 1;
-  $('#plus').disabled = nights >= 365;
 }
 function changeRoom() {
   const previous = Number(catsSelect.value);
@@ -33,10 +66,16 @@ function changeRoom() {
 }
 roomSelect.addEventListener('change',changeRoom);
 catsSelect.addEventListener('change',renderEstimate);
-nightsInput.addEventListener('input',renderEstimate);
-nightsInput.addEventListener('change',()=>{nightsInput.value = normalizeNights();renderEstimate();});
-$('#minus').addEventListener('click',()=>{nightsInput.value = Math.max(1,normalizeNights()-1);renderEstimate();});
-$('#plus').addEventListener('click',()=>{nightsInput.value = Math.min(365,normalizeNights()+1);renderEstimate();});
+[checkInInput,checkOutInput].forEach(input=>{
+  input.addEventListener('input',renderEstimate);
+  input.addEventListener('change',renderEstimate);
+  input.addEventListener('click',()=>{
+    // Supported browsers open the calendar when any part of the field is clicked.
+    // Native date controls remain available when showPicker is unavailable/restricted.
+    if(typeof input.showPicker==='function') { try { input.showPicker(); } catch {} }
+  });
+});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderEstimate();});
 document.querySelectorAll('[data-room]').forEach(button=>button.addEventListener('click',()=>{
   roomSelect.value = button.dataset.room;
   changeRoom();
@@ -76,10 +115,11 @@ document.querySelectorAll('dialog').forEach(dialog=>{
   dialog.addEventListener('click',event=>{if(event.target===dialog){const bounds=dialog.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)dialog.close();}});
 });
 $('#inquiry-open').addEventListener('click',()=>{
-  nightsInput.value=normalizeNights();
   renderEstimate();
-  const {room,cats,nights,total}=estimate();
-  $('#inquiry-text').value=`你好，想詢問希希貓旅的空房！\n房型：${room.name}\n貓咪數量：${cats} 隻\n住宿：${nights} 晚\n入住日期：（請填寫）\n平日住宿估算：NT$${money(total)}\n再麻煩協助確認房況與實際費用，謝謝！`;
+  const result=estimate();
+  if(!result)return;
+  const {room,cats,nights,total,checkin,checkout}=result;
+  $('#inquiry-text').value=`您好，想詢問希希貓旅的空房！\n房型：${room.name}\n貓咪數量：${cats} 隻\n入住日期：${checkin.replaceAll('-','/')}\n退房日期：${checkout.replaceAll('-','/')}\n住宿：${nights} 晚\n平日住宿估算：NT$${money(total)}\n${$('#estimate-disclaimer').textContent}\n再麻煩協助確認房況與實際費用，謝謝！`;
   $('#copy-status').textContent='此步驟僅整理需求，尚未預訂或送出訊息。';
   $('#copy-inquiry').innerHTML='複製詢問內容 <span aria-hidden="true">⧉</span>';
   openDialog($('#inquiry-dialog'));
@@ -91,7 +131,7 @@ $('#copy-inquiry').addEventListener('click',async()=>{
     textarea.focus();textarea.select();
     try{success=document.execCommand('copy');}catch{success=false;}
   }
-  $('#copy-status').textContent=success?'已複製！開啟 LINE 後貼上，再補上入住日期即可。':'已選取內容，請按 Ctrl+C（Mac：⌘C）複製，再到 LINE 貼上。';
+  $('#copy-status').textContent=success?'已複製！日期與住宿需求已帶入，開啟 LINE 後貼上即可。':'已選取內容，請按 Ctrl+C（Mac：⌘C）複製，再到 LINE 貼上。';
   if(success)$('#copy-inquiry').innerHTML='已複製 <span aria-hidden="true">✓</span>';
 });
 $('#year').textContent=new Date().getFullYear();

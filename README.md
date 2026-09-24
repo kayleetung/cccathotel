@@ -25,6 +25,12 @@ index.html 用 id 查找：main、about、space、rooms、estimate、booking、f
 
 地址、電話、LINE、字號、房價與時間只在 index.html 維護（R9）。改價格時同步核對 script.js 的試算邏輯及驗證案例；改 FAQ 時同步 JSON-LD，不讓畫面與機器資料不同。
 
+## 住宿日期試算
+
+入住與退房使用原生 date 欄位（calc-checkin / calc-checkout），點選開啟裝置月曆。初始留空，選好有效日期才顯示金額並啟用詢問。以台北日期限制不可選過去入住日，以 UTC 日序差計算晚數，避免時區或日光節約時間造成偏差；維持原本 1–365 晚試算範圍。退房不得與入住同日或更早，錯誤時清除估價並提示修正。詢問視窗自動帶入兩個日期，並讀取 HTML 的 estimate-disclaimer，讓畫面與複製內容的估價但書維持一致。
+
+日期僅供預算試算，不代表有空房。平日費率與特殊假期、長住需另確認的說明維持既有設定。桌機並排兩欄，手機上下排列；原生月曆外觀隨作業系統與瀏覽器不同。此功能目前在本機候選版，發布狀態以 HANDOFF 為準。
+
 ## SEO 與外部依賴
 
 保留原 title、description、OG/Twitter、canonical、GA head 原碼、robots 與 JPG URL。LocalBusiness 保留原商家欄位，僅省略尚未核實的 geo；不加入自評星等。FAQPage 與九題可見內容一致。不要為了 SEO 捏造座標或評論。
