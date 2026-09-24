@@ -107,3 +107,11 @@
 - 僅 README / HANDOFF / HISTORY / DEPLOYMENT_LOG 四份文件，website/ 不再更動。
 - 流程：審閱文件 → GitHub Desktop commit → Push origin → 核對 UI 與 HEAD/origin，將最終 SHA/時間/同步結果記入 C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-04/release-receipt.json。
 - 本段在第二次提交前寫入；完成證據以該回執及遠端 Git 實際狀態為準，避免預先宣稱自身推送完成。
+
+## 2026-09-24 — 首頁副標發布 2026.09.24-05
+
+- 使用者指示「直接推送」。僅將首頁副標改為「有安心休息的角落，也有自在探索的空間。」並同步版號與資源查詢字串；SEO meta、GA、試算邏輯、圖片未變。
+- 回復基準 ef729113e629f80101288f04ed6a91d45a554f5b，完整備份 C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-05/pre-release.zip。
+- 發布前既有 SEO/資源/FAQ 與 44 試算案例通過，git diff --check 通過。
+- Push 1 預定標題：Refine homepage introduction (v2026.09.24-05)。範圍為 index.html、驗證腳本、HANDOFF、HISTORY、DEPLOYMENT_LOG 五檔，排除 .claude/。
+- 流程：GitHub Desktop commit → Push origin → 公開首頁版號、文案與檔案比對。Push 2 僅回寫結果，標題使用 [skip netlify]。最終 SHA 與時間回執保存 C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/release-20260924-05/release-receipt.json。此段為推送前計畫，實際結果另補。
