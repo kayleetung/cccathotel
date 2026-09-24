@@ -1,45 +1,30 @@
 # HANDOFF — 目前狀態
 
-開工先讀本檔，再讀 [RULES.md](RULES.md) 全文。系統參考 [README.md](README.md)，所有推送流程看 [DEPLOYMENT_LOG.md](DEPLOYMENT_LOG.md)，完整沿革看 [HISTORY.md](HISTORY.md)。
+開工先讀本檔，再讀 [RULES.md](RULES.md) 全文。系統參考 [README.md](README.md)，每次推送看 [DEPLOYMENT_LOG.md](DEPLOYMENT_LOG.md)，完整沿革看 [HISTORY.md](HISTORY.md)。
 
 ## 目前狀態
 
-- 已上線：2026.09.24-05（網站提交 d098b59）。2026-09-24 22:07 經 Netlify「Deploy project without cache」重新部署成功，22:08 核對公開網站 11 個資源與本機一致。
-- 注意：d098b59 在 21:20 的自動部署**失敗**（Netlify 建置快取損壞，Node 安裝撞到殘留目錄後改走原始碼編譯，18 分鐘超時），正式站停在 -04 約 47 分鐘沒人發現。之後每次推送都要抓公開網站確認版號，失敗就先試不帶快取重新部署（RULES E7）。細節見 DEPLOYMENT_LOG。
-- 歷次與本次推送流程見 DEPLOYMENT_LOG；遠端同步以 Git 與公開網站實際內容核對。
-- 部署來源是 C:\dev\cccathotel\website；C:\dev\CCCat-Design-Offline 是已接受的設計草稿，不是自動部署來源。
-- 已備份原網站與完整 Git bundle，回復基準為 772c285c915085d48df8641d439c18f29a4342db；位置與回復步驟見部署紀錄。
-- 新版拆為 index.html / style.css / script.js，原六張根目錄 JPG 保留。無建置流程、無新服務依賴。
-- 原 title、description、OG/Twitter、canonical、robots、GA 原碼與圖片 URL 保留。LocalBusiness 只省略尚未核實的 geo，FAQ 與可見內容同步；詳細理由見部署紀錄。
-- 使用者偏好：網站對客人統一使用「您」；避免使用「牠」，用寶貝、貓咪或自然省略；走廊照片稱店內實景，加高房是上下連通的經典房。商家事實只以 index.html 為準。
+- 網站版號與驗證結果看 DEPLOYMENT_LOG 最下方的「發布紀錄」表（簡化格式，2026-09-24 起）。截至本檔更新時，-08 已推送；正式站實際版號以公開 HTML 為準（E4）。
+- 網站在 2026-09 改版後拆成 index.html／style.css／script.js，另有 fonts/cc-serif.woff2（標題字型子集）。無 build、無 npm。部署：GitHub Desktop push → Netlify 發布 website/。
+- **改了任何標題（h1/h2/h3）、品牌名或關於區引言 → 要跑 `node scripts/build-font.cjs`**，不然 verify-release 會擋下。原因和做法見 README「SEO 與外部依賴」。
+- 推送後一定要抓正式站確認版號。Netlify 部署失敗的處理見 RULES E7。
+- 回復來源是 Git。Codex 在 `.codex\visualizations\...` 的備份檔只是額外備份，不要依賴。
+- 使用者偏好：網站對客人統一用「您」；不用「牠」，改用寶貝、貓咪或自然省略；走廊照片稱店內實景；加高房是上下連通的經典房。商家事實只以 index.html 為準（R9）。
 
-## 未上線的每日回報動畫提案（2026-09-24）
+## 待 KK 處理
 
-- 使用者已要求先放下動畫，優先處理日期試算；不要繼續整合動畫。
+- **GA 後台**：把 `line_click`、`phone_click` 標成「重要事件」（管理 → 事件）。事件大約 24 小時後才會出現在清單裡，即時報表可以馬上看到。Claude 不動 GA 後台（R5）。
+- 素材：真實每日回報截圖、經營者故事、訂金／取消政策。網站最缺的是「證據」，不捏造（R7）。
+- 每日回報動畫小樣：已暫停，沒有整合進網站。桌面副本在 C:/Users/kaytu/OneDrive/Desktop/希希每日回報動畫小樣-20260924/index.html。
 
-- 使用者希望用模擬 LINE 打字動畫呈現飯飯照片、探索及睡覺／玩耍，已製作獨立示意小樣。
-- 桌面離線副本：C:/Users/kaytu/OneDrive/Desktop/希希每日回報動畫小樣-20260924/index.html，可直接雙擊開啟。
-- 工作檔：C:/Users/kaytu/.codex/visualizations/2026/09/08/01a07ffc-e124-7040-a7e8-c8a7ab5652a1/daily-note-preview/index.html；同資料夾 README 說明功能與文案位置。
-- 兩種個性、三個日常片段、33 秒一次播放，使用原創 SVG 插畫及明確示意標籤。尚待使用者看效果，沒有整合 website/，本次沒有 commit 或 push。
-- 不得把先前部署授權視為此新提案已確認上線。
+## 限制
 
-## 驗證與下一步
-
-- 2026.09.24-07：導覽與 #space 小標籤改為「看看環境」（KK 認為比 -06 的「店內環境」更符合整體語氣）。推送與驗證結果見 DEPLOYMENT_LOG。
-- 2026.09.24-06：「旅館風景」改為「店內環境」（KK 認為「風景」和小班制規模不符），已上線，後來被 -07 取代。
-- 2026.09.24-05：首頁副標「躲懶」改為「有安心休息的角落，也有自在探索的空間。」已上線並驗證（見上）。
-- 2026.09.24-04：日期月曆試算、估價但書、敬稱及 FAQ 七項補充，已上線。回復基準 9269feb5b96e402f7a254d61e6cd417bc8c64c97，備份位置見部署紀錄。動畫與 .claude/ 不包含在網站發布。
-- 原 SEO meta / canonical / GA / robots / 六圖保留；9 FAQ 可見內容與 JSON-LD 一致；44 日期／價格案例通過。已有本機桌機、320px 模擬與詢問文字驗證；正式站桌機與 390px 驗證通過：金額、日期、但書、錯誤日期禁用詢問、無橫向溢出或 console error/warn。未宣稱實機測試。
-
-## 限制與後續
-
-- Netlify 後台：KK 的 Chrome 已登入，專案名 cccatwebsite（https://app.netlify.com/projects/cccatwebsite/deploys）。Claude 只在 KK 當次明確要求時代操作，不改設定、不登入（R8）。可靠回復來源仍為 Git 基準與備份。
-- 未實測真實 iPhone/Android 的 LINE App 喚起、虛擬鍵盤。瀏覽器模擬不等於實機。
-- 無 Search Console / GA 管理介面權限，不能宣稱排名不變、已收錄或 GA 後台收到事件。
-- 好評、每日回報範例、經營者故事素材與訂金/取消政策仍待使用者提供或確認；不捏造。
-- 不新增自評星等、不修改 GA、不改 DNS/Netlify 發布設定，不刪歷史、不 force push。
+- Netlify 後台：KK 的 Chrome 已登入，專案名 cccatwebsite。Claude 只在 KK 當次明確要求時代操作，不改設定、不登入（R8）。
+- 沒有在 iPhone／Android 實機測試 LINE App 跳轉和虛擬鍵盤。iPhone 字型問題是 KK 用實機確認的，-08 修正後也要請 KK 用 iPhone 再看一次。
+- 沒有 Search Console／GA 管理權限，不能宣稱排名、收錄或事件已被 GA 收到。
+- 不加自評星等（R6）、不改 GA 原碼（R5）、不改 DNS／Netlify 設定（R3）、不刪歷史、不 force push。
 
 ## 最近 2 個 session
 
-- 2026-09-24 晚（Claude Code）：發現 -05 推送後部署失敗、正式站仍為 -04；依 Netlify 診斷判定為建置快取損壞，經 KK 要求代操作不帶快取重新部署，-05 上線並驗證。新增 RULES E7。
-- 2026-09-24（Codex）：先做每日回報獨立動畫提案，後依使用者要求暫停；完成日期試算、但書、敬稱與 FAQ 修訂，獲授權並發布 2026.09.24-04；另推送 -05 文案（部署失敗未察覺，見上）。
+- 2026-09-24 晚（Claude Code）：修好 -05 部署失敗（Netlify 快取，E7）；導覽文案改兩次到「看看環境」（-06、-07）；全面檢視 Codex 的成果；-08 修正 iPhone 標題字型（自己託管字型子集）、加 GA 轉換事件、補正確座標（舊座標偏北 2.7 km）、加 Google 評論連結、清理 CSS、簡化測試與發布紀錄格式。
+- 2026-09-24（Codex）：日期月曆試算、估價但書、敬稱與 FAQ 修訂，發布 -04；推送 -05 文案（部署失敗沒有發現）。每日回報動畫小樣暫停。

@@ -135,3 +135,21 @@ $('#copy-inquiry').addEventListener('click',async()=>{
   if(success)$('#copy-inquiry').innerHTML='已複製 <span aria-hidden="true">✓</span>';
 });
 $('#year').textContent=new Date().getFullYear();
+
+// Conversion events for GA4. The gtag snippet in <head> stays untouched (RULES R5); this only calls it.
+function track(name,params){if(typeof gtag==='function')gtag('event',name,params);}
+function placeOf(el){
+  const zone=el.closest('.announcement,.header,.mobile-dock,.hero,#rooms,#estimate,#booking,#faq,#contact,dialog');
+  if(!zone)return 'other';
+  return zone.id||zone.classList[0]||zone.tagName.toLowerCase();
+}
+document.addEventListener('click',event=>{
+  const link=event.target.closest('a[href]');
+  if(!link)return;
+  const href=link.getAttribute('href');
+  if(href.startsWith('https://line.me/'))track('line_click',{link_location:placeOf(link)});
+  else if(href.startsWith('tel:'))track('phone_click',{link_location:placeOf(link)});
+  else if(href.startsWith('https://maps.google.com/'))track('map_click',{link_location:placeOf(link),link_text:link.textContent.replace('↗','').trim()});
+});
+$('#inquiry-open').addEventListener('click',()=>track('inquiry_open',{room:roomSelect.value}));
+$('#copy-inquiry').addEventListener('click',()=>track('inquiry_copy',{room:roomSelect.value}));

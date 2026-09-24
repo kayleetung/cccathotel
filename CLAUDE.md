@@ -14,7 +14,8 @@
 
 - 系統結構／§ 區塊索引 → README.md
 - 沿革／「為什麼 X 長這樣」→ HISTORY.md
-- 網站本體＋商家事實 → `website/index.html`（用 README 的 § 索引 Ctrl-F 定位，不要整檔讀進 context）
+- 網站本體＋商家事實 → `website/index.html`（約 240 行）＋ `style.css` ＋ `script.js`（檔案用途與 id 索引見 README）
+- 每次推送的計畫與結果 → DEPLOYMENT_LOG.md
 
 ## repo 位置
 

@@ -15,7 +15,8 @@
 2. **RULES.md — 讀全文**。這是憲法，很短，撐得住。動手前要能引用條號。
 3. **按任務再讀**：要懂系統結構 → README.md（含 § 區塊索引）；查「為什麼 X 長這樣」→ HISTORY.md。
 
-不要一開始就把 index.html 整檔讀進工作記憶（1400+ 行）。用 README 的 § 索引 Ctrl-F 定位需要的段。
+網站在 2026-09 改版後拆成 index.html（約 240 行）、style.css、script.js 三個檔，不大，可以直接讀。
+檔案用途、id 索引、字型子集、GA 事件的說明都在 README。
 
 > 用 Claude Code 時，1.／2.（HANDOFF.md／RULES.md）已由 CLAUDE.md 的 `@import` 自動載入 context，
 > 不用手動 Read；上面的順序是心智模型，不是操作步驟。

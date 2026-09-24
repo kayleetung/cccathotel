@@ -1,6 +1,10 @@
 # Deployment log
 
-每次 push 都必須新增計畫與結果。未取得實際證據前，不得把「預計」寫成「已完成」。
+每次 push 都要留紀錄。沒有實際證據之前，不得把「預計」寫成「已完成」。
+
+**2026-09-24 起的簡化格式**（兩人公司的靜態網站不需要每次都寫計畫＋回執＋補記）：推送前在最下方「發布紀錄」表加一列，填上日期、版號、內容、授權；推送並驗證後，在同一列補上 SHA 和驗證結果，跟**下一次**提交一起送出。純文件的 [skip netlify] 提交不用記錄，git 歷史就是紀錄。遇到失敗、回復或特殊狀況，才另外寫一段說明（像下面 -05 的部署失敗）。回復來源是 Git，不靠外部備份檔。
+
+以下 2026-09-23 至 09-24 -07 的長篇紀錄是舊格式，保留不改（R11）。
 
 ## 2026-09-23 — redesign release 2026.09.23-01
 
@@ -43,7 +47,7 @@
 - 發布前已完成：node 語法檢查、git diff --check、verify-release（原 SEO/GA/robots、六張圖片、9 FAQ、36 試算案例與房型上限切換）。
 - 瀏覽器實測：桌機視覺；320px 導覽開合、4 貓 7 晚試算、詢問視窗與複製；390px 相簿開關與換頁、FAQ 展開；430px 無水平溢出，無已載入壞圖、無 console error/warn。真實手機限制仍保留。
 - GitHub Desktop 顯示此次預定 9 個檔案，.claude/ 未列入。介面初始未刷新，互動後顯示正確變更；未改儲存庫設定。
-- 2026-09-24 00:01:20 Asia/Taipei：公開首頁、CSS、JS、robots、sitemap、六張 JPG 共 11 個資源皆 HTTP 200、Content-Type 正確，内容與本機一致（文字只正規化換行，圖片逐位元組相同），無 X-Robots-Tag noindex。
+- 2026-09-24 00:01:20 Asia/Taipei：公開首頁、CSS、JS、robots、sitemap、六張 JPG 共 11 個資源皆 HTTP 200、Content-Type 正確，內容與本機一致（文字只正規化換行，圖片逐位元組相同），無 X-Robots-Tag noindex。
 - 公開頁面版號 2026.09.23-01；Server=Netlify；canonical 仍是原首頁。完整比對結果與 SHA-256 存在備份目錄 live-verification.json。
 - 正式站瀏覽器：桌機首頁至 footer 正常；390px 手機選單、2 晚試算、詢問視窗及 LINE URL 正常；無橫向溢出、已載入壞圖或 console error/warn。未操作 LINE 發送，也未宣稱真實手機 App 實測。
 
@@ -97,8 +101,8 @@
 
 - 網站 commit：58b79be56bf59a7aad619480ca799d2861054522；提交時間 2026-09-24 13:40:46 +08:00。
 - 推送操作時間：2026-09-24 21:04:32 Asia/Taipei；GitHub Desktop 顯示 push complete，HEAD = origin/main。
-- 第一次推送因自動核准審查服務使用額度不足未執行；使用者說「繼續」後，正常重試成功，未绕過審核。
-- 2026-09-24 21:05:47 Asia/Taipei，正式網站為 2026.09.24-04；11 個公開資源均 HTTP 200、Content-Type 正確、內容與本機一致（文字正規化換行），无 noindex 標頭。逐檔 SHA-256 與結果存在備份目錄 live-verification.json。
+- 第一次推送因自動核准審查服務使用額度不足未執行；使用者說「繼續」後，正常重試成功，未繞過審核。
+- 2026-09-24 21:05:47 Asia/Taipei，正式網站為 2026.09.24-04；11 個公開資源均 HTTP 200、Content-Type 正確、內容與本機一致（文字正規化換行），無 noindex 標頭。逐檔 SHA-256 與結果存在備份目錄 live-verification.json。
 - 正式站桌機詢問：日期、晚數、金額與完整但書符合預期；390px 顯示正常，同日入住退房會提示錯誤並停用詢問。無水平溢出、console error/warn；未發送 LINE 訊息，未冒稱真實手機實測。
 
 ### Push 2 — 發布結果與交接文件
@@ -184,3 +188,9 @@
 
 - KK 指示「Log 推上去」。這次只提交上面這段 -07 實際結果，website/ 不動。
 - 約定：純文件的 [skip netlify] 提交，推送結果**不再寫回本檔**（否則每次補記都會產生下一筆要補記的推送，沒完沒了），只記在 git 歷史和 release-20260924-07/docs-push-receipt.json。
+
+## 發布紀錄（簡化格式）
+
+| 日期 | 版號 | 內容 | 授權 | Commit | 驗證 |
+|---|---|---|---|---|---|
+| 2026-09-24 | 2026.09.24-08 | 標題字型改為自己託管的 Noto Serif TC 子集（修 iPhone 字型不同）；GA 事件 line_click／phone_click／map_click／inquiry_*；LocalBusiness 補正確 geo 和 hasMap；地圖連結改到商家頁；加「Google 評論」連結；刪除沒在用的 CSS；verify-release 改成從頁面讀版號，並檢查 schema 和畫面一致、字型是否涵蓋所有標題字 | KK：「做完直接推」 | 待補 | 待補 |

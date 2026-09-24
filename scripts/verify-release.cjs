@@ -17,8 +17,18 @@ const ga=match(old,/<!-- Google tag \(gtag.js\) -->[\s\S]*?<\/script>\s*<script>
 assert(html.includes(ga),'Original GA block must remain verbatim');
 assert(!/noindex|analytics\.js|assets\/|aggregateRating/.test(html));
 assert(!html.includes('牠'));
-assert(html.includes('2026.09.24-07'));
+// Version: read it from the page instead of hard-coding it, then require every copy to agree.
+const version=match(html,/<meta name="version" content="(\d{4}\.\d{2}\.\d{2}-\d{2})">/).match(/\d{4}\.\d{2}\.\d{2}-\d{2}/)[0];
+assert(html.includes(`<!-- SITE VERSION: ${version} -->`),'SITE VERSION comment must match meta version');
+const query=version.replace(/\./g,'');
+assert(html.includes(`style.css?v=${query}`)&&html.includes(`script.js?v=${query}`),'CSS/JS cache queries must match meta version');
 assert(html.trimEnd().endsWith('</html>'));
+// Heading font subset must contain every character the headings use (else iPhone shows mixed fonts).
+const {serifChars}=require('./serif-chars.cjs');
+const built=fs.readFileSync(path.join(__dirname,'serif-subset-chars.txt'),'utf8');
+const missingGlyphs=[...serifChars(html)].filter(c=>!built.includes(c));
+assert.equal(missingGlyphs.join(''),'','Heading characters missing from cc-serif.woff2 — run: node scripts/build-font.cjs');
+assert(fs.existsSync(path.join(site,'fonts','cc-serif.woff2')));
 assert.equal((html.match(/<h1\b/g)||[]).length,1);
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
 assert.equal(ids.length,new Set(ids).size);
@@ -30,11 +40,16 @@ for(const [,attr,url] of html.matchAll(/\b(src|href)="([^"]+)"/g)){
 }
 for(const m of html.matchAll(/<img\b([^>]+)>/g))assert(/\balt="[^"]*"/.test(m[1]));
 const schemas=s=>[...s.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>JSON.parse(m[1]));
-const oldBusiness=schemas(old).find(s=>s['@type']==='LocalBusiness');
-const business=schemas(html).find(s=>s['@type']==='LocalBusiness');
-for(const [key,val] of Object.entries(oldBusiness))if(key!=='geo')assert.deepEqual(business[key],val,`Business field ${key}`);
-assert(!business.geo);
+// LocalBusiness: facts live in index.html (R9), so check the schema agrees with the visible page
+// rather than freezing it to the July baseline.
 const plain=s=>s.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();
+const business=schemas(html).find(s=>s['@type']==='LocalBusiness');
+for(const key of ['name','telephone','address','openingHoursSpecification','image','url','sameAs'])assert(business[key],`Business field ${key} missing`);
+assert(html.includes(`tel:${business.telephone.replace(/\D/g,'')}`),'Schema telephone must match tel: links');
+const squash=s=>s.replace(/\s/g,'');
+assert(squash(plain(html.split('<body>')[1])).includes(squash(business.address.streetAddress)),'Schema street address must appear on the page');
+if(business.geo){const {latitude:lat,longitude:lng}=business.geo;assert(lat>22.4&&lat<23.5&&lng>120.1&&lng<121,'geo must be inside Kaohsiung');}
+assert(!('aggregateRating' in business)&&!('review' in business),'No self-serving ratings (R6)');
 const faq=schemas(html).find(s=>s['@type']==='FAQPage').mainEntity;
 const visible=[...html.matchAll(/<details><summary>(.*?)<\/summary><div>([\s\S]*?)<\/div><\/details>/g)];
 assert.equal(faq.length,9);assert.equal(visible.length,9);
