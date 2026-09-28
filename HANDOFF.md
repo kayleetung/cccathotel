@@ -26,11 +26,11 @@
 ## 限制
 
 - Netlify 後台：KK 的 Chrome 已登入，專案名 cccatwebsite。Claude 只在 KK 當次明確要求時代操作，不改設定、不登入（R8）。
-- 沒有在 iPhone／Android 實機測試 LINE App 跳轉和虛擬鍵盤。iPhone 字型問題是 KK 用實機確認的，-08 修正後也要請 KK 用 iPhone 再看一次。
+- 沒有在 iPhone／Android 實機測試 LINE App 跳轉和虛擬鍵盤。iPhone 標題字型：-08 修正後 KK 已用 iPhone 實機確認正常（2026-09-28），不需要再改。
 - GA／Search Console 只能在 KK 當次要求時，透過 KK 已登入的 Chrome（Claude in Chrome 擴充功能）代操作；沒親眼在後台看到的，不能宣稱排名、收錄或事件已被 GA 收到。
 - 不加自評星等（R6）、不改 GA 原碼（R5）、不改 DNS／Netlify 設定（R3）、不刪歷史、不 force push。
 
 ## 最近 2 個 session
 
-- 2026-09-28（Claude Code）：KK 確認 9/23 的整體 UI 改版是 ChatGPT Astra 做的，已補記在 HISTORY；在 GA 把 line_click 標成重要事件。網站沒有改動。
+- 2026-09-28（Claude Code）：KK 確認 9/23 的整體 UI 改版是 ChatGPT Astra 做的，已補記在 HISTORY；在 GA 把 line_click 標成重要事件；KK 用 iPhone 確認 -08 標題字型正常。網站沒有改動。
 - 2026-09-24 晚（Claude Code）：修好 -05 部署失敗（Netlify 快取，E7）；導覽文案改兩次到「看看環境」（-06、-07）；全面檢視 Codex 的成果；-08 修正 iPhone 標題字型（自己託管字型子集）、加 GA 轉換事件、補正確座標（舊座標偏北 2.7 km）、加 Google 評論連結、清理 CSS、簡化測試與發布紀錄格式。
