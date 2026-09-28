@@ -6,6 +6,13 @@
 
 ---
 
+## 2026-09-28 — 補記改版作者＋GA 標記 line_click
+
+- KK 說「上次之後讓 ChatGPT Astra 做了 UI makeover」。查過本機 repo、GitHub（只有 main、沒有 PR）、正式站（仍是 -08）、整個 C 槽 9/25 後改過的檔案，都沒有新改動。KK 確認指的就是 9/23 的改版（5824099）。已在下方 2026-09-23 那段補一行寫明作者。
+- GA：經 KK 要求，用 KK 已登入的 Chrome（第二個 Google 帳號，authuser=1）到「管理 → 資料顯示 → 事件 → 近期事件」，把 line_click 標成重要事件，並在「重要事件」分頁確認已列出。phone_click 還沒出現在近期事件，沒辦法標；click 依原本的判斷不標。沒有動其他 GA 設定。
+- 第一次連 Claude in Chrome 連了兩次都失敗（擴充功能沒連上），照卡關協議停手，請 KK 接好後才繼續。
+- 依 R11 從 HANDOFF 移出的舊 session 摘要原文：2026-09-24（Codex）：日期月曆試算、估價但書、敬稱與 FAQ 修訂，發布 -04；推送 -05 文案（部署失敗沒有發現）。每日回報動畫小樣暫停。
+
 ## 2026-09-24 深夜 — 防止其他 agent 再踩雷：AGENTS.md、R12、verify-live
 
 KK 要求把「避免 Netlify 推送失敗沒人發現」的防護加進來，讓其他 agent 也會遵守。檢查後發現真正的漏洞：Codex 讀的是 AGENTS.md，這個 repo 原本沒有，所以 CLAUDE.md、RULES、E7 對 Codex 都不存在。-05 事件的根源之一就在這裡。
@@ -157,6 +164,7 @@ KK 認為「旅館風景」聽起來規模很大，和小班制的實際樣子�
 
 ## 2026-09-23 — 使用者授權新版部署準備（2026.09.23-01）
 
+- （2026-09-28 補記）這次整體 UI 改版是 **ChatGPT Astra** 做的（KK 確認）。原紀錄只寫「使用者授權」，沒寫是誰做的。下文說的「獨立離線資料夾」推測是 `C:\dev\CCCat-Design-Offline`（檔案日期 9/8–9/9），這點未經確認。
 - 新設計於獨立離線資料夾完成並經使用者接受；後續依使用者要求調整稱呼、房型說明、LINE 聯絡資訊、手機排版及 SEO。
 - 本輪使用者要求正式部署，並要求所有 push 都記錄流程及結果。原版先做網站／文件備份與完整 Git bundle。
 - 正式版本採保守 SEO 遷移：原 title/description/OG/Twitter/canonical/robots/GA 保留，原六张圖片根路徑不變。商家 geo 的省略原因、FAQ 同步與回復流程詳見 DEPLOYMENT_LOG。

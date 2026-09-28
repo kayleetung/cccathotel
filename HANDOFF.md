@@ -14,10 +14,11 @@
 
 ## 待 KK 處理
 
-- **GA 後台**：把 `line_click`、`phone_click` 標成「重要事件」（管理 → 事件）。事件大約 24 小時後才會出現在清單裡，即時報表可以馬上看到。Claude 不動 GA 後台（R5）。
+- **GA 重要事件**：【事實，2026-09-28】`line_click` 已標成重要事件（KK 要求，Claude 用 KK 的 Chrome 操作）。**還剩 `phone_click`**：要等有人真的點過電話，它出現在「管理 → 資料顯示 → 事件 → 近期事件」清單後，再按旁邊的星號。9/28 查看時近期事件只有 click、first_visit、inquiry_copy、inquiry_open、line_click、map_click、page_view、scroll、session_start、user_engagement。
+  - 重要事件清單裡另有 GA 預設的 close_convert_lead、purchase、qualify_lead，都沒有資料，不影響，不用理。
   - 【事實，2026-09-24】GA 資源在 KK 的**第二個 Google 帳號**下（Chrome 帳號切換選單的第 2 個帳號，GA 網址帶 `?authuser=1`，資源 a396319521p539598993「CC Cat Boarding」）。預設的 kaytung@live.com 沒有權限，會看到「開始使用」頁，**不要按 Start measuring**（會建立新的 GA 帳號）。Claude 只在 KK 當次要求時操作 GA，不登入（R8）。
   - 【事實】即時報表 22:5x 已收到 line_click 3 筆、map_click 2 筆，整條鏈都通了。GA 內建的 click（外連點擊）也會一起計數，**不要把 click 標成重要事件**，會和 line_click 重複計算。
-  - **還沒做**：GA 的「管理 → 資料顯示 → 事件」沒辦法先用名稱建立重要事件，要等 line_click 出現在「近期事件」清單（24 小時內），再按旁邊的星號。phone_click 要等到有人真的點電話之後才會出現。KK 已同意標記這兩個事件（2026-09-24）。
+  - GA 沒辦法先用名稱建立重要事件，一定要等事件出現在「近期事件」清單。KK 已同意標記 line_click／phone_click（2026-09-24）。
   - 【事實】2026-09-24 經 KK 同意，已把 Search Console「網域」資源 `cccathotel.com` 連結到 GA 資料串流 CC Cat Boarding（串流 ID 14974100114）。Search Console 另有一個「網址前置字元」資源 `https://cccathotel.com/`，沒有連結（一個串流只能連一個，網域版涵蓋範圍最完整）。Search Console 的資料會在接下來幾天陸續出現在 GA。
 - 素材：真實每日回報截圖、經營者故事、訂金／取消政策。網站最缺的是「證據」，不捏造（R7）。
 - 每日回報動畫小樣：已暫停，沒有整合進網站。桌面副本在 C:/Users/kaytu/OneDrive/Desktop/希希每日回報動畫小樣-20260924/index.html。
@@ -26,10 +27,10 @@
 
 - Netlify 後台：KK 的 Chrome 已登入，專案名 cccatwebsite。Claude 只在 KK 當次明確要求時代操作，不改設定、不登入（R8）。
 - 沒有在 iPhone／Android 實機測試 LINE App 跳轉和虛擬鍵盤。iPhone 字型問題是 KK 用實機確認的，-08 修正後也要請 KK 用 iPhone 再看一次。
-- 沒有 Search Console／GA 管理權限，不能宣稱排名、收錄或事件已被 GA 收到。
+- GA／Search Console 只能在 KK 當次要求時，透過 KK 已登入的 Chrome（Claude in Chrome 擴充功能）代操作；沒親眼在後台看到的，不能宣稱排名、收錄或事件已被 GA 收到。
 - 不加自評星等（R6）、不改 GA 原碼（R5）、不改 DNS／Netlify 設定（R3）、不刪歷史、不 force push。
 
 ## 最近 2 個 session
 
+- 2026-09-28（Claude Code）：KK 確認 9/23 的整體 UI 改版是 ChatGPT Astra 做的，已補記在 HISTORY；在 GA 把 line_click 標成重要事件。網站沒有改動。
 - 2026-09-24 晚（Claude Code）：修好 -05 部署失敗（Netlify 快取，E7）；導覽文案改兩次到「看看環境」（-06、-07）；全面檢視 Codex 的成果；-08 修正 iPhone 標題字型（自己託管字型子集）、加 GA 轉換事件、補正確座標（舊座標偏北 2.7 km）、加 Google 評論連結、清理 CSS、簡化測試與發布紀錄格式。
-- 2026-09-24（Codex）：日期月曆試算、估價但書、敬稱與 FAQ 修訂，發布 -04；推送 -05 文案（部署失敗沒有發現）。每日回報動畫小樣暫停。
