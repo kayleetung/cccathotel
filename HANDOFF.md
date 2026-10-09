@@ -20,6 +20,7 @@
   - 【事實】即時報表 22:5x 已收到 line_click 3 筆、map_click 2 筆，整條鏈都通了。GA 內建的 click（外連點擊）也會一起計數，**不要把 click 標成重要事件**，會和 line_click 重複計算。
   - GA 沒辦法先用名稱建立重要事件，一定要等事件出現在「近期事件」清單。KK 已同意標記 line_click／phone_click（2026-09-24）。
   - 【事實】2026-09-24 經 KK 同意，已把 Search Console「網域」資源 `cccathotel.com` 連結到 GA 資料串流 CC Cat Boarding（串流 ID 14974100114）。Search Console 另有一個「網址前置字元」資源 `https://cccathotel.com/`，沒有連結（一個串流只能連一個，網域版涵蓋範圍最完整）。Search Console 的資料會在接下來幾天陸續出現在 GA。
+  - 【事實，2026-10-09】Search Console 也在第二個帳號下：`https://search.google.com/u/1/search-console/...?resource_id=sc-domain%3Acccathotel.com`。10/09 的數字摘要見 HISTORY。
 - 素材：真實每日回報截圖、經營者故事、訂金／取消政策。網站最缺的是「證據」，不捏造（R7）。
 - 每日回報動畫小樣：已暫停，沒有整合進網站。桌面副本在 C:/Users/kaytu/OneDrive/Desktop/希希每日回報動畫小樣-20260924/index.html。
 
