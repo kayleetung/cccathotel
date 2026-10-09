@@ -11,6 +11,7 @@
 - Codex／其他 agent 讀 AGENTS.md，Claude Code 讀 CLAUDE.md，兩者指向同一套規則。改流程時兩邊都要同步。
 - 回復來源是 Git。Codex 在 `.codex\visualizations\...` 的備份檔只是額外備份，不要依賴。
 - **春節／連假價格不放上網站**（KK 2026-10-09 決定）：價格和日期已定，但要先讓舊客訂，也不想讓同業比價。網站只寫「開放預約，請 LINE 詢問」，不寫價格、日期、剩餘房數。
+- **住宿純貓，但到府安親也接狗**（KK 2026-10-09 說明）：所以 Google 商家檔案「服務」裡的遛狗、愛犬照護（到府）是刻意保留的，不要當成錯誤去刪。
 - 使用者偏好：網站對客人統一用「您」；不用「牠」，改用寶貝、貓咪或自然省略；走廊照片稱店內實景；加高房是上下連通的經典房。商家事實只以 index.html 為準（R9）。
 
 ## 待 KK 處理
@@ -23,7 +24,7 @@
   - 【事實】2026-09-24 經 KK 同意，已把 Search Console「網域」資源 `cccathotel.com` 連結到 GA 資料串流 CC Cat Boarding（串流 ID 14974100114）。Search Console 另有一個「網址前置字元」資源 `https://cccathotel.com/`，沒有連結（一個串流只能連一個，網域版涵蓋範圍最完整）。Search Console 的資料會在接下來幾天陸續出現在 GA。
   - 【事實，2026-10-09】Search Console 也在第二個帳號下：`https://search.google.com/u/1/search-console/...?resource_id=sc-domain%3Acccathotel.com`。10/09 的數字摘要見 HISTORY。
 - **春節公告的收尾**：-01 起公告列寫「2027 農曆春節住宿，現已開放預約」。訂滿或春節過後要換掉，原本的文案是「STAY A LITTLE LONGER／住久一點，安心多一點。週住・月住皆享優惠。／洽詢長住方案」（見 git 歷史 2026.09.24-08）。GA 可用 line_click 的 link_location = announcement 看公告列帶來多少 LINE 點擊。
-- **網域到期 2027-02-21**：【事實，RDAP 2026-10-09】cccathotel.com 於 2026-02-21 註冊，註冊商 Name.com（【推論】經 Netlify 購買，Netlify 的網域是透過 Name.com 註冊），2027-02-21 到期，剛好落在春節前後。2027 年 1 月前請 KK 在 Netlify 確認網域自動續約有開、付款卡有效。網域過期＝整個網站和 email 驗證都會斷。
+- **網域到期 2027-02-21**：【事實，RDAP 2026-10-09】cccathotel.com 於 2026-02-21 註冊，註冊商 Name.com（【推論】經 Netlify 購買，Netlify 的網域是透過 Name.com 註冊），2027-02-21 到期，剛好落在春節前後。KK 2026-10-09 確認自動續約已開、都設定好了，不用再提醒。
 - 素材：真實每日回報截圖、經營者故事、訂金／取消政策。網站最缺的是「證據」，不捏造（R7）。
 - 每日回報動畫小樣：已暫停，沒有整合進網站。桌面副本在 C:/Users/kaytu/OneDrive/Desktop/希希每日回報動畫小樣-20260924/index.html。
 
