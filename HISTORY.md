@@ -6,6 +6,14 @@
 
 ---
 
+## 2026-10-09 — 網站健檢（沒有改動）
+
+- 技術面全部通過：verify-release PASS、verify-live 和正式站 12 個檔案一致（-08）；http／www 都 301 到 https://cccathotel.com/；HSTS 有開；SSL（Let's Encrypt）到 2026-11-18，Netlify 自動續期；robots、sitemap 正常；兩段 JSON-LD 可解析；桌機無 console 錯誤，375px 手機沒有水平溢出；圖片、字型、試算都正常；LINE、Google 地圖、IG、FB 連結都能開。
+- GA 過去 28 天（9/11–10/8）：108 位使用者、181 個工作階段。來源是自然搜尋 95、直接 75、AI 助理 8、其他 4。line_click 11 次（含 9/24 測試的幾次）、inquiry_open 9、inquiry_copy 6、map_click 3，phone_click 0。line_click 從 9/28 才算重要事件，所以這段期間重要事件只有 6 筆。
+- 站外觀察：FB 粉專類別是「Blogger」，簡介裡沒有網站網址；最上面看到的貼文是 7/31。
+- 給 KK 的建議（都還沒做）：決定明年春節價格並提早公告；FB 補網站網址、改類別。
+- 依 R11 從 HANDOFF 移出的舊 session 摘要原文：2026-09-24 晚（Claude Code）：修好 -05 部署失敗（Netlify 快取，E7）；導覽文案改兩次到「看看環境」（-06、-07）；全面檢視 Codex 的成果；-08 修正 iPhone 標題字型（自己託管字型子集）、加 GA 轉換事件、補正確座標（舊座標偏北 2.7 km）、加 Google 評論連結、清理 CSS、簡化測試與發布紀錄格式。
+
 ## 2026-09-28 — 補記改版作者＋GA 標記 line_click
 
 - KK 說「上次之後讓 ChatGPT Astra 做了 UI makeover」。查過本機 repo、GitHub（只有 main、沒有 PR）、正式站（仍是 -08）、整個 C 槽 9/25 後改過的檔案，都沒有新改動。KK 確認指的就是 9/23 的改版（5824099）。已在下方 2026-09-23 那段補一行寫明作者。
