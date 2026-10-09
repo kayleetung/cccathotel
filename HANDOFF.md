@@ -10,6 +10,7 @@
 - 推送後一定要跑 `node scripts/verify-live.cjs`（RULES R12），PASS 才算上線。Netlify 部署失敗的處理見 RULES E7。
 - Codex／其他 agent 讀 AGENTS.md，Claude Code 讀 CLAUDE.md，兩者指向同一套規則。改流程時兩邊都要同步。
 - 回復來源是 Git。Codex 在 `.codex\visualizations\...` 的備份檔只是額外備份，不要依賴。
+- **春節／連假價格不放上網站**（KK 2026-10-09 決定）：價格和日期已定，但要先讓舊客訂，也不想讓同業比價。網站只寫「開放預約，請 LINE 詢問」，不寫價格、日期、剩餘房數。
 - 使用者偏好：網站對客人統一用「您」；不用「牠」，改用寶貝、貓咪或自然省略；走廊照片稱店內實景；加高房是上下連通的經典房。商家事實只以 index.html 為準（R9）。
 
 ## 待 KK 處理
@@ -21,6 +22,7 @@
   - GA 沒辦法先用名稱建立重要事件，一定要等事件出現在「近期事件」清單。KK 已同意標記 line_click／phone_click（2026-09-24）。
   - 【事實】2026-09-24 經 KK 同意，已把 Search Console「網域」資源 `cccathotel.com` 連結到 GA 資料串流 CC Cat Boarding（串流 ID 14974100114）。Search Console 另有一個「網址前置字元」資源 `https://cccathotel.com/`，沒有連結（一個串流只能連一個，網域版涵蓋範圍最完整）。Search Console 的資料會在接下來幾天陸續出現在 GA。
   - 【事實，2026-10-09】Search Console 也在第二個帳號下：`https://search.google.com/u/1/search-console/...?resource_id=sc-domain%3Acccathotel.com`。10/09 的數字摘要見 HISTORY。
+- **春節公告的收尾**：-01 起公告列寫「2027 農曆春節住宿，現已開放預約」。訂滿或春節過後要換掉，原本的文案是「STAY A LITTLE LONGER／住久一點，安心多一點。週住・月住皆享優惠。／洽詢長住方案」（見 git 歷史 2026.09.24-08）。GA 可用 line_click 的 link_location = announcement 看公告列帶來多少 LINE 點擊。
 - 素材：真實每日回報截圖、經營者故事、訂金／取消政策。網站最缺的是「證據」，不捏造（R7）。
 - 每日回報動畫小樣：已暫停，沒有整合進網站。桌面副本在 C:/Users/kaytu/OneDrive/Desktop/希希每日回報動畫小樣-20260924/index.html。
 
@@ -33,5 +35,5 @@
 
 ## 最近 2 個 session
 
-- 2026-10-09（Claude Code）：健檢，網站沒有改動。技術面全部通過；GA 28 天數字與建議見 HISTORY 同日條目。
+- 2026-10-09（Claude Code）：健檢（技術面全部通過；GA 與 Search Console 數字見 HISTORY 同日條目）；做 2027 春節開放預約公告（2026.10.09-01，不公開價格）。
 - 2026-09-28（Claude Code）：KK 確認 9/23 的整體 UI 改版是 ChatGPT Astra 做的，已補記在 HISTORY；在 GA 把 line_click 標成重要事件；KK 用 iPhone 確認 -08 標題字型正常。網站沒有改動。

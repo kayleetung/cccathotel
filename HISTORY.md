@@ -6,8 +6,9 @@
 
 ---
 
-## 2026-10-09 — 網站健檢（沒有改動）
+## 2026-10-09 — 網站健檢＋2027 春節公告（2026.10.09-01）
 
+- 春節公告：KK 的春節價格和日期已經定了，但決定不放上網站（先讓舊客訂、避免同業比價），只告訴大家可以開始預約、請加 LINE 詢問。公告列從長住優惠換成春節開放預約；房型下方「春節價格另行公告」也改掉，因為不會再公告了，留著會讓客人等公告。長住優惠的文案在試算區和 FAQ 都還有，公告列換掉不會讓它消失。
 - 技術面全部通過：verify-release PASS、verify-live 和正式站 12 個檔案一致（-08）；http／www 都 301 到 https://cccathotel.com/；HSTS 有開；SSL（Let's Encrypt）到 2026-11-18，Netlify 自動續期；robots、sitemap 正常；兩段 JSON-LD 可解析；桌機無 console 錯誤，375px 手機沒有水平溢出；圖片、字型、試算都正常；LINE、Google 地圖、IG、FB 連結都能開。
 - GA 過去 28 天（9/11–10/8）：108 位使用者、181 個工作階段。來源是自然搜尋 95、直接 75、AI 助理 8、其他 4。line_click 11 次（含 9/24 測試的幾次）、inquiry_open 9、inquiry_copy 6、map_click 3，phone_click 0。line_click 從 9/28 才算重要事件，所以這段期間重要事件只有 6 筆。
 - Search Console（KK 要求，用 KK 的 Chrome、第二個帳號 /u/1/ 唯讀查看，網域資源 sc-domain:cccathotel.com）：
