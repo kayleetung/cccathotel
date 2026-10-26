@@ -4,7 +4,7 @@
 
 ## 目前狀態
 
-- 網站版號與驗證結果看 DEPLOYMENT_LOG 最下方的「發布紀錄」表（簡化格式，2026-09-24 起）。截至本檔更新時，-08 已推送；正式站實際版號以公開 HTML 為準（E4）。
+- 網站版號與驗證結果看 DEPLOYMENT_LOG 最下方的「發布紀錄」表（簡化格式，2026-09-24 起）。截至本檔更新時（2026-10-26），正式站是 2026.10.09-01（春節公告版）；實際版號以公開 HTML 為準（E4）。
 - 網站在 2026-09 改版後拆成 index.html／style.css／script.js，另有 fonts/cc-serif.woff2（標題字型子集）。無 build、無 npm。部署：GitHub Desktop push → Netlify 發布 website/。
 - **改了任何標題（h1/h2/h3）、品牌名或關於區引言 → 要跑 `node scripts/build-font.cjs`**，不然 verify-release 會擋下。原因和做法見 README「SEO 與外部依賴」。
 - 推送後一定要跑 `node scripts/verify-live.cjs`（RULES R12），PASS 才算上線。Netlify 部署失敗的處理見 RULES E7。
