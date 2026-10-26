@@ -16,7 +16,7 @@
 
 ## 待 KK 處理
 
-- **GA 重要事件**：【事實，2026-09-28】`line_click` 已標成重要事件（KK 要求，Claude 用 KK 的 Chrome 操作）。**還剩 `phone_click`**：要等有人真的點過電話，它出現在「管理 → 資料顯示 → 事件 → 近期事件」清單後，再按旁邊的星號。9/28 查看時近期事件只有 click、first_visit、inquiry_copy、inquiry_open、line_click、map_click、page_view、scroll、session_start、user_engagement；10/09 健檢再看，仍然沒有 phone_click（程式有接好，是真的沒人點電話）。
+- **GA 重要事件**：【事實，2026-09-28】`line_click` 已標成重要事件（KK 要求，Claude 用 KK 的 Chrome 操作）。**還剩 `phone_click`**：要等有人真的點過電話，它出現在「管理 → 資料顯示 → 事件 → 近期事件」清單後，再按旁邊的星號。9/28 查看時近期事件只有 click、first_visit、inquiry_copy、inquiry_open、line_click、map_click、page_view、scroll、session_start、user_engagement；10/09 健檢再看，仍然沒有 phone_click（程式有接好，是真的沒人點電話）。10/26 KK 要求再看一次，近期事件（過去 28 天）還是同樣 10 個，沒有 phone_click，所以沒標成。不要自己點電話連結製造事件，那是假資料（R7 的精神）。
   - 重要事件清單裡另有 GA 預設的 close_convert_lead、purchase、qualify_lead，都沒有資料，不影響，不用理。
   - 【事實，2026-09-24】GA 資源在 KK 的**第二個 Google 帳號**下（Chrome 帳號切換選單的第 2 個帳號，GA 網址帶 `?authuser=1`，資源 a396319521p539598993「CC Cat Boarding」）。預設的 kaytung@live.com 沒有權限，會看到「開始使用」頁，**不要按 Start measuring**（會建立新的 GA 帳號）。Claude 只在 KK 當次要求時操作 GA，不登入（R8）。
   - 【事實】即時報表 22:5x 已收到 line_click 3 筆、map_click 2 筆，整條鏈都通了。GA 內建的 click（外連點擊）也會一起計數，**不要把 click 標成重要事件**，會和 line_click 重複計算。
