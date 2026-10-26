@@ -49,7 +49,8 @@ LocalBusiness schema 內不得放店家自評的 `aggregateRating`／`review`。
 
 ### R8. 敏感事的紅線一律 KK 本人
 密碼、token、金鑰、付款、GitHub/Netlify 帳號登入 — Claude 不碰，一律 KK 親自輸入。
-本 repo 目前**無任何機密檔**（無 .env、無 .gitignore、全公開靜態）。若未來要加機密，先問 KK。
+本 repo 目前**無任何機密檔**（無 .env、全公開靜態）。`.gitignore` 只排除 Claude Code 的本機設定
+`.claude/`（2026-10-26 加），不是用來藏機密。若未來要加機密，先問 KK。
 **Why：** 安全邊界；KK 掌控憑證。2026-07-03 查證無機密檔。
 
 ---
