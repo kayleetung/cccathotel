@@ -19,7 +19,7 @@ GitHub Desktop commit / push → kayleetung/cccathotel 的 main → Netlify 發�
 | website/fonts/cc-serif.woff2 | 標題襯線字（Noto Serif TC 子集，約 50 KB，OFL 1.1）；由 scripts/build-font.cjs 產生，不要手改 |
 | website/robots.txt | 原爬蟲設定與 sitemap 位置 |
 | website/sitemap.xml | 唯一首頁 URL；內容更新時更新 lastmod |
-| scripts/verify-release.cjs | 發布前檢查：SEO/GA/圖片不變、版號一致、商家 schema 與畫面一致、FAQ 配對、標題字都在字型裡、44 個試算案例 |
+| scripts/verify-release.cjs | 發布前檢查：SEO/GA/圖片不變、版號一致、商家 schema 與畫面一致、FAQ 配對、標題字都在字型裡、55 個試算案例（含春節判斷）；春節日期表剩不到一年時會擋下發布 |
 | scripts/verify-live.cjs | 推送後驗證（R12）：等 Netlify 最多 3 分鐘，比對正式站版號和 website/ 每個檔案 |
 | scripts/serif-chars.cjs / build-font.cjs | 找出標題用到的字／重建字型子集（需 Python＋fonttools、brotli） |
 | scripts/serif-subset-chars.txt | 目前字型子集收錄的字，由 build-font.cjs 寫入 |
@@ -34,6 +34,14 @@ index.html 用 id 查找：main、about、space、rooms、estimate、booking、f
 入住與退房使用原生 date 欄位（calc-checkin / calc-checkout），點選開啟裝置月曆。初始留空，選好有效日期才顯示金額並啟用詢問。以台北日期限制不可選過去入住日，以 UTC 日序差計算晚數，避免時區或日光節約時間造成偏差；維持原本 1–365 晚試算範圍。退房不得與入住同日或更早，錯誤時清除估價並提示修正。詢問視窗自動帶入兩個日期，並讀取 HTML 的 estimate-disclaimer，讓畫面與複製內容的估價但書維持一致。
 
 日期僅供預算試算，不代表有空房。平日費率與特殊假期、長住需另確認的說明維持既有設定。桌機並排兩欄，手機上下排列；原生月曆外觀隨作業系統與瀏覽器不同。此功能已於 2026.09.24-04 上線，最新發布狀態以 HANDOFF 為準。
+
+### 春節判斷
+
+住宿只要有一晚落在春節範圍內（退房當天不算一晚），試算就不顯示金額，改請客人 LINE 詢問；詢問按鈕照常可按，複製內容不帶金額和估價但書。其他連假不判斷，維持估算金額加但書。
+
+範圍寫在 script.js：LUNAR_NEW_YEARS 是到 2040 年的初一日期表，不要改用瀏覽器內建農曆（實測 2027、2030 都差一天）。已公告行事曆的年份在 HOLIDAY_PUBLISHED 寫實際連假日期；還沒公告的年份用初一前 4 天到後 6 天，這是現行放假規則下可能的最大範圍，寧可多請客人問一句，也不要報錯價。
+
+**每年一件事：** 人事總處公告下一年行事曆後（2027 年的是 2026-05-21 公告），在 HOLIDAY_PUBLISHED 加一行。沒加也不會壞，只是範圍比實際寬。
 
 ## SEO 與外部依賴
 

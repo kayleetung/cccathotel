@@ -67,5 +67,6 @@
 .stay-dates input[aria-invalid="true"]{border-color:#94533c}
 .date-help{grid-column:1/-1;font-size:12px;color:#526247;line-height:1.8;min-height:22px}
 .date-help.date-error{color:#874a33}
+.calc-breakdown.holiday-note{font-size:15px;font-weight:700;line-height:1.6;color:#fff;background:#b83a1c;padding:12px 16px}
 .calc-cta:disabled{opacity:.55;transform:none;background:var(--ink)}
 @media(max-width:600px){.stay-dates{grid-template-columns:minmax(0,1fr);gap:16px}.date-help{font-size:14px}.stay-dates input{min-height:52px}}

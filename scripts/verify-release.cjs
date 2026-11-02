@@ -57,7 +57,7 @@ visible.forEach((m,i)=>{assert.equal(faq[i].name,plain(m[1]));assert.equal(faq[i
 assert.equal(fs.readFileSync(path.join(site,'robots.txt'),'utf8').replace(/\r\n/g,'\n'),execFileSync('git',['show',`${baseline}:website/robots.txt`],{cwd:root,encoding:'utf8'}).replace(/\r\n/g,'\n'));
 for(const name of ['logo.jpg','cat-peek.jpg','cat-room.jpg','room-interior.jpg','room-hall.jpg','room-hall2.jpg'])assert(fs.readFileSync(path.join(site,name)).equals(execFileSync('git',['show',`${baseline}:website/${name}`],{cwd:root})));
 function element(value=''){return{value,disabled:false,textContent:'',innerHTML:'',classList:{toggle(){}},setAttribute(){},removeAttribute(){},addEventListener(){},replaceChildren(...options){this.options=options;},focus(){}};}
-const nodes={'#calc-room':element('classic'),'#calc-cats':element('1'),'#calc-checkin':element(),'#calc-checkout':element(),'#calc-breakdown':element(),'#calc-total':element(),'#date-help':element(),'#inquiry-open':element()};
+const nodes={'#calc-room':element('classic'),'#calc-cats':element('1'),'#calc-checkin':element(),'#calc-checkout':element(),'#calc-breakdown':element(),'#calc-total':element(),'#date-help':element(),'#inquiry-open':element(),'#estimate-disclaimer':element()};nodes['#estimate-disclaimer'].textContent='估價但書';
 const context=vm.createContext({document:{querySelector:s=>nodes[s],querySelectorAll:()=>[],addEventListener(){}},Option:function(text,value){this.text=text;this.value=value;}});
 vm.runInContext(script.split('const menuButton')[0],context);
 // Fix only the clock; exercise the actual calendar parsing, constraints and pricing code.
@@ -72,4 +72,18 @@ nodes['#calc-room'].value='classic';nodes['#calc-cats'].value='4';vm.runInContex
 for(const [start,end,nights] of [['2026-09-30','2026-10-02',2],['2026-12-31','2027-01-02',2],['2028-02-28','2028-03-01',2],['2027-03-13','2027-03-15',2],['2026-10-31','2026-11-02',2]]){nodes['#calc-checkin'].value=start;nodes['#calc-checkout'].value=end;assert.equal(vm.runInContext('estimate().nights',context),nights);cases++;}
 for(const [start,end] of [['',''],['2026-09-24',''],['','2026-09-25'],['2026-09-24','2026-09-24'],['2026-09-25','2026-09-24'],['2026-09-23','2026-09-25'],['2026-09-24','2027-09-25'],['2027-02-29','2027-03-01'],['bad','2027-03-01']]){nodes['#calc-checkin'].value=start;nodes['#calc-checkout'].value=end;vm.runInContext('renderEstimate()',context);assert.equal(vm.runInContext('estimate()',context),null);assert.equal(nodes['#inquiry-open'].disabled,true);assert.equal(nodes['#calc-total'].textContent,'—');cases++;}
 nodes['#calc-checkin'].value='2026-12-31';nodes['#calc-checkout'].value='2027-01-02';vm.runInContext('renderEstimate()',context);assert.equal(nodes['#inquiry-open'].disabled,false);assert.equal(nodes['#calc-checkout'].min,'2027-01-01');assert.equal(nodes['#calc-checkout'].max,'2027-12-31');
-console.log(`PASS: original SEO/GA/robots and images; 9 FAQ pairs; local resources/anchors; ${cases} date/pricing cases, capacity switch, date limits and invalid-date inquiry protection.`);
+// Lunar New Year: any night inside the holiday hides the amount, and the inquiry message must not quote a price.
+for(const [start,end,hit] of [['2027-02-01','2027-02-03',false],['2027-02-03','2027-02-04',false],['2027-02-03','2027-02-05',true],['2027-02-10','2027-02-11',true],['2027-02-11','2027-02-12',false],['2027-01-20','2027-03-01',true],['2028-01-21','2028-01-22',false],['2028-01-22','2028-01-23',true],['2028-02-01','2028-02-02',true],['2028-02-02','2028-02-03',false],['2041-02-01','2041-02-02',false]]){
+ nodes['#calc-checkin'].value=start;nodes['#calc-checkout'].value=end;nodes['#calc-total'].textContent='';vm.runInContext('renderEstimate()',context);
+ const message=vm.runInContext('inquiryText(estimate())',context);
+ assert.equal(nodes['#inquiry-open'].disabled,false,`${start} inquiry stays open`);
+ assert.equal(nodes['#calc-total'].textContent,hit?'—':'',`${start} total`);
+ assert.equal(nodes['#calc-breakdown'].textContent.includes('農曆春節'),hit,`${start} notice`);
+ assert.equal(message.includes('NT$'),!hit,`${start} message price`);
+ assert.equal(message.includes('估價但書'),!hit,`${start} message disclaimer`);
+ cases++;
+}
+// The date table must outlive the next booking season; extend it in website/script.js when this fails.
+const lastLunarNewYear=vm.runInContext('LUNAR_NEW_YEARS[LUNAR_NEW_YEARS.length-1]',context);
+assert((Date.parse(lastLunarNewYear)-Date.now())/86400000>365,`LUNAR_NEW_YEARS ends ${lastLunarNewYear}: extend the table`);
+console.log(`PASS: original SEO/GA/robots and images; 9 FAQ pairs; local resources/anchors; ${cases} date/pricing cases, capacity switch, date limits, Lunar New Year handling and invalid-date inquiry protection.`);

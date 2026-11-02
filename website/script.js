@@ -19,6 +19,17 @@ function taipeiToday(now=new Date()) {
   const part=type=>parts.find(p=>p.type===type).value;
   return `${part('year')}-${part('month')}-${part('day')}`;
 }
+// First day of each Lunar New Year. A fixed table on purpose: the browser's lunar calendar is a day off in 2027 and 2030.
+const LUNAR_NEW_YEARS=['2027-02-06','2028-01-26','2029-02-13','2030-02-03','2031-01-23','2032-02-11','2033-01-31','2034-02-19','2035-02-08','2036-01-28','2037-02-15','2038-02-04','2039-01-24','2040-02-12'];
+// Years with a published government calendar use its exact holiday; other years use the widest span the holiday rules allow.
+const HOLIDAY_PUBLISHED={'2027-02-06':['2027-02-04','2027-02-10']};
+function staysOverHoliday(checkin,checkout) {
+  const lastNight=dateAfter(checkout,-1);
+  return LUNAR_NEW_YEARS.some(day=>{
+    const [from,to]=HOLIDAY_PUBLISHED[day]||[dateAfter(day,-4),dateAfter(day,6)];
+    return checkin<=to&&lastNight>=from;
+  });
+}
 function stayDates(today=taipeiToday()) {
   const checkin=checkInInput.value,checkout=checkOutInput.value;
   const start=dateDay(checkin),end=dateDay(checkout);
@@ -37,7 +48,7 @@ function estimate() {
   const {nights,checkin,checkout} = stay;
   const extra = (cats - 1) * 200;
   const total = (room.base + extra) * nights;
-  return {room,cats,nights,extra,total,checkin,checkout};
+  return {room,cats,nights,extra,total,checkin,checkout,holiday:staysOverHoliday(checkin,checkout)};
 }
 function renderEstimate() {
   const today=taipeiToday();
@@ -51,11 +62,17 @@ function renderEstimate() {
   $('#date-help').classList.toggle('date-error',Boolean(stay.field));
   if(stay.field) stay.field.setAttribute('aria-invalid','true');
   $('#inquiry-open').disabled=!stay.valid;
+  $('#calc-breakdown').classList.toggle('holiday-note',false);
   $('#date-help').textContent=stay.valid?`共 ${stay.nights} 晚 · 以入住至退房的日期差計算。`:stay.error;
   if(!stay.valid){$('#calc-breakdown').textContent='選好日期後，即可查看平日住宿估算。';$('#calc-total').textContent='—';return;}
-  const {room,cats,nights,extra,total} = estimate();
+  const {room,cats,nights,extra,total,holiday} = estimate();
+  if(holiday){$('#calc-breakdown').classList.toggle('holiday-note',true);$('#calc-breakdown').textContent='這段日期遇到農曆春節，價格另計，請 LINE 詢問。';$('#calc-total').textContent='—';return;}
   $('#calc-breakdown').textContent = extra ? `${room.name}（NT$${money(room.base)} + 加 ${cats - 1} 貓 NT$${money(extra)}）× ${nights} 晚` : `${room.name} NT$${money(room.base)} × ${nights} 晚`;
   $('#calc-total').innerHTML = `NT$ <strong>${money(total)}</strong>`;
+}
+function inquiryText({room,cats,nights,total,checkin,checkout,holiday}) {
+  const price=holiday?'':`平日住宿估算：NT$${money(total)}\n${$('#estimate-disclaimer').textContent}\n`;
+  return `您好，想詢問希希貓旅的空房！\n房型：${room.name}\n貓咪數量：${cats} 隻\n入住日期：${checkin.replaceAll('-','/')}\n退房日期：${checkout.replaceAll('-','/')}\n住宿：${nights} 晚\n${price}再麻煩協助確認房況與實際費用，謝謝！`;
 }
 function changeRoom() {
   const previous = Number(catsSelect.value);
@@ -118,8 +135,7 @@ $('#inquiry-open').addEventListener('click',()=>{
   renderEstimate();
   const result=estimate();
   if(!result)return;
-  const {room,cats,nights,total,checkin,checkout}=result;
-  $('#inquiry-text').value=`您好，想詢問希希貓旅的空房！\n房型：${room.name}\n貓咪數量：${cats} 隻\n入住日期：${checkin.replaceAll('-','/')}\n退房日期：${checkout.replaceAll('-','/')}\n住宿：${nights} 晚\n平日住宿估算：NT$${money(total)}\n${$('#estimate-disclaimer').textContent}\n再麻煩協助確認房況與實際費用，謝謝！`;
+  $('#inquiry-text').value=inquiryText(result);
   $('#copy-status').textContent='此步驟僅整理需求，尚未預訂或送出訊息。';
   $('#copy-inquiry').innerHTML='複製詢問內容 <span aria-hidden="true">⧉</span>';
   openDialog($('#inquiry-dialog'));
